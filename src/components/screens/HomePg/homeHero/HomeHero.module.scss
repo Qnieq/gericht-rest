@@ -2,14 +2,17 @@
 
 .container {
     width: 100%;
-    height: 1000px;
+    height: 1100px;
     background: #0C0B08;
     @include flexible();
+    flex-direction: column;
+    gap: 30px;
 
     .content {
         width: clamp(280px, 90%, 1920px);
         @include flexible();
         justify-content: space-between;
+        gap: clamp(10px, 2vw, 30px);
 
 
         .hashtag {
@@ -30,64 +33,198 @@
             }
         }
 
-        .text {
+        .scroll_container {
             @include flexible();
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 32px;
+            width: 1800px;
+            justify-content: space-evenly;
 
-            .title {
+            flex-wrap: wrap;
+
+            .text {
                 @include flexible();
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 32px;
 
-                .chips {
-                    color: #fff;
-                    font-variant-numeric: lining-nums tabular-nums;
-                    font-family: Cormorant Upright;
-                    font-size: clamp(18px, 2vw, 23px);
-                    font-weight: 700;
-                    line-height: 130%;
-                    letter-spacing: 0.92px;
-                    text-transform: capitalize;
+                .title {
+                    @include flexible();
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 8px;
+
+                    .chips {
+                        color: #fff;
+                        font-variant-numeric: lining-nums tabular-nums;
+                        font-family: Cormorant Upright;
+                        font-size: clamp(18px, 2vw, 23px);
+                        font-weight: 700;
+                        line-height: 130%;
+                        letter-spacing: 0.92px;
+                        text-transform: capitalize;
+                    }
+
+                    .title_text {
+                        width: clamp(280px, 33vw, 453px);
+                        color: #DCCA87;
+                        font-family: Cormorant Upright;
+                        font-size: clamp(45px, 6vw, 80px);
+                        font-weight: 700;
+                        line-height: 130%;
+                        letter-spacing: 3.6px;
+                        text-transform: capitalize;
+                    }
                 }
 
-                .title_text {
-                    width: clamp(280px, 40vw, 453px);
+                .description {
+                    width: clamp(240px, 34vw, 453px);
+
+                    .desc {
+                        color: var(--AAAAAA, #AAA);
+                        font-family: Open Sans;
+                        font-size: clamp(11px, 1vw, 16px);
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 175%;
+                        letter-spacing: 0.64px;
+                    }
+                }
+
+                .btn_container {
+                    width: 100%;
+                    @include flexible();
+                    justify-content: flex-start;
+
+                    .menu_btn {
+                        @include btn();
+                    }
+                }
+            }
+
+            .scroll {
+                width: clamp(290px, 49vw, 670px);
+                height: clamp(330px, 54vw, 735px);
+                @include flexible();
+
+                .border_down {
+                    width: clamp(290px, 49vw, 670px);
+                    height: clamp(320px, 54vw, 735px);
+                    @include flexible();
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    position: absolute;
+                    z-index: 1;
+
+                    .square_1 {
+                        width: clamp(150px, 26vw, 435px);
+                        height: clamp(150px, 26vw, 435px);
+                        background: #DCCA87;
+                        position: absolute;
+                        z-index: 1;
+                    }
+
+                }
+
+                .border_up {
+                    width: clamp(290px, 49vw, 670px);
+                    height: clamp(330px, 54vw, 735px);
+                    @include flexible();
+                    align-items: flex-start;
+                    justify-content: flex-end;
+                    position: absolute;
+                    z-index: 1;
+
+                    .square_2 {
+                        width: clamp(150px, 26vw, 435px);
+                        height: clamp(150px, 26vw, 435px);
+                        background: #DCCA87;
+                        position: absolute;
+                        z-index: 1;
+                    }
+                }
+
+                .pictures {
+                    z-index: 2;
+                    @include flexible();
+
+
+                    .scroll_img {
+                        width: clamp(270px, 46vw, 630px);
+                    }
+                }
+            }
+        }
+
+    }
+
+    .scrolling {
+        width: clamp(280px, 90%, 1920px);
+        @include flexible();
+
+        .slider {
+            width: clamp(280px, 90%, 1920px);
+            @include flexible();
+            position: absolute;
+
+            .slider_count {
+                color: #FFF;
+                font-variant-numeric: lining-nums tabular-nums;
+                font-family: Cormorant Upright;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 175%;
+                letter-spacing: 0.64px;
+                text-transform: capitalize;
+            }
+        }
+
+        .scroll_btn_cont {
+            width: clamp(280px, 90%, 1920px);
+            @include flexible();
+            justify-content: flex-end;
+            z-index: 999;
+            .slider_box {
+                @include flexible();
+                flex-direction: column;
+                gap: 24px;
+
+                .slider_btn {
+                    background: transparent;
+                    border: none;
                     color: #DCCA87;
                     font-family: Cormorant Upright;
-                    font-size: clamp(45px, 6vw, 80px);
+                    font-size: 16px;
                     font-weight: 700;
-                    line-height: 130%;
-                    letter-spacing: 3.6px;
-                    text-transform: capitalize;
-                }
-            }
-
-            .description {
-                width: clamp(280px, 40vw, 453px);
-
-                .desc {
-                    color: var(--AAAAAA, #AAA);
-                    font-family: Open Sans;
-                    font-size: clamp(14px, 2vw, 16px);
-                    font-style: normal;
-                    font-weight: 400;
                     line-height: 175%;
                     letter-spacing: 0.64px;
+                    text-transform: uppercase;
+                    cursor: pointer;
                 }
             }
 
-            .btn_container {
-                width: 100%;
-                @include flexible();
-                justify-content: flex-start;
+        }
+    }
+}
 
-                .menu_btn {
-                    @include btn();
-                }
-            }
+@media (max-width: 780px) {
+    .scroll_container {
+        justify-content: center !important;
+        gap: 50px;
+
+    }
+}
+
+@media (max-width: 380px) {
+    .content {
+        flex-direction: column;
+        gap: 50px !important;
+
+        .hashtag {
+            transform: rotate(0deg) !important;
+        }
+
+        .scroll_container {
+            flex-direction: column;
+            width: auto !important;
         }
     }
 }
