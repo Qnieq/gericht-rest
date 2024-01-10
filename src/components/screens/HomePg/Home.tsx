@@ -1,4 +1,6 @@
+import BookATable from "../../../ui/book_a_table/BookATable";
 import Header from "../../../ui/header/Header";
+import About_History from "./About_History/About_History";
 import HomeHero from "./homeHero/HomeHero";
 
 const Home = () => {
@@ -6,6 +8,8 @@ const Home = () => {
         <>
             <Header />
             <HomeHero />
+            <About_History />
+            <BookATable />
         </>
     );
 }

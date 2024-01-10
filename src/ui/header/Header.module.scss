@@ -6,7 +6,6 @@
     height: 100px;
     background: #0C0B08;
     @include flexible();
-
     .content {
         @include flexible();
         justify-content: space-between;

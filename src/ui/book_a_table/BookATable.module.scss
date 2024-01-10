@@ -1,0 +1,70 @@
+@import "../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 700px;
+    background: #0C0B08;
+    @include flexible();
+
+    .content {
+        @include flexible();
+        border: 1px solid rgba(220, 202, 135, 0.20);
+        background: #0C0C0C;
+        flex-direction: column;
+        box-shadow: 22px 30px 95px 1px rgba(0, 0, 0, 0.70);
+        padding: 48px 32px;
+        gap: 64px;
+
+        .title {
+            @include flexible();
+            flex-direction: column;
+            gap: 8px;
+
+            .chips {
+                color: #FFF;
+                font-variant-numeric: lining-nums tabular-nums;
+                font-family: Cormorant Upright;
+                font-size: clamp(19px, 2vw, 23px);
+                font-weight: 700;
+                line-height: 130%;
+                letter-spacing: 0.92px;
+                text-transform: capitalize;
+            }
+
+            .name {
+                color: #DCCA87;
+                text-align: center;
+                font-variant-numeric: lining-nums tabular-nums;
+                font-family: Cormorant Upright;
+                font-size: clamp(40px, 4vw, 64px);
+                font-weight: 600;
+                line-height: 130%;
+                letter-spacing: 1.92px;
+                text-transform: capitalize;
+            }
+        }
+
+        .dialog_box {
+            @include flexible();
+            gap: 32px;
+
+            .dialog {
+                @include flexible();
+                width: 412px;
+                height: 40px;
+                border: 1px solid #F5EFDB;
+                background: transparent;
+                color: #AAA;
+                text-align: center;
+                font-variant-numeric: lining-nums tabular-nums;
+                font-family: Cormorant Upright;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 175%;
+                letter-spacing: 0.64px;
+                text-transform: capitalize;
+            }
+
+        }
+    }
+}

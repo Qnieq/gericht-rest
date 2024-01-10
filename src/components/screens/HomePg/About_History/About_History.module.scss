@@ -1,0 +1,153 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 959px;
+    background: #040404;
+    @include flexible();
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 959px;
+        background: url(/images/background1.png);
+        opacity: 0.5;
+    }
+
+    .content {
+        width: clamp(280px, 90%, 1920px);
+        @include flexible();
+        z-index: 999;
+        gap: 80px;
+        flex-wrap: wrap;
+
+        .about_us {
+            @include flexible();
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 32px;
+
+            .title {
+                @include flexible();
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+
+                .name {
+                    color: #DCCA87;
+                    text-align: right;
+                    font-variant-numeric: lining-nums tabular-nums;
+                    font-family: Cormorant Upright;
+                    font-size: clamp(40px, 4vw, 64px);
+                    font-weight: 600;
+                    line-height: 130%;
+                    letter-spacing: 1.92px;
+                    text-transform: capitalize;
+                }
+            }
+
+            .description {
+                width: clamp(280px, 30vw, 523px);
+
+                .desc {
+                    color: #AAA;
+                    text-align: right;
+                    font-family: Open Sans;
+                    font-size: clamp(14px, 1vw, 16px);
+                    font-weight: 400;
+                    line-height: 175%;
+                    letter-spacing: 0.64px;
+                }
+            }
+
+            .btn_cont {
+                width: 100%;
+                @include flexible();
+                justify-content: flex-end;
+                .btn {
+                    @include btn();
+                }
+            }
+        }
+        .our_history {
+            @include flexible();
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 32px;
+
+            .title_history {
+                @include flexible();
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+
+                .name_history {
+                    color: #DCCA87;
+                    text-align: left;
+                    font-variant-numeric: lining-nums tabular-nums;
+                    font-family: Cormorant Upright;
+                    font-size: clamp(40px, 4vw, 64px);
+                    font-weight: 600;
+                    line-height: 130%;
+                    letter-spacing: 1.92px;
+                    text-transform: capitalize;
+                }
+                
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .description_history {
+            width: clamp(280px, 30vw, 523px);
+
+            .desc_history {
+                color: #AAA;
+                text-align: left;
+                font-family: Open Sans;
+                font-size: clamp(14px, 1vw, 16px);
+                font-weight: 400;
+                line-height: 175%;
+                letter-spacing: 0.64px;
+            }
+        }
+        .btn_cont_history {
+            width: 100%;
+            @include flexible();
+            justify-content: flex-start;
+            .btn_history {
+                @include btn();
+            }
+        }
+
+    }
+
+    .g_letter {
+        position: absolute;
+
+        .g {
+            width: clamp(280px, 30vw, 391px);
+        }
+    }
+}
+
+@media (max-width: 932px) {
+    .knife_cont {
+        display: none;
+    }
+}
+@media (max-width: 728px) {
+    .desc {
+        text-align: center !important;
+    }
+    .desc_history {
+        text-align: center !important;
+    }
+    .btn_cont {
+        justify-content: center !important;
+    }
+    .btn_cont_history {
+        justify-content: center !important;
+    }
+}
