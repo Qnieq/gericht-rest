@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./HomeHero.module.scss"
 import { useState } from "react";
+import Border from "../../../../ui/ui_components/border/Border";
 
 const HomeHero = () => {
 
@@ -13,19 +14,9 @@ const HomeHero = () => {
         url: string
     }
 
-    // let slider_number1 : string = "01"
-    // let slider_number2 : string = "02"
-    // let slider_number3 : string = "03"
-    // let slider_number4 : string = "04"
-    // let slider_dash : string = "-"
 
     let slider1 = ["01", " -", " 02", " 03", " 04"]
 
-    // function slider_slide() {
-    //     let slider = ["01", " -", " 02", " 03", " 04"]
-    //     slider[slide+1] = slider.splice(slide+2,1, slider[slide+1])[0]
-    //     setS(slider)
-    // }
 
 
     const imgURL: IImg[] = [
@@ -85,17 +76,7 @@ const HomeHero = () => {
                             </button>
                         </div>
                     </div>
-                    <div className={styles.scroll}>
-                        <div className={styles.border_down}>
-                            <div className={styles.square_1}></div>
-                        </div>
-                        <div className={styles.border_up}>
-                            <div className={styles.square_2}></div>
-                        </div>
-                        <div className={styles.pictures}>
-                            <img src={imgURL[slide].url} className={styles.scroll_img} />
-                        </div>
-                    </div>
+                    <Border props={imgURL[slide]} />
                 </div>
             </div>
             <div className={styles.scrolling}>

@@ -20,3 +20,70 @@
     letter-spacing: 0.64px;
     cursor: pointer;
 }
+
+@mixin cont() {
+    width: clamp(280px, 90%, 1920px);
+    @include flexible();
+}
+
+@mixin title() {
+    .title {
+        @include flexible();
+        flex-direction: column;
+        gap: 8px;
+
+        .chips {
+            color: #FFF;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: Cormorant Upright;
+            font-size: clamp(19px, 2vw, 23px);
+            font-weight: 700;
+            line-height: 130%;
+            letter-spacing: 0.92px;
+            text-transform: capitalize;
+        }
+
+        .name {
+            color: #DCCA87;
+            text-align: center;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: Cormorant Upright;
+            font-size: clamp(40px, 4vw, 64px);
+            font-weight: 600;
+            line-height: 130%;
+            letter-spacing: 1.92px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+@mixin title_l() {
+    .title {
+        @include flexible();
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .chips {
+            color: #fff;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: Cormorant Upright;
+            font-size: clamp(19px, 2vw, 23px);
+            font-weight: 700;
+            line-height: 130%;
+            letter-spacing: 0.92px;
+            text-transform: capitalize;
+        }
+
+        .title_text {
+            color: #DCCA87;
+            font-family: Cormorant Upright;
+            font-size: clamp(40px, 4vw, 64px);
+            font-weight: 700;
+            line-height: 130%;
+            letter-spacing: 3.6px;
+            text-transform: capitalize;
+        }
+    }
+
+}

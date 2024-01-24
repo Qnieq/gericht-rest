@@ -7,50 +7,24 @@
     @include flexible();
 
     .content {
-        @include flexible();
+        @include cont();
         border: 1px solid rgba(220, 202, 135, 0.20);
         background: #0C0C0C;
         flex-direction: column;
-        box-shadow: 22px 30px 95px 1px rgba(0, 0, 0, 0.70);
-        padding: 48px 32px;
+        padding: 48px clamp(8px, 2vw, 32px);
         gap: 64px;
-
-        .title {
-            @include flexible();
-            flex-direction: column;
-            gap: 8px;
-
-            .chips {
-                color: #FFF;
-                font-variant-numeric: lining-nums tabular-nums;
-                font-family: Cormorant Upright;
-                font-size: clamp(19px, 2vw, 23px);
-                font-weight: 700;
-                line-height: 130%;
-                letter-spacing: 0.92px;
-                text-transform: capitalize;
-            }
-
-            .name {
-                color: #DCCA87;
-                text-align: center;
-                font-variant-numeric: lining-nums tabular-nums;
-                font-family: Cormorant Upright;
-                font-size: clamp(40px, 4vw, 64px);
-                font-weight: 600;
-                line-height: 130%;
-                letter-spacing: 1.92px;
-                text-transform: capitalize;
-            }
-        }
+        box-shadow: #fff 0 0 0 0;
 
         .dialog_box {
             @include flexible();
             gap: 32px;
+            width: 100%;
+            flex-wrap: wrap;
+            z-index: 999;
 
             .dialog {
                 @include flexible();
-                width: 412px;
+                width: 380px;
                 height: 40px;
                 border: 1px solid #F5EFDB;
                 background: transparent;
@@ -65,6 +39,16 @@
                 text-transform: capitalize;
             }
 
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+            padding-right: 20px;
+        }
+
+        .book_btn {
+            @include btn();
+            z-index: 999;
         }
     }
 }

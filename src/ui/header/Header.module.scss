@@ -6,10 +6,10 @@
     height: 100px;
     background: #0C0B08;
     @include flexible();
+
     .content {
-        @include flexible();
+        @include cont();
         justify-content: space-between;
-        width: clamp(280px, 90%, 1920px);
 
         .logo {
             @include flexible();
@@ -44,7 +44,7 @@
 
         .other {
             @include flexible();
-            
+
             gap: clamp(10px, 2vw, 50px);
 
             .log_reg {
@@ -70,22 +70,26 @@
                 text-decoration: none;
             }
         }
+
         .menu_btn {
             @include flexible();
             justify-content: flex-end;
             display: none;
+
             .menu_icon {
                 color: #FFF;
                 width: 35px;
                 height: 35px;
             }
         }
+
         .navigation_mobile {
             position: absolute;
             top: 100px;
             left: 0;
             width: 100%;
             z-index: 999;
+
             .section {
                 width: 100%;
                 background: #0C0B08;
@@ -105,15 +109,18 @@
             }
         }
     }
-    
+
 }
+
 @media (max-width: 1000px) {
     .navigation_full {
         display: none !important;
     }
+
     .other {
         display: none !important;
     }
+
     .menu_btn {
         display: flex !important;
     }

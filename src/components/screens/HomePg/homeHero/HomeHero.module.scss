@@ -2,17 +2,16 @@
 
 .container {
     width: 100%;
-    height: 100dvh;
+    height: 900px;
     background: #0C0B08;
     @include flexible();
     flex-direction: column;
     gap: 30px;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
 
     .content {
-        width: clamp(280px, 90%, 1920px);
-        @include flexible();
+        @include cont();
         justify-content: space-between;
         gap: clamp(10px, 2vw, 30px);
 
@@ -98,59 +97,6 @@
 
                     .menu_btn {
                         @include btn();
-                    }
-                }
-            }
-
-            .scroll {
-                width: clamp(290px, 49vw, 670px);
-                height: clamp(330px, 54vw, 735px);
-                @include flexible();
-
-                .border_down {
-                    width: clamp(290px, 49vw, 670px);
-                    height: clamp(320px, 54vw, 735px);
-                    @include flexible();
-                    align-items: flex-end;
-                    justify-content: flex-start;
-                    position: absolute;
-                    z-index: 1;
-
-                    .square_1 {
-                        width: clamp(150px, 26vw, 435px);
-                        height: clamp(150px, 26vw, 435px);
-                        background: #DCCA87;
-                        position: absolute;
-                        z-index: 1;
-                    }
-
-                }
-
-                .border_up {
-                    width: clamp(290px, 49vw, 670px);
-                    height: clamp(330px, 54vw, 735px);
-                    @include flexible();
-                    align-items: flex-start;
-                    justify-content: flex-end;
-                    position: absolute;
-                    z-index: 1;
-
-                    .square_2 {
-                        width: clamp(150px, 26vw, 435px);
-                        height: clamp(150px, 26vw, 435px);
-                        background: #DCCA87;
-                        position: absolute;
-                        z-index: 1;
-                    }
-                }
-
-                .pictures {
-                    z-index: 2;
-                    @include flexible();
-
-
-                    .scroll_img {
-                        width: clamp(270px, 46vw, 630px);
                     }
                 }
             }
