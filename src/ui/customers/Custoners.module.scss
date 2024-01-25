@@ -1,0 +1,150 @@
+@import "../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 1000px;
+    @include flexible();
+    background: #0C0B08;
+
+    .content {
+        @include cont();
+        flex-direction: column;
+        gap: 64px;
+
+        .customers {
+            @include flexible();
+            flex-direction: column;
+            gap: 64px;
+
+            .section {
+                @include flexible();
+                gap: clamp(16px, 2vw, 32px);
+
+
+            }
+        }
+
+        .person {
+            @include flexible() ;
+            gap: clamp(8px, 2vw, 16px);
+
+            .img_box {
+                @include flexible();
+                width: 206px;
+                height: 240px;
+
+                .img {
+                    width: 206px;
+                    height: 200px;
+
+                    .customer_image {
+                        width: clamp(100px, 12vw, 189px);
+                    }
+                }
+
+                .quote {
+                    @include flexible();
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    width: 206px;
+                    height: 240px;
+                    position: absolute;
+                }
+            }
+
+            .text {
+                @include flexible();
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+
+                .comment {
+                    width: clamp(170px, 25vw, 412px);
+                    color: #AAA;
+                    font-family: "Open Sans";
+                    font-size: clamp(12px, 1vw, 16px);
+                    font-style: italic;
+                    font-weight: 400;
+                    line-height: 175%;
+                    letter-spacing: 0.64px;
+                }
+
+                .name_role {
+                    @include flexible();
+                    align-items: flex-start;
+                    flex-direction: column;
+
+                    .name {
+                        color: #DCCA87;
+                        font-variant-numeric: lining-nums tabular-nums;
+                        font-family: "Cormorant Upright";
+                        font-size: clamp(24px, 1vw, 32px);
+                        font-weight: 400;
+                        line-height: 130%;
+                        letter-spacing: 1.28px;
+                        text-transform: capitalize;
+                    }
+
+                    .role {
+                        color: #F5EFDB;
+                        font-family: "Open Sans";
+                        font-size: clamp(13px, 1vw, 16px);
+                        font-weight: 400;
+                        line-height: 175%;
+                        letter-spacing: 0.64px;
+                    }
+                }
+            }
+        }
+
+        .slider_bx {
+            @include flexible();
+            display: none;
+
+            .slider {
+                @include flexible();
+                width: clamp(280px, 94vw, 500px);
+                height: 240px;
+            }
+        }
+    }
+    .dots {
+        background: #fff;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 1001px) {
+    .customers {
+        display: none !important;
+    }
+
+    .img_box {
+        width: clamp(117px, 2vw, 206px) !important;
+
+        .img {
+            width: clamp(105px, 2vw, 206px) !important;
+        }
+        .quote {
+            width: clamp(105px, 2vw, 206px) !important;
+            height: clamp(50px, 8vw, 240px) !important;
+
+            svg {
+                width: 25px;
+            }
+        }
+    
+    }
+
+
+    .slider_bx {
+        display: flex !important;
+
+        .person {
+            display: flex !important;
+        }
+    }
+}

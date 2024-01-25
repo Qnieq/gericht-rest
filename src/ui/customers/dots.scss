@@ -1,0 +1,12 @@
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    .slick-active {
+        background: #fff;
+        width: 11px;
+        height: 6px;
+        border-radius: 50%;
+    }
+}
+
