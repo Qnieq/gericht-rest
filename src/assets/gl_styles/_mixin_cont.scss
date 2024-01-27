@@ -87,3 +87,15 @@
     }
 
 }
+
+@mixin after_bg($height, $opacity) {
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: $height;
+        background: url(/images/backgrounds/mramor_back.png) no-repeat;
+        opacity: $opacity;
+        background-size: cover;
+    }
+}
