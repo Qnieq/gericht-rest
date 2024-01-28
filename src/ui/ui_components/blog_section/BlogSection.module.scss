@@ -1,0 +1,74 @@
+@import "../../../assets/gl_styles/mixin_cont";
+
+.blog {
+    width: clamp(200px, 25vw, 412px) !important;
+    @include flexible();
+    flex-direction: column;
+    gap: 24px;
+
+    .blog_img {
+        width: 100%;
+        height: clamp(230px, 25vw, 500px);
+    }
+
+    .text {
+        @include flexible();
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+
+        .date_author {
+            @include flexible();
+            width: 100%;
+            justify-content: space-between;
+
+            .info {
+                color: #FAFAFA;
+                font-family: "Open Sans";
+                font-size: clamp(12px, 1vw, 16px);
+                font-weight: 500;
+                line-height: 175%;
+                letter-spacing: 0.64px;
+            }
+        }
+
+        .title {
+            width: 100%;
+            color: #DCCA87;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: "Cormorant Upright";
+            font-size: clamp(18px, 2vw, 32px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%;
+            letter-spacing: 1.28px;
+            text-decoration-line: underline;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+
+        .description {
+            color: #AAA;
+            font-family: "Open Sans";
+            font-size: clamp(10px, 1vw, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 175%;
+            letter-spacing: 0.64px;
+        }
+
+        .read_more_btn {
+            color: #DCCA87;
+            font-family: "Cormorant Upright";
+            font-size: clamp(12px, 1vw, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 175%;
+            letter-spacing: 0.64px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+}
