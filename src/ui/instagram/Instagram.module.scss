@@ -24,7 +24,7 @@
             width: clamp(280px, 30vw, 491px);
 
             .description {
-                color:  #AAA;
+                color: #AAA;
                 font-family: "Open Sans";
                 font-size: clamp(12px, 1vw, 16px);
                 font-style: normal;
@@ -32,28 +32,99 @@
                 line-height: 175%;
                 letter-spacing: 0.64px;
             }
-            .view_more_btn {
-                @include btn();
-            }
-        }
 
+        }
+        
+        .view_more_btn {
+            @include btn();
+        }
         .photo_gallery {
             width: clamp(280px, 55vw, 1380px);
             @include flexible();
-            align-items: flex-end;
             justify-content: flex-start;
             overflow: auto;
-            gap: 32px;
-            .photo {
-                width: clamp(150px, 25vw, 301px);
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #dcca87;
+                width: 5px;
+            }
+
+
+
+            .photo_box {
+                @include flexible();
+
+                .photo {
+                    width: clamp(150px, 25vw, 301px);
+                    transition: .3s ease-in-out;
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 0.3;
+                    }
+                }
+
+                .icon_box {
+                    @include flexible();
+                    transform: translateX(clamp(50px, 16vw, 180px));
+
+                    .icon {
+                        width: 50px !important;
+                        height: 50px !important;
+                        fill: aliceblue !important;
+
+                    }
+
+                }
+            }
+            .end {
+                @include flexible();
+                flex-direction: column;
+                gap: 16px;
+                margin-left: 32px;
+                .insta {
+                    width: clamp(150px, 25vw, 301px);
+                    color: #DCCA87;
+                    font-variant-numeric: lining-nums tabular-nums;
+                    font-family: "Cormorant Upright";
+                    font-size: clamp(18px, 2vw, 32px);
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 130%;
+                    letter-spacing: 1.28px;
+                    text-decoration-line: underline;
+                    text-transform: capitalize;
+                    cursor: pointer;
+                    text-align: center;
+                }
+                .sub {
+                    color: #AAA;
+                    font-family: "Open Sans";
+                    font-size: clamp(10px, 1vw, 16px);
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 175%;
+                    letter-spacing: 0.64px;
+                    text-align: center;
+
+                }
             }
         }
     }
 }
 
+
 @media (max-width: 768px) {
     .content {
         justify-content: center !important;
         flex-wrap: wrap;
+
+        .icon_box {
+            transform: translateX(clamp(100px, 16vw, 120px)) !important;
+        }
     }
 }

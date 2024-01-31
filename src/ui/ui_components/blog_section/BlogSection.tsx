@@ -1,7 +1,6 @@
 import styles from "./BlogSection.module.scss"
 
 const BlogSection = ({props}) => {
-    console.log(props)
     return (
         <>
             {props.map(blog =>

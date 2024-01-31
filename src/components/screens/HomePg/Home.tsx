@@ -3,6 +3,7 @@ import Awards from "../../../ui/awards/Awards";
 import BookATable from "../../../ui/book_a_table/BookATable";
 import Chef from "../../../ui/chef/Chef";
 import Customers from "../../../ui/customers/Customers";
+import Footer from "../../../ui/footer/Footer";
 import Header from "../../../ui/header/Header";
 import Instagram from "../../../ui/instagram/Instagram";
 import Special from "../../../ui/special/Special";
@@ -26,6 +27,7 @@ const Home = () => {
             <Awards />
             <BlogsUpdate />
             <Instagram />
+            <Footer />
         </>
     );
 }
