@@ -1,3 +1,4 @@
+import { Link, animateScroll as scroll } from "react-scroll";
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 import styles from "./Footer.module.scss"
 
@@ -25,19 +26,25 @@ const Footer = () => {
             </div>
             <div className={styles.bottom_section}>
                 <div className={styles.top}>
-                    <a href="#">
-                        top
-                    </a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2" height="61" viewBox="0 0 2 61" fill="none">
-                        <path d="M1 61L1.00001 9.53674e-07" stroke="url(#paint0_linear_566_1693)" />
-                        <defs>
-                            <linearGradient id="paint0_linear_566_1693" x1="29.5042" y1="-11.8571" x2="29.5042" y2="78.2931" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#DCCA87" />
-                                <stop offset="0.430036" stop-color="#DCCA87" />
-                                <stop offset="0.927083" stop-color="#DCCA87" stop-opacity="0.24" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <div className={styles.cont}>
+                        <Link 
+                        to="#top"  
+                        smooth={true}
+                        duration={800}
+                        className={styles.up}>
+                            top
+                        </Link>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="61" viewBox="0 0 2 61" fill="none">
+                            <path d="M1 61L1.00001 9.53674e-07" stroke="url(#paint0_linear_566_1693)" />
+                            <defs>
+                                <linearGradient id="paint0_linear_566_1693" x1="29.5042" y1="-11.8571" x2="29.5042" y2="78.2931" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#DCCA87" />
+                                    <stop offset="0.430036" stop-color="#DCCA87" />
+                                    <stop offset="0.927083" stop-color="#DCCA87" stop-opacity="0.24" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
                 <div className={styles.footer}>
                     <div className={styles.info}>

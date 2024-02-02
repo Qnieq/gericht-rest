@@ -12,7 +12,7 @@ const Header = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.logo}>
-                    <h1 className={styles.logo_name}>
+                    <h1 id="#top" className={styles.logo_name}>
                         Gerícht
                     </h1>
                 </div>
