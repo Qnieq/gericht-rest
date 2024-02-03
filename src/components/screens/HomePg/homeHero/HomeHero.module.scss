@@ -38,7 +38,6 @@
             @include flexible();
             width: 1800px;
             justify-content: space-evenly;
-
             flex-wrap: wrap;
 
             .text {
@@ -90,6 +89,7 @@
                     }
                 }
 
+                
                 .btn_container {
                     width: 100%;
                     @include flexible();
@@ -100,9 +100,10 @@
                     }
                 }
             }
+            
         }
 
-    }             
+    }
 
     .scrolling {
         width: clamp(280px, 90%, 1920px);
@@ -123,6 +124,9 @@
                 line-height: 175%;
                 letter-spacing: 0.64px;
                 text-transform: capitalize;
+                background: transparent;
+                border: none;
+                cursor: pointer;
             }
         }
 
@@ -131,6 +135,7 @@
             @include flexible();
             justify-content: flex-end;
             z-index: 999;
+
             .slider_box {
                 @include flexible();
                 flex-direction: column;

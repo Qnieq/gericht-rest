@@ -1,9 +1,6 @@
 import styles from "./Border.module.scss"
 
 const Border = ({props}) => {
-
-
-
     return (
         <div className={styles.border}>
             <div className={styles.border_down}>

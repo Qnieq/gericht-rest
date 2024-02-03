@@ -10,6 +10,7 @@
     .content {
         @include cont();
         justify-content: space-between;
+        z-index: 9999;
 
         .logo {
             @include flexible();
@@ -88,7 +89,7 @@
             top: 100px;
             left: 0;
             width: 100%;
-            z-index: 999;
+            z-index: 9999;
 
             .section {
                 width: 100%;

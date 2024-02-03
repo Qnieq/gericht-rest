@@ -1,21 +1,18 @@
 import { NavLink } from "react-router-dom";
 import styles from "./HomeHero.module.scss"
 import { useState } from "react";
-import Border from "../../../../ui/ui_components/border/Border";
+import Slider from "../../../../ui/ui_components/slider/Slider";
 
 const HomeHero = () => {
-
-    const [slide, setSlide] = useState<number>(0)
 
     interface IImg {
         id: number,
         url: string
     }
-
-
-    let slider1 = ["01", " -", " 02", " 03", " 04"]
-
-
+    interface IData {
+        current: number,
+        img: object,
+    }
 
     const imgURL: IImg[] = [
         {
@@ -36,6 +33,20 @@ const HomeHero = () => {
         },
     ]
 
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
+
+    const nextSlide = (): void => {
+        if (currentSlide === 3) {
+            setCurrentSlide(0);
+        } else {
+            setCurrentSlide(currentSlide + 1);
+        }
+    };
+
+    const data: IData = {
+        current: currentSlide,
+        img: imgURL
+    }
 
     return (
         <div className={styles.container}>
@@ -74,14 +85,31 @@ const HomeHero = () => {
                             </button>
                         </div>
                     </div>
-                    <Border props={imgURL[slide]} />
+                    <Slider props={[data, "yes"]} />
                 </div>
             </div>
             <div className={styles.scrolling}>
                 <div className={styles.slider}>
-                    <h4 className={styles.slider_count}>
-                        {slider1}
-                    </h4>
+                    {currentSlide == 0 ?
+                        <button className={styles.slider_count}>
+                            01 - 02 03 04
+                        </button>
+                        :
+                        currentSlide == 1 ?
+                            <button className={styles.slider_count}>
+                                01 - 02 - 03 04
+                            </button>
+                            : currentSlide == 2 ?
+                                <button className={styles.slider_count}>
+                                    01 02 - 03 - 04
+                                </button>
+                                : currentSlide == 3 ?
+                                    <button className={styles.slider_count}>
+                                        01 02 03 - 04
+                                    </button>
+                                    :
+                                    <></>
+                    }
 
                 </div>
                 <div className={styles.scroll_btn_cont}>
@@ -96,7 +124,7 @@ const HomeHero = () => {
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <button className={styles.slider_btn} onClick={() => { setSlide(slide == 3 ? slide - 3 : slide + 1) }}>
+                        <button className={styles.slider_btn} onClick={() => nextSlide()}>
                             Scroll
                         </button>
                     </div>

@@ -84,7 +84,7 @@
 
         .top {
             width: 100%;
-            z-index: 999;
+            z-index: 1000;
             @include flexible();  
             margin-right: 400px;
             justify-content: flex-end;
@@ -151,6 +151,7 @@
                     position: absolute;
                     left: 50%;
                     right: 50%;
+                    z-index: 99999;
 
                     .name {
                         color: #DCCA87;
