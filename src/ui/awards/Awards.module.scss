@@ -6,6 +6,7 @@
     background: #040404;
     @include flexible();
     @include after_bg(1000px, 0.5);
+    position: relative;
 
     .content {
         @include cont();

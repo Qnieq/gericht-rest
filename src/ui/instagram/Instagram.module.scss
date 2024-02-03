@@ -6,6 +6,7 @@
     @include flexible();
     flex-direction: column;
     background: #0C0B08;
+    
 
     @include after_bg(800px, 0.3);
 
@@ -13,7 +14,7 @@
         width: clamp(1%, 100%, 2560px);
         @include flexible();
         justify-content: flex-end;
-        z-index: 999;
+        z-index: 9999;
         gap: 64px;
 
         .title {

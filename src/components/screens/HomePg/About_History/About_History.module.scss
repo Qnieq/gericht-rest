@@ -6,10 +6,11 @@
     background: #040404;
     @include flexible();
     @include after_bg(959px, 0.5);
+    position: relative;
 
     .content {
         @include cont();
-        z-index: 999;
+        z-index: 9999;
         gap: 80px;
         flex-wrap: wrap;
 

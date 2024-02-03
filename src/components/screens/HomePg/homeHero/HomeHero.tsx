@@ -6,8 +6,6 @@ import Border from "../../../../ui/ui_components/border/Border";
 const HomeHero = () => {
 
     const [slide, setSlide] = useState<number>(0)
-    // const [click, setClick] = useState<boolean>(false)
-    // const [s, setS] = useState()
 
     interface IImg {
         id: number,
@@ -43,10 +41,10 @@ const HomeHero = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.hashtag}>
-                    <NavLink to="" className={styles.hashtag_link}>
+                    <NavLink to="/Bar" className={styles.hashtag_link}>
                         #Bar
                     </NavLink>
-                    <NavLink to="" className={styles.hashtag_link}>
+                    <NavLink to="/" className={styles.hashtag_link}>
                         #Gericht
                     </NavLink>
                 </div>

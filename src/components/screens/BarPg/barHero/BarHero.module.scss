@@ -1,0 +1,9 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 1000px;
+    @include flexible();
+
+    @include after_bg(1000px, 0.5);
+}

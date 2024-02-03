@@ -101,6 +101,7 @@
         .slider_bx {
             @include flexible();
             display: none;
+            z-index: 9999;
 
             .slider {
                 @include flexible();

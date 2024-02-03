@@ -9,6 +9,7 @@ import Instagram from "../../../ui/instagram/Instagram";
 import Special from "../../../ui/special/Special";
 import VideoSection from "../../../ui/video_section/VideoSection";
 import About_History from "./About_History/About_History";
+import BackgroundElem from "./background_elem/BackgroundElem";
 import BlogsUpdate from "./blogs_update/BlogsUpdate";
 import HomeHero from "./homeHero/HomeHero";
 
@@ -17,6 +18,7 @@ const Home = () => {
         <>
             <Header />
             <HomeHero />
+            <BackgroundElem />
             <About_History />
             <BookATable />
             <AllMenus />

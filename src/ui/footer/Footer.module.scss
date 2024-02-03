@@ -6,11 +6,12 @@
     flex-direction: column;
     height: 100%;
     background: #0C0B08;
+    
 
     .top_section {
         @include cont();
         height: 450px;
-        z-index: 999;
+        z-index: 1000;
 
 
         .newsletter {

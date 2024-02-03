@@ -11,6 +11,7 @@
         @include cont();
         flex-direction: column;
         gap: 64px;
+        z-index: 9999;
 
         .blogs_update_box {
             @include flexible();

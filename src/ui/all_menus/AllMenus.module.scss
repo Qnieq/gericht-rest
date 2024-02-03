@@ -5,6 +5,7 @@
     height: 900px;
     background: #000000;
     @include flexible();
+    position: relative;
 
     &::after {
         content: "";

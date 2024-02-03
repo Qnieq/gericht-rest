@@ -5,7 +5,7 @@
     height: 700px;
     background: #0C0B08;
     @include flexible();
-
+    
     .content {
         @include cont();
         border: 1px solid rgba(220, 202, 135, 0.20);
@@ -14,13 +14,15 @@
         padding: 48px clamp(8px, 2vw, 32px);
         gap: 64px;
         box-shadow: #fff 0 0 0 0;
+        position: relative;
+        z-index: 9999;
 
         .dialog_box {
             @include flexible();
             gap: 32px;
             width: 100%;
             flex-wrap: wrap;
-            z-index: 999;
+            
 
             .dialog {
                 @include flexible();
