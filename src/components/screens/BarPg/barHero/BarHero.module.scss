@@ -2,8 +2,21 @@
 
 .container {
     width: 100%;
-    height: 1000px;
+    height: 100%;
     @include flexible();
+    padding: 150px 0;
+    flex-direction: column;
+    @include after_bg(100%, 0.5);
 
-    @include after_bg(1000px, 0.5);
+    &::after {
+        padding: 150px 0;
+    }
+
+    .header {
+        width: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+
 }

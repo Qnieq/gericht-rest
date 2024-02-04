@@ -37,19 +37,19 @@ const Slider = ({ props }) => {
     const title: ITitle[] = [
         {
             id: 1,
-            title: ""
+            title: "On The Rocks"
         },
         {
             id: 2,
-            title: ""
+            title: "Premium Drinks"
         },
         {
             id: 3,
-            title: ""
+            title: "Cocktails"
         },
         {
             id: 4,
-            title: ""
+            title: "Atmosphere"
         },
     ]
 
@@ -76,13 +76,19 @@ const Slider = ({ props }) => {
             :
             <div className={styles.slider}>
                 <div className={styles.slider_cont} ref={slideRef}>
+                    <div className={styles.name}>
+                        {title.map((str) =>
+                            <div key={str.id} className={styles.title_cont}>
+                                <h1 className={styles.title}>{str.title}</h1>
+                            </div>
+
+                        )}
+                    </div>
                     {props[0].img.map((url) =>
                         <div key={url.id} className={styles.pic} ref={blockRef} >
-                            {title.map((str) =>
-                                <h1 key={str.id}>{str.title}</h1> 
-                            )}
                             <img src={url.url} className={styles.slider_img} />
                         </div>
+
                     )}
                 </div>
             </div>
