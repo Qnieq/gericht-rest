@@ -55,33 +55,60 @@ const BarHero = () => {
                 <Header />
             </div>
             <div className={styles.content}>
-                <div className={styles.hashtag}>
-                    <NavLink to="/Bar" className={styles.hashtag_link}>
-                        #Bar
-                    </NavLink>
-                    <NavLink to="/" className={styles.hashtag_link}>
-                        #Gericht
-                    </NavLink>
-                </div>
-                <Slider props={[data, "no"]} />
-            </div>
-            <div className={styles.scroll_btn_cont}>
-                    <div className={styles.slider_box}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1" height="61" viewBox="0 0 1 61" fill="none">
-                            <path d="M0.499878 61C0.49988 37.178 0.499882 23.822 0.499884 0" stroke="url(#paint0_linear_509_96)" />
-                            <defs>
-                                <linearGradient id="paint0_linear_509_96" x1="29.0041" y1="-11.8571" x2="29.0041" y2="78.2931" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#DCCA87" />
-                                    <stop offset="0.430036" stop-color="#DCCA87" />
-                                    <stop offset="0.927083" stop-color="#DCCA87" stop-opacity="0.24" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <button className={styles.slider_btn} onClick={() => nextSlide()}>
-                            Scroll
-                        </button>
+                <div className={styles.hashtag_box}>
+                    <div className={styles.hashtag}>
+                        <NavLink to="/Bar" className={styles.hashtag_link}>
+                            #Bar
+                        </NavLink>
+                        <NavLink to="/" className={styles.hashtag_link}>
+                            #Gericht
+                        </NavLink>
                     </div>
                 </div>
+                <Slider props={[data, "no"]} />
+                <div className={styles.count}>
+                    <div className={styles.slider}>
+                        {currentSlide == 0 ?
+                            <h4 className={styles.slider_count}>
+                                01 - 02 03 04
+                            </h4>
+                            :
+                            currentSlide == 1 ?
+                                <h4 className={styles.slider_count}>
+                                    01 - 02 - 03 04
+                                </h4>
+                                : currentSlide == 2 ?
+                                    <h4 className={styles.slider_count}>
+                                        01 02 - 03 - 04
+                                    </h4>
+                                    : currentSlide == 3 ?
+                                        <h4 className={styles.slider_count}>
+                                            01 02 03 - 04
+                                        </h4>
+                                        :
+                                        <></>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div className={styles.scroll_btn_cont}>
+                <div className={styles.slider_box}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1" height="61" viewBox="0 0 1 61" fill="none">
+                        <path d="M0.499878 61C0.49988 37.178 0.499882 23.822 0.499884 0" stroke="url(#paint0_linear_509_96)" />
+                        <defs>
+                            <linearGradient id="paint0_linear_509_96" x1="29.0041" y1="-11.8571" x2="29.0041" y2="78.2931" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#DCCA87" />
+                                <stop offset="0.430036" stop-color="#DCCA87" />
+                                <stop offset="0.927083" stop-color="#DCCA87" stop-opacity="0.24" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <button className={styles.slider_btn} onClick={() => nextSlide()}>
+                        Scroll
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

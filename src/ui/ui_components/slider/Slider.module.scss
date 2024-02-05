@@ -63,8 +63,8 @@
 }
 
 .slider {
-    width: clamp(290px, 100vw, 1068px);
-    height: clamp(370px, 100vw, 840px);
+    width: clamp(290px, 70vw, 1068px);
+    height: clamp(370px, 65vw, 840px);
     @include flexible();
     justify-content: flex-start;
     overflow: hidden;
@@ -76,13 +76,14 @@
         gap: 80px;
 
         .title_cont {
-            width: clamp(290px, 100vw, 1068px);
+            width: clamp(290px, 65vw, 1068px);
             @include flexible();
+            // justify-content: flex-start;
 
             .title {
                 color: rgb(255, 255, 255);
                 font-family: Cormorant Upright;
-                font-size: clamp(45px, 10vw, 160px);
+                font-size: clamp(40px, 10vw, 160px);
                 font-weight: 700;
                 line-height: 130%;
                 letter-spacing: 5%;
@@ -94,10 +95,12 @@
     }
 
     .pic {
-        width: clamp(290px, 100vw, 1068px);
+        width: clamp(290px, 65vw, 1068px);
         @include flexible();
         .slider_img {
-            width: clamp(250px, 50vw, 634px);
+            width: clamp(250px, 40vw, 634px);
+            border: 1px solid #DCCA87;
+            box-sizing: border-box;
         }
     }
 }
