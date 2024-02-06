@@ -1,0 +1,70 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 150px 0;
+    @include flexible();
+
+    .content {
+        @include cont();
+        flex-direction: column;
+        gap: 64px;
+
+        .poison_box {
+            @include flexible();
+            gap: 33px;
+            flex-wrap: wrap;
+
+            .poison {
+                @include flexible();
+                transition: 0.3s ease-in-out;
+                border: 1px solid #DCCA87;
+
+                &:hover {
+                    background: #000;
+                }
+
+                .name {
+                    display: none;
+                    position: absolute;
+                    color: #fff;
+                    font-family: Cormorant Upright;
+                    font-size: 45px;
+                    font-weight: 600;
+                    line-height: 130%;
+                    letter-spacing: 4%;
+                    text-align: center;
+                    text-transform: capitalize;
+                    animation: fade .3s linear forwards;
+                }
+
+                @keyframes fade {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    100% {
+                        opacity: 1;
+                    }
+                }
+
+                .poison_photo {
+                    width: clamp(280px, 25vw, 410px);
+                    transition: 0.3s ease-in-out;
+
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            .poison:hover .name {
+                display: block !important;
+                z-index: 999;
+            }
+
+
+        }
+    }
+}
