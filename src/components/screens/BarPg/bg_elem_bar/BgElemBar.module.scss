@@ -1,0 +1,75 @@
+.container {
+    position: absolute !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    svg {
+        position: absolute !important;
+    }
+
+    .arrow {
+        position: absolute;
+        width: 100%;
+        height: 6500px;
+        display: flex;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        svg:first-child {
+            z-index: 0;
+            top: 50px;
+            left: -950px;
+        }
+
+        svg:last-child {
+            z-index: 1000;
+        }
+    }
+
+    .emblem {
+        position: absolute;
+        width: 100%;
+        height: 6500px;
+        overflow: hidden;
+
+        svg:nth-child(1) {
+            right: 100px;
+            top: 0px;
+            z-index: 9999;
+        }
+        svg:nth-child(2) {
+            left: 200px;
+            top: 750px;
+            z-index: 9999;
+        }
+        svg:nth-child(3) {
+            right: 300px;
+            top: 3900px;
+            z-index: 9999;
+        }
+        svg:nth-child(4) {
+            left: 300px;
+            top: 5050px;
+            z-index: 9999;
+        }
+        svg:nth-child(5) {
+            right: 200px;
+            top: 6230px;
+        }
+    }
+
+}
+@media (max-width: 1439px) {
+    svg:nth-child(3) {
+        display: none;
+    }
+    svg:nth-child(4) {
+        display: none;
+    }
+}
+@media (max-width: 1001px) {
+    .emblem{
+        display: none;
+    }
+}

@@ -3,7 +3,10 @@
 .container {
     width: 100%;
     height: 1000px;
+    background: #0C0C0C;
     @include flexible();
+    position: relative;
+    z-index: 1001;
     &::after {
         content: "";
         background: url("images/no_category/happy_hours.png") no-repeat;

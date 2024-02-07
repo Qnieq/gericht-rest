@@ -1,5 +1,5 @@
 import styles from "./Header.module.scss"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useState } from "react";
@@ -12,9 +12,9 @@ const Header = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.logo}>
-                    <h1 id="#top" className={styles.logo_name}>
+                    <Link to="/" id="#top" className={styles.logo_name}>
                         Gerícht
-                    </h1>
+                    </Link>
                 </div>
                 <div className={styles.navigation_full}>
                     <>

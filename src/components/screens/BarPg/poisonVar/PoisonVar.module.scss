@@ -52,6 +52,7 @@
                 .poison_photo {
                     width: clamp(280px, 25vw, 410px);
                     transition: 0.3s ease-in-out;
+                    z-index: 1001;
 
                     &:hover {
                         opacity: 0.5;
@@ -61,7 +62,7 @@
 
             .poison:hover .name {
                 display: block !important;
-                z-index: 999;
+                z-index: 9999;
             }
 
 
