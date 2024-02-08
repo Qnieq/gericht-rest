@@ -27,6 +27,22 @@ const Header = () => {
                             color: isActive ? '#DCCA87' : '#fff'
                         })}>
                             Pages
+                            <div className={styles.pages}>
+                                <div className={styles.page}>
+                                    <NavLink to="/Home/Our Services" className={styles.link} style={({ isActive }) => ({
+                                        color: isActive ? '#DCCA87' : '#fff'
+                                    })}>
+                                        Our Services
+                                    </NavLink>
+                                </div>
+                                <div className={styles.page}>
+                                    <NavLink to="" className={styles.link} style={({ isActive }) => ({
+                                        color: isActive ? '#DCCA87' : '#fff'
+                                    })}>
+                                        About Us
+                                    </NavLink>
+                                </div>
+                            </div>
                         </NavLink>
                         <NavLink to="" className={styles.link} style={({ isActive }) => ({
                             color: isActive ? '#DCCA87' : '#fff'
@@ -58,27 +74,55 @@ const Header = () => {
                     visible == true
                         ?
                         <div className={styles.navigation_mobile}>
-                            <button className={styles.section}>
-                                Home
-                            </button>
-                            <button className={styles.section}>
-                                Pages
-                            </button>
-                            <button className={styles.section}>
-                                Contact Us
-                            </button>
-                            <button className={styles.section}>
-                                Blog
-                            </button>
-                            <button className={styles.section}>
-                                Landing
-                            </button>
-                            <button className={styles.section}>
-                                Log in / registration
-                            </button>
-                            <button className={styles.section}>
-                                Book Table
-                            </button>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Home
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="" className={styles.link}>
+                                    <h4 className={styles.name}>
+                                        Pages
+                                    </h4>
+                                    <div className={styles.pages}>
+                                        <div className={styles.page}>
+                                            <Link to="/Home/Our Services" className={styles.link}>
+                                                Our Services
+                                            </Link>
+                                        </div>
+                                        <div className={styles.page}>
+                                            <Link to="" className={styles.link}>
+                                                About Us
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Contact Us
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Blog
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Landing
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Log in / registration
+                                </Link>
+                            </div>
+                            <div className={styles.section}>
+                                <Link to="/" className={styles.link}>
+                                    Book Table
+                                </Link>
+                            </div>
                         </div>
                         :
                         <></>

@@ -7,7 +7,7 @@
     padding: 150px 0 20px 0;
     flex-direction: column;
     @include after_bg(900px, 0.5);
-    z-index: 9999;
+    z-index: 1001;
 
     &::after {
         transform: translateY(-100px);
@@ -24,7 +24,7 @@
     .content {
         @include cont();
         justify-content: space-between;
-        z-index: 9999;
+        z-index: 1002;
 
         .hashtag_box {
             @include flexible();
