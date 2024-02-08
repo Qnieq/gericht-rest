@@ -1,6 +1,4 @@
-import { useState } from "react";
 import styles from "./BookATable.module.scss"
-import { IoIosArrowDown } from "react-icons/io";
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 
 const BookATable = () => {

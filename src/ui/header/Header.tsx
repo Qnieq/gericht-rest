@@ -57,7 +57,7 @@ const Header = () => {
                         <NavLink to="" className={styles.link} style={({ isActive }) => ({
                             color: isActive ? '#DCCA87' : '#fff'
                         })}>
-                            Landing
+                            FAQ
                         </NavLink>
                     </>
                 </div>
@@ -110,7 +110,7 @@ const Header = () => {
                             </div>
                             <div className={styles.section}>
                                 <Link to="/" className={styles.link}>
-                                    Landing
+                                    FAQ
                                 </Link>
                             </div>
                             <div className={styles.section}>

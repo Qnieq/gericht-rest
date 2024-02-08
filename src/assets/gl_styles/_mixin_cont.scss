@@ -21,14 +21,14 @@
     cursor: pointer;
     position: relative;
     z-index: 1000;
-    transition: transform .2s ease-in-out;
-
-    &:hover svg {
-        transform: translateX(5px);
-    }
+    transition: .2s ease-in-out;
 
     &:active {
         transform: scale(0.90);
+    }
+
+    &:hover {
+        background: #c0a02e;
     }
 }
 

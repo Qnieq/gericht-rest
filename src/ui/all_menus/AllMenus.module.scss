@@ -6,6 +6,7 @@
     background: #000000;
     @include flexible();
     position: relative;
+    z-index: 999;
 
     &::after {
         content: "";

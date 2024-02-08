@@ -80,6 +80,9 @@
         height: 837px;
         gap: 40px;
         flex-direction: column;
+        position: relative;
+        background: #0C0B08;
+        z-index: 999;
         @include after_bg(837px, 0.5);
 
         .top {
