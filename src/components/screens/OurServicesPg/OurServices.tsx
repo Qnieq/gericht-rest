@@ -10,14 +10,14 @@ import ServingQuality from "./serving_quality/ServingQuality";
 const OurServices = () => {
     return (
         <>
-            <Header />
+            <Header props={"#0C0C0C"}/>
             <HeroSection props={"What We offer"} />
             <OSBgElem />
             <ServingQuality />
             <AllMenus />
             <BookATable />
             <HappyHours />
-            <Footer />
+            <Footer props={"#0C0C0C"}/>
         </>
     );
 }

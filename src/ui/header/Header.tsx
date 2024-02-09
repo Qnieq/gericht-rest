@@ -4,12 +4,12 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({props}) => {
 
     const [visible, setVisible] = useState<boolean>(false)
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{background: props}}>
             <div className={styles.content}>
                 <div className={styles.logo}>
                     <Link to="/" id="#top" className={styles.logo_name}>
@@ -36,7 +36,7 @@ const Header = () => {
                                     </NavLink>
                                 </div>
                                 <div className={styles.page}>
-                                    <NavLink to="" className={styles.link} style={({ isActive }) => ({
+                                    <NavLink to="/Home/About Us" className={styles.link} style={({ isActive }) => ({
                                         color: isActive ? '#DCCA87' : '#fff'
                                     })}>
                                         About Us
@@ -91,7 +91,7 @@ const Header = () => {
                                             </Link>
                                         </div>
                                         <div className={styles.page}>
-                                            <Link to="" className={styles.link}>
+                                            <Link to="/Home/About Us" className={styles.link}>
                                                 About Us
                                             </Link>
                                         </div>

@@ -19,7 +19,7 @@ const Bar = () => {
             <HappyHours />
             <Special />
             <FindUs />
-            <Footer />
+            <Footer props={"#0C0C0C"}/>
         </>
     );
 }

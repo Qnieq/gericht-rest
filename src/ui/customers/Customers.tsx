@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../dots.scss"
 
-const Customers = () => {
+const Customers = ({props}) => {
 
     const settings: object = {
         dots: true,
@@ -65,7 +65,7 @@ const Customers = () => {
     ]
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{background: props}}>
             <div className={styles.content}>
                 <TitleCenter props={text} />
                 <div className={styles.customers}>

@@ -1,0 +1,111 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 100px 0 80px 0;
+    @include flexible();
+    background: #0C0C0C;
+
+    .content {
+        @include cont();
+        flex-direction: column;
+        gap: 64px;
+
+        .history_box {
+            @include flexible();
+            width: 100%;
+            gap: 40px;
+            align-items: flex-end;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            .desc_box {
+                width: clamp(280px, 30vw, 523px);
+                @include flexible();
+                gap: 30px;
+                flex-direction: column;
+
+                .description {
+                    @include desc(left, normal);
+                }
+
+                .desc_img {
+                    width: 100%;
+                    z-index: 9999;
+
+                }
+
+            }
+
+            .years_box {
+                width: clamp(300px, 40vw, 686px);
+                @include flexible();
+                align-items: flex-start;
+                gap: 40px;
+                flex-direction: column;
+
+                .years_img {
+                    width: 100%;
+                    z-index: 9999;
+                }
+
+                .years {
+                    @include flexible();
+                    width: 100%;
+                    align-items: flex-start;
+                    gap: 40px;
+                    flex-direction: column;
+
+                    .title {
+                        color: #DCCA87;
+                        font-family: Cormorant Upright;
+                        font-size: clamp(30px, 2vw, 45px);
+                        font-weight: 600;
+                        line-height: 130%;
+                        letter-spacing: 4%;
+                        text-align: left;
+                        text-transform: capitalize;
+                    }
+
+                    .statistic {
+                        @include flexible();
+                        justify-content: space-between;
+                        width: 100%;
+
+                        .stat {
+                            @include flexible();
+                            width: 126px;
+                            gap: 8px;
+                            flex-direction: column;
+                            align-items: flex-start;
+
+                            .how_many {
+                                color: #DCCA87;
+                                font-family: Cormorant Upright;
+                                font-size: clamp(30px, 2vw, 45px);
+                                font-weight: 600;
+                                line-height: 130%;
+                                letter-spacing: 4%;
+                                text-align: center;
+                                text-transform: capitalize;
+                            }
+
+                            .opt {
+                                color: #fff;
+                                font-family: Cormorant Upright;
+                                font-size: clamp(24px, 2vw, 32px);
+                                font-weight: 400;
+                                line-height: 130%;
+                                letter-spacing: 4%;
+                                text-align: left;
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

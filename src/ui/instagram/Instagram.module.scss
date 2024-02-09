@@ -6,6 +6,8 @@
     @include flexible();
     flex-direction: column;
     background: #0C0B08;
+    position: relative;
+    z-index: 9999;
     
 
     @include after_bg(800px, 0.3);

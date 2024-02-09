@@ -24,12 +24,12 @@ const Home = () => {
             <AllMenus />
             <Special />
             <Chef />
-            <Customers />
+            <Customers props={"#0C0B08"} />
             <VideoSection />
             <Awards />
             <BlogsUpdate />
             <Instagram />
-            <Footer />
+            <Footer props={""}/>
         </>
     );
 }

@@ -22,11 +22,11 @@ const VideoSection = () => {
             <div className={styles.player}>
                 {isPlaying ?
                     <video ref={videoRef} controls className={styles.video} >
-                        <source src="videos/gericht_rest.mp4" type="video/mp4" />
+                        <source src="/videos/gericht_rest.mp4" type="video/mp4" />
                     </video>
                     :
                     <video ref={videoRef} className={styles.video} >
-                        <source src="videos/gericht_rest.mp4" type="video/mp4" />
+                        <source src="/videos/gericht_rest.mp4" type="video/mp4" />
                     </video>
                 }
                 <button onClick={togglePlay} className={styles.play_pause}>

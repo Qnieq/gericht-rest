@@ -2,13 +2,13 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 import styles from "./Footer.module.scss"
 
-const Footer = () => {
+const Footer = ({props}) => {
 
     const text: string[] = ["Newsletter", "Subscribe to Our Newsletter"]
 
     return (
-        <div className={styles.container}>
-            <div className={styles.top_section}>
+        <div className={styles.container} style={{background: props}}>
+            <div className={styles.top_section} >
                 <div className={styles.newsletter}>
                     <div className={styles.title}>
                         <TitleCenter props={text} />

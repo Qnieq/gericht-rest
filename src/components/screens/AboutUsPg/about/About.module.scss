@@ -1,0 +1,26 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 60px 0 150px 0;
+    @include flexible();
+    background: #0C0C0C;
+
+    .content {
+        @include cont();
+        gap: 96px;
+        flex-direction: column;
+
+        .title {
+            @include flexible();
+            width: clamp(300px, 45vw, 824px);
+            gap: 32px;
+            flex-direction: column;
+
+            .description {
+                @include desc(center, normal);
+            }
+        }
+    }
+}
