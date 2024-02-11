@@ -121,3 +121,20 @@
     letter-spacing: 4%;
     text-align: $text-align;
 }
+
+@mixin input($height) {
+    width: clamp(230px, 35vw, 630px);
+    height: $height;
+    border: 1px solid #F5EFDB;
+    background: transparent;
+    color: #AAA;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-family: "Cormorant Upright";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 175%;
+    letter-spacing: 0.64px;
+    text-transform: capitalize;
+    padding-left: 20px;
+}

@@ -1,7 +1,7 @@
 import Emblem from "../../HomePg/background_elem/Emblem";
-import styles from "./AboutBgElem.module.scss"
+import styles from "./CUBgElem.module.scss"
 
-const AboutBgElem = () => {
+const CUBgElem = () => {
     return (
         <div className={styles.container}>
             <div className={styles.arrow}>
@@ -21,12 +21,10 @@ const AboutBgElem = () => {
             <div className={styles.emblem}>
                 <Emblem />
                 <Emblem />
-                <Emblem />
-                <Emblem />
             </div>
 
         </div>
     );
 }
 
-export default AboutBgElem;
+export default CUBgElem;

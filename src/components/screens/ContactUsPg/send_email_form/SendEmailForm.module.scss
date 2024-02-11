@@ -1,0 +1,74 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 947px;
+    position: relative;
+    z-index: 1002;
+    background: #0C0C0C;
+    @include flexible();
+    @include after_bg(947px, 0.5);
+
+    .content {
+        @include cont();
+        justify-content: space-evenly;
+        z-index: 9999;
+        gap: 40px;
+        flex-wrap: wrap;
+
+        .form {
+            @include flexible();
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 32px;
+
+            input {
+                @include input(50px);
+            }
+            textarea {
+                @include input(140px);
+                resize: none;
+                padding-top: 10px
+            }
+            .btn {
+                @include btn();
+            }
+        }
+
+        .image_box {
+            @include flexible();
+            width: clamp(285px, 45vw, 555px);
+            height: clamp(343px, 45vw, 691px);
+            .img_box {
+                width: clamp(285px, 45vw, 555px);
+                height: clamp(343px, 45vw, 691px);
+                @include flexible();
+                justify-content: flex-end;
+
+                .image {
+                    width: clamp(240px, 35vw, 483px);
+                }
+            }
+
+            .g_letter_box {
+                position: absolute;
+                width: clamp(285px, 45vw, 570px);
+                height: clamp(343px, 50vw, 691px);
+                display: flex;
+                align-items: flex-end;
+
+                svg {
+                    width: clamp(120px, 20vw, 360px);
+                    height: clamp(120px, 20vw, 360px);
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 772px) {
+    .content {
+        flex-direction: column-reverse;
+    }
+}

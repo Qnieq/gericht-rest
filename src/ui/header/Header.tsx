@@ -44,7 +44,7 @@ const Header = ({props}) => {
                                 </div>
                             </div>
                         </NavLink>
-                        <NavLink to="" className={styles.link} style={({ isActive }) => ({
+                        <NavLink to="/Home/Contact Us" className={styles.link} style={({ isActive }) => ({
                             color: isActive ? '#DCCA87' : '#fff'
                         })}>
                             Contact Us
@@ -99,7 +99,7 @@ const Header = ({props}) => {
                                 </Link>
                             </div>
                             <div className={styles.section}>
-                                <Link to="/" className={styles.link}>
+                                <Link to="/Home/Contact Us" className={styles.link}>
                                     Contact Us
                                 </Link>
                             </div>
