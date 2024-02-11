@@ -1,5 +1,14 @@
 @import "../../assets/gl_styles/mixin_cont";
 
+@mixin link() {
+    font-family: Open Sans;
+    font-size: clamp(14px, 1vw, 16px);
+    font-weight: 400;
+    line-height: 175%;
+    letter-spacing: 0.64px;
+    text-decoration: none;
+}
+
 
 .container {
     width: 100%;
@@ -35,60 +44,57 @@
 
             .link {
                 color: #FFF;
-                font-family: Open Sans;
-                font-size: clamp(14px, 1vw, 16px);
-                font-weight: 400;
-                line-height: 175%;
-                letter-spacing: 0.64px;
-                text-decoration: none;
+                @include link();
+                cursor: pointer;
             }
 
-            .pages {
-                @include flexible();
-                display: none;
-                position: absolute;
-                flex-direction: column;
-                transform: translate(-40px, 0);
-                animation: fade .4s linear forwards;
+            .pages_container {
+                padding: 20px 0 20px 0;
 
-                @keyframes fade {
-                    0% {
-                        opacity: 0;
-                    }
-
-                    100% {
-                        opacity: 1;
-                    }
-                }
-
-                .page {
+                .pages {
                     @include flexible();
-                    width: 120px;
-                    padding: 7px;
-                    background: #DCCA87;
-                    transition: 0.4s ease-in-out;
+                    display: none;
+                    position: absolute;
+                    flex-direction: column;
+                    transform: translate(-60px, 20px);
+                    animation: fade .4s linear forwards;
 
+                    @keyframes fade {
+                        0% {
+                            opacity: 0;
+                        }
 
-                    &:hover {
-                        background: #fff0bb;
+                        100% {
+                            opacity: 1;
+                        }
                     }
 
-                    .link {
-                        color: #000 !important;
-                        font-family: Open Sans;
-                        font-size: clamp(14px, 1vw, 16px);
-                        font-weight: 400;
-                        line-height: 175%;
-                        letter-spacing: 0.64px;
-                        text-decoration: none;
+                    .page {
+                        @include flexible();
+                        width: 150px;
+                        padding: 7px;
+                        background: #DCCA87;
+                        transition: 0.4s ease-in-out;
+
+
+                        &:hover {
+                            background: #fff0bb;
+                        }
+
+
+                        .link {
+                            color: #000 !important;
+                            @include link();
+                        }
                     }
                 }
             }
+
+            .pages_container:hover .pages {
+                display: flex !important;
+            }
         }
 
-        .link:nth-child(2):hover .pages {
-            display: flex !important;
-        }
 
         .other {
             @include flexible();
@@ -149,14 +155,10 @@
 
                 .link {
                     color: #FFF;
-                    font-family: Open Sans;
-                    font-size: clamp(14px, 1vw, 16px);
-                    font-weight: 400;
-                    line-height: 175%;
-                    letter-spacing: 0.64px;
-                    text-decoration: none;
+                    @include link();
                     width: 100%;
-                    text-align: center; 
+                    text-align: center;
+
                     .name {
                         color: #FFF;
                         font-family: Open Sans;
@@ -199,17 +201,18 @@
                         &:hover {
                             background: #fff0bb;
                         }
+
                         &:nth-child(2) {
                             border-top: #000 4px solid;
                         }
+
+                        &:nth-child(3) {
+                            border-top: #000 4px solid;
+                        }
+
                         .link {
                             color: #000 !important;
-                            font-family: Open Sans;
-                            font-size: clamp(14px, 1vw, 16px);
-                            font-weight: 400;
-                            line-height: 175%;
-                            letter-spacing: 0.64px;
-                            text-decoration: none;
+                            @include link();
                         }
                     }
                 }
@@ -232,7 +235,7 @@
                     }
 
                     100% {
-                        padding-bottom: 150px;
+                        padding-bottom: 212px;
                     }
                 }
             }

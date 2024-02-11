@@ -2,14 +2,16 @@ import styles from "./Header.module.scss"
 import { Link, NavLink } from "react-router-dom";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-const Header = ({props}) => {
+const Header = ({ props }) => {
+
+    const currentPg = window.location.pathname
 
     const [visible, setVisible] = useState<boolean>(false)
 
     return (
-        <div className={styles.container} style={{background: props}}>
+        <div className={styles.container} style={{ background: props }}>
             <div className={styles.content}>
                 <div className={styles.logo}>
                     <Link to="/" id="#top" className={styles.logo_name}>
@@ -23,10 +25,16 @@ const Header = ({props}) => {
                         })}>
                             Home
                         </NavLink>
-                        <NavLink to="" className={styles.link} style={({ isActive }) => ({
-                            color: isActive ? '#DCCA87' : '#fff'
-                        })}>
-                            Pages
+                        <div className={styles.pages_container}>
+                            <h5 className={styles.link} style={{
+                                color:
+                                    currentPg == "/Home/About%20Us" ||
+                                        currentPg == "/Home/Our%20Services" ||
+                                        currentPg == "/Home/Our%20Team" ?
+                                        '#DCCA87' : '#fff'
+                            }}>
+                                Pages
+                            </h5>
                             <div className={styles.pages}>
                                 <div className={styles.page}>
                                     <NavLink to="/Home/Our Services" className={styles.link} style={({ isActive }) => ({
@@ -42,8 +50,16 @@ const Header = ({props}) => {
                                         About Us
                                     </NavLink>
                                 </div>
+                                <div className={styles.page}>
+                                    <NavLink to="/Home/Our Team" className={styles.link} style={({ isActive }) => ({
+                                        color: isActive ? '#DCCA87' : '#fff'
+                                    })}>
+                                        Our Team
+                                    </NavLink>
+                                </div>
                             </div>
-                        </NavLink>
+
+                        </div>
                         <NavLink to="/Home/Contact Us" className={styles.link} style={({ isActive }) => ({
                             color: isActive ? '#DCCA87' : '#fff'
                         })}>
@@ -93,6 +109,11 @@ const Header = ({props}) => {
                                         <div className={styles.page}>
                                             <Link to="/Home/About Us" className={styles.link}>
                                                 About Us
+                                            </Link>
+                                        </div>
+                                        <div className={styles.page}>
+                                            <Link to="/Home/Our Team" className={styles.link}>
+                                                Our Team
                                             </Link>
                                         </div>
                                     </div>
