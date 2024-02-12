@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import styles from "./VideoSection.module.scss"
-const VideoSection = () => {
+const VideoSection = ({props}) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ const VideoSection = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} style={{ background: props }}>
             <div className={styles.player}>
                 {isPlaying ?
                     <video ref={videoRef} controls className={styles.video} >

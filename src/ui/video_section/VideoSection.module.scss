@@ -5,11 +5,11 @@
     height: 100%;
     @include flexible();
     background: #0C0B08;
-    position: relative;
 
     .player {
         @include cont();
         width: 100%;
+        position: relative;
         z-index: 99999;  
 
         .video {
