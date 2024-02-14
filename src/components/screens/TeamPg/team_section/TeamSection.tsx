@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./TeamSection.module.scss"
 
+import { useEffect, useState } from "react";
+import { TeamService } from "../../../../services/team.service";
+
 const TeamSection = () => {
 
     interface IChef {
@@ -8,53 +11,28 @@ const TeamSection = () => {
         role: string;
         image: string;
         color: string;
+
     }
 
-    const team: IChef[] = [
-        {
-            name: "Kevin Luo",
-            role: "Head Chef",
-            image: "/images/our_chefs/our_chef1.png",
-            color: "#DCCA87"
-        },
-        {
-            name: "Patrick Choi",
-            role: "Deputy Chef",
-            image: "/images/our_chefs/our_chef2.png",
-            color: "#fff"
-        },
-        {
-            name: "Jack Biscoff",
-            role: "Station Chef",
-            image: "/images/our_chefs/our_chef3.png",
-            color: "#fff"
-        },
-        {
-            name: "Stacy Lee",
-            role: "Station Chef",
-            image: "/images/our_chefs/our_chef4.png",
-            color: "#fff"
-        },
-        {
-            name: "Aren Goodman",
-            role: "Junior Chef",
-            image: "/images/our_chefs/our_chef5.png",
-            color: "#fff"
-        },
-        {
-            name: "Javier Dowsing",
-            role: "Junior Chef",
-            image: "/images/our_chefs/our_chef6.png",
-            color: "#fff"
-        },
-    ]
+    const [chefsData, setChefsData] = useState<IChef[]>();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const newData = await TeamService.getAllTeams();
+            const chefsList = Object.keys(newData).map(key => newData[key]);
+            setChefsData(chefsList);
+        };
+
+        fetchData();
+    }, []);
+
 
     return (
         <div className={styles.container}>
             <div className={styles.content}>
                 {[[0, 3], [3, 6]].map((item, index) =>
                     <div key={index} className={styles.chefs}>
-                        {team.slice(item[0], item[1]).map((chef, index) =>
+                        {chefsData ? chefsData.slice(item[0], item[1]).map((chef, index) =>
                             <div key={index} className={styles.chef}>
                                 <div className={styles.image}>
                                     <img src={chef.image} alt="" className={styles.chef_image} />
@@ -91,7 +69,7 @@ const TeamSection = () => {
                                     </h5>
                                 </div>
                             </div>
-                        )}
+                        ) : <></>}
                     </div>
                 )}
             </div>

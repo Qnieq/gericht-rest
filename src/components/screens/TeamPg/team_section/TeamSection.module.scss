@@ -9,7 +9,7 @@
 
     .content {
         @include cont();
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 64px;
 
         .chefs {
@@ -58,6 +58,7 @@
                                     width: 20px;
                                     height: 20px;
                                     cursor: pointer;
+                                    display: flex !important;
                                 }
                             }
 
