@@ -11,7 +11,9 @@ const TeamSection = () => {
         role: string;
         image: string;
         color: string;
-
+        description?: string;
+        points?: string[]
+        sign?: string
     }
 
     const [chefsData, setChefsData] = useState<IChef[]>();
@@ -26,6 +28,7 @@ const TeamSection = () => {
         fetchData();
     }, []);
 
+    console.log(chefsData);
 
     return (
         <div className={styles.container}>
@@ -53,7 +56,7 @@ const TeamSection = () => {
                                                 <svg width="17" height="1" viewBox="0 0 17 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <line x1="0.5" y1="0.5" x2="16.5" y2="0.5" stroke="#DCCA87" />
                                                 </svg>
-                                                <Link to="/" className={styles.more}>
+                                                <Link to={`/Home/Our Team/Chefs Details/${chef.name}`} className={styles.more}>
                                                     Read More
                                                 </Link>
                                             </div>

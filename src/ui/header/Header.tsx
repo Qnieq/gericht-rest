@@ -30,7 +30,8 @@ const Header = ({ props }) => {
                                 color:
                                     currentPg == "/Home/About%20Us" ||
                                         currentPg == "/Home/Our%20Services" ||
-                                        currentPg == "/Home/Our%20Team" ?
+                                        currentPg == "/Home/Our%20Team" ||
+                                        currentPg == "/Home/Our%20Team/Chefs%20Details" ?
                                         '#DCCA87' : '#fff'
                             }}>
                                 Pages

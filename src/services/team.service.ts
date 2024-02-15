@@ -11,5 +11,16 @@ export const TeamService = {
                 resolve(newData);
             });
         });
-    }
+    },
+    getChefsById(id: string) {
+        return new Promise((resolve, reject) => {
+            const db = getDatabase(firebaseApp);
+            const dbRef = ref(db, `chefs/${id}`);
+            onValue(dbRef, (snapshot) => {
+                const newData = snapshot.val();
+                resolve(newData);
+            });
+        });
+    },
+
 }

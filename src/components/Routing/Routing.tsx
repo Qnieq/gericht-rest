@@ -5,6 +5,7 @@ import OurServices from "../screens/OurServicesPg/OurServices";
 import AboutUs from "../screens/AboutUsPg/AboutUs";
 import ContactUs from "../screens/ContactUsPg/ContactUs";
 import Team from "../screens/TeamPg/Team";
+import ChefsDetails from "../screens/ChefsDetailsPg/ChefsDetails";
 
 
 const Routing = () => {
@@ -17,6 +18,7 @@ const Routing = () => {
                 <Route path="/Home/About Us" element={<AboutUs />} />
                 <Route path="/Home/Contact Us" element={<ContactUs />} />
                 <Route path="/Home/Our Team" element={<Team />} />
+                <Route path="/Home/Our Team/Chefs Details/:id" element={<ChefsDetails />} />
             </Routes>
         </BrowserRouter>
     );
