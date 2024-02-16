@@ -5,6 +5,10 @@
     height: 100%;
     @include flexible();
 
+    svg {
+        display: flex !important;
+    }
+
     .hero {
         width: 100%;
         min-height: 300px;

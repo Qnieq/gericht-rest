@@ -41,9 +41,15 @@
                 box-sizing: border-box;
                 border: 1px solid #DCCA87;
                 color: #fff;
-
-                &:hover {
-                    background: #181610 !important;
+                @media (hover: hover) {
+                    &:hover {
+                        background: #181610 !important;
+                    }
+                }
+                @media (hover: none) {
+                    &:active {
+                        background: #181610;
+                    }
                 }
             }
         }

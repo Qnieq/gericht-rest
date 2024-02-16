@@ -1,7 +1,7 @@
 import Emblem from "../../HomePg/background_elem/Emblem";
-import styles from "./OSBgElem.module.scss"
+import styles from "./CDBgElem.module.scss"
 
-const OSBgElem = () => {
+const CDBgElem = () => {
     return (
         <div className={styles.container}>
             <div className={styles.arrow}>
@@ -21,11 +21,10 @@ const OSBgElem = () => {
             <div className={styles.emblem}>
                 <Emblem />
                 <Emblem />
-                <Emblem />
             </div>
 
         </div>
     );
 }
 
-export default OSBgElem;
+export default CDBgElem;

@@ -1,0 +1,79 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 955px;
+    @include flexible();
+    background: #040404;
+    @include after_bg(955px, 0.5);
+    position: relative;
+    z-index: 1002;
+
+    .content {
+        @include cont();
+        z-index: 9999;
+        gap: 32px;
+        flex-wrap: wrap;
+
+        .text {
+            @include flexible();
+            flex-direction: column;
+            align-items: flex-start;
+            gap: clamp(32px, 3vw, 64px);
+
+            .achievements_box {
+                @include flexible();
+                flex-direction: column;
+                gap: 64px;
+
+                .achievements {
+                    @include flexible();
+                    flex-wrap: wrap;
+                    gap: clamp(25px, 2vw, 32px);
+
+                    .achievement {
+                        @include flexible();
+                        gap: clamp(18px, 5vw, 32px);
+
+                        .about {
+                            @include flexible();
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 8px;
+
+                            .title {
+                                color: #DCCA87;
+                                font-family: Cormorant Upright;
+                                font-size: clamp(19px, 2vw, 23px);
+                                font-weight: 700;
+                                line-height: 130%;
+                                letter-spacing: 4%;
+                                text-align: left;
+                                text-transform: capitalize;
+                            }
+
+                            .description {
+                                width: 190px;
+                                @include desc(left, normal)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right_img {
+            width: clamp(303px, 42vw, 627px);
+        }
+    }
+}
+
+@media (max-width: 722px) {
+    .container {
+        height: 1050px;
+        @include after_bg(1050px, 0.5);
+        .text {
+            align-items: center !important;
+        }
+    }
+}

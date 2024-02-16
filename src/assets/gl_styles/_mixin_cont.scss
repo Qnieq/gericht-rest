@@ -27,8 +27,15 @@
         transform: scale(0.90);
     }
 
-    &:hover {
-        background: #c0a02e;
+    @media (hover: hover) {
+        &:hover {
+            background: #c0a02e;
+        }
+    }
+    @media (hover: none) {
+        &:active {
+            background: #c0a02e;
+        }
     }
 }
 
