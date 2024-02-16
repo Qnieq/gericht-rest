@@ -1,15 +1,8 @@
-import { DiVim } from "react-icons/di";
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 import styles from "./Special.module.scss"
+import { IDrinks } from "../../interfaces/components.interface";
 
 const Special = () => {
-
-    interface IDrinks {
-        id: number
-        name: string
-        size: string
-        price: number
-    }
 
     const text: string[] = ["Menu that fits you palatte", "Today’s Special"];
 

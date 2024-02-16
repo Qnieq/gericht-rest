@@ -1,19 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./BarHero.module.scss"
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Slider from "../../../../ui/ui_components/slider/Slider";
 import Header from "../../../../ui/header/Header";
+import { IData, IImg } from "../../../../interfaces/components.interface";
 
 const BarHero = () => {
-
-    interface IImg {
-        id: number,
-        url: string
-    }
-    interface IData {
-        current: number,
-        img: object,
-    }
 
     const [currentSlide, setCurrentSlide] = useState<number>(0);
 
@@ -52,7 +44,7 @@ const BarHero = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Header />
+                <Header props={""}/>
             </div>
             <div className={styles.content}>
                 <div className={styles.hashtag_box}>

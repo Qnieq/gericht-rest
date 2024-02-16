@@ -3,14 +3,7 @@ import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 
 const Chef = ({props}) => {
 
-
-
     const text: string[] = [props ? props.role : "", props ? props.name : ""];
-
-
-    // не забыть про useParams в header добавить для ссылок в HeroSection
-    // не забыть про useParams в header добавить для ссылок в HeroSection
-    // не забыть про useParams в header добавить для ссылок в HeroSection
 
     return (
         <div className={styles.container}>

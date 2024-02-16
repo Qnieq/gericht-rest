@@ -13,7 +13,7 @@ const ContactUs = () => {
             <CUBgElem />
             <MapSection />
             <SendEmailForm />
-            <Footer props={"#0C0C0C"}/>
+            <Footer props={"#0C0C0C"} />
         </>
     );
 }

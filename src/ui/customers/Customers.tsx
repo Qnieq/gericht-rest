@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "../dots.scss"
+import { ICustomers } from "../../interfaces/components.interface";
 
 const Customers = ({props}) => {
 
@@ -23,13 +24,6 @@ const Customers = ({props}) => {
         )
     };
 
-    interface ICustomers {
-        id: number
-        image: string
-        comment: string
-        name: string
-        role: string
-    }
 
     const text: string[] = ["Testimony", "Happy customers"];
 

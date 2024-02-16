@@ -1,14 +1,8 @@
+import { IAward } from "../../interfaces/components.interface";
 import TitleLeft from "../ui_components/title_left/TitleLeft";
 import styles from "./Awards.module.scss"
 
 const Awards = () => {
-
-    interface IAward {
-        id: number
-        place: string
-        name: string
-        description: string
-    }
 
     const text: string[] = ["Awards & recognition", "Our Laurels"];
 

@@ -1,12 +1,8 @@
+import { IStat } from "../../../../interfaces/components.interface";
 import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import styles from "./OurHistory.module.scss"
 
 const OurHistory = () => {
-
-    interface IStat {
-        num: string
-        stat: string
-    }
 
     const stat: IStat[] = [
         {

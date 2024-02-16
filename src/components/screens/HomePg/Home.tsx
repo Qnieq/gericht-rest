@@ -16,7 +16,7 @@ import HomeHero from "./homeHero/HomeHero";
 const Home = () => {
     return (
         <>
-            <Header />
+            <Header props={""}/>
             <HomeHero />
             <BackgroundElem />
             <About_History />
@@ -25,7 +25,7 @@ const Home = () => {
             <Special />
             <Chef />
             <Customers props={"#0C0B08"} />
-            <VideoSection />
+            <VideoSection props={""}/>
             <Awards />
             <BlogsUpdate />
             <Instagram />

@@ -1,34 +1,30 @@
+import { IImg } from "../../interfaces/components.interface";
 import TitleLeft from "../ui_components/title_left/TitleLeft";
 import styles from "./Instagram.module.scss"
 import { IoLogoInstagram } from "react-icons/io5";
 
 const Instagram = () => {
 
-    interface IGallery {
-        id: number
-        image: string
-    }
-
-    const gallery: IGallery[] = [
+    const gallery: IImg[] = [
         {
             id: 1,
-            image: "/images/gallery/gallery_2.png"
+            url: "/images/gallery/gallery_2.png"
         },
         {
             id: 2,
-            image: "/images/gallery/gallery_2.png"
+            url: "/images/gallery/gallery_2.png"
         },
         {
             id: 3,
-            image: "/images/gallery/gallery_3.png"
+            url: "/images/gallery/gallery_3.png"
         },
         {
             id: 4,
-            image: "/images/gallery/gallery_4.png"
+            url: "/images/gallery/gallery_4.png"
         },
         {
             id: 5,
-            image: "/images/gallery/gallery_3.png"
+            url: "/images/gallery/gallery_3.png"
         },
     ]
 
@@ -53,7 +49,7 @@ const Instagram = () => {
                             <div className={styles.icon_box}>
                                 <IoLogoInstagram className={styles.icon} />
                             </div>
-                            <img src={photo.image} className={styles.photo} alt="" />
+                            <img src={photo.url} className={styles.photo} alt="" />
                         </div>
                     )}
                     <div className={styles.end}>

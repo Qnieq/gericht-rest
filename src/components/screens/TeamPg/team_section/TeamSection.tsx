@@ -3,18 +3,9 @@ import styles from "./TeamSection.module.scss"
 
 import { useEffect, useState } from "react";
 import { TeamService } from "../../../../services/team.service";
+import { IChef } from "../../../../interfaces/components.interface";
 
 const TeamSection = () => {
-
-    interface IChef {
-        name: string;
-        role: string;
-        image: string;
-        color: string;
-        description?: string;
-        points?: string[]
-        sign?: string
-    }
 
     const [chefsData, setChefsData] = useState<IChef[]>();
 

@@ -2,17 +2,9 @@ import { NavLink } from "react-router-dom";
 import styles from "./HomeHero.module.scss"
 import { useState } from "react";
 import Slider from "../../../../ui/ui_components/slider/Slider";
+import { IData, IImg } from "../../../../interfaces/components.interface";
 
 const HomeHero = () => {
-
-    interface IImg {
-        id: number,
-        url: string
-    }
-    interface IData {
-        current: number,
-        img: object,
-    }
 
     const imgURL: IImg[] = [
         {

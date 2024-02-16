@@ -1,3 +1,4 @@
+import { IBlogs } from "../../../../interfaces/components.interface";
 import BlogSection from "../../../../ui/ui_components/blog_section/BlogSection";
 import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import styles from "./BlogsUpdate.module.scss"
@@ -20,17 +21,6 @@ const BlogsUpdate = () => {
             <div className={styles.dots}></div>
         )
     };
-
-
-    interface IBlogs {
-        id: number
-        image: string
-        date: string
-        author: string
-        title: string
-        description: string
-        url: string
-    }
 
     const blogs: IBlogs[] = [
         {

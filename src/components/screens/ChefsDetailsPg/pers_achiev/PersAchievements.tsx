@@ -2,15 +2,10 @@ import { useEffect } from "react";
 import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 import styles from "./PersAchievements.module.scss"
+import { IAchiev } from "../../../../interfaces/components.interface";
 
 const PersAchievements = ({ props }) => {
 
-    interface IAchiev {
-        place: string;
-        title: string;
-        description: string;
-    }
-    
     const size = window.innerWidth
 
     const achiev: IAchiev[] = [
