@@ -1,0 +1,104 @@
+@import "../../assets/gl_styles/mixin_cont";
+
+@mixin section() {
+    width: 100%;
+    @include flexible();
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.side_bar {
+    @include flexible();
+    flex-direction: column;
+    width: clamp(270px, 45vw, 310px);
+    gap: 32px;
+
+    .block_box {
+        width: 100%;
+        @include flexible();
+        flex-direction: column;
+        padding: 32px clamp(20px, 5vw, 32px);
+        background: #242424;
+
+        .title {
+            @include title_medium(left);
+        }
+
+        .desc {
+            @include desc(left, normal);
+            cursor: pointer;
+        }
+
+        .search_box {
+            @include section();
+            gap: 24px;
+        }
+
+        .all_categories_box {
+            @include section();
+            gap: 32px;
+
+            .categories {
+                @include flexible();
+                flex-direction: column;
+                gap: 32px;
+
+                .category {
+                    @include flexible();
+                    gap: 15px;
+                    width: 100%;
+
+                    svg {
+                        width: clamp(40px, 25vw, 159px);
+                    }
+
+                    .desc:first-child {
+                        width: 103px;
+                    }
+                }
+            }
+        }
+
+        .last_post {
+            @include section();
+            gap: 32px;
+
+            .news {
+                @include section();
+                align-items: center;
+            }
+        }
+
+        .tags {
+            @include section();
+            gap: 32px;
+
+            .tags_box {
+                @include flexible();
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+
+                .tag_row {
+                    @include flexible();
+                    gap: 8px;
+                }
+            }
+        }
+
+        .share {
+            @include section();
+            gap: 32px;
+
+            .social_media {
+                @include flexible();
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .block_box:nth-child(3) {
+        display: none !important;
+    }
+}

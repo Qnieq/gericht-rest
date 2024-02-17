@@ -49,19 +49,6 @@
                             gap: 8px;
                             padding-bottom: 50px;
 
-                            .social_medis {
-                                @include flexible();
-                                width: 100%;
-                                justify-content: space-between;
-
-                                svg {
-                                    width: 20px;
-                                    height: 20px;
-                                    cursor: pointer;
-                                    display: flex !important;
-                                }
-                            }
-
                             .read_more {
                                 @include flexible();
                                 gap: 8px;

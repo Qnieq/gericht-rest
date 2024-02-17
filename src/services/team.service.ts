@@ -27,7 +27,7 @@ export const TeamService = {
         const options = {
             method: 'GET',
             url: 'https://food-recipes-with-images.p.rapidapi.com/',
-            params: {q: 'chicken soup'},
+            params: {q: ''},
             headers: {
               'X-RapidAPI-Key': 'a57569c88dmsh32b65a4137fd5c4p161081jsn384445f25026',
               'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'

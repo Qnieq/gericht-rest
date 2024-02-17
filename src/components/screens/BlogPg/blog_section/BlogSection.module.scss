@@ -1,0 +1,60 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 150px 0;
+    background: #0C0C0C;
+    @include flexible();
+
+    .content {
+        @include cont();
+        gap: 70px;
+
+        .news {
+            @include flexible();
+            flex-direction: column;
+            gap: 64px;
+
+            .double_news_box {
+                @include flexible();
+                flex-direction: column;
+                gap: 64px;
+
+                .news_row {
+                    @include flexible();
+                    flex-wrap: wrap;
+                    gap: 32px;
+                }
+            }
+
+            .btn {
+                @include btn();
+            }
+        }
+        .mobile_side_bar_header {
+            z-index: 99999;
+            @include flexible();
+            width: 100%;
+            display: none;
+            justify-content: flex-end;
+
+            .filter {
+                background: none;
+                border: none;
+
+                .filter_icon {
+                    color: #fff;
+                    width: 25px;
+                    height: 25px
+                }
+            }
+        }
+        .side_bar {
+            @include flexible();
+            z-index: 9999;
+            width: clamp(270px, 45vw, 310px);
+            padding: 0 clamp(20px, 5vw, 32px);
+        }
+    }
+}

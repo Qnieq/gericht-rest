@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 import styles from "./PersAchievements.module.scss"
@@ -6,7 +6,22 @@ import { IAchiev } from "../../../../interfaces/components.interface";
 
 const PersAchievements = ({ props }) => {
 
-    const size = window.innerWidth
+    const [visible, setVisible] = useState<boolean>(false)
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeEvent, true);
+        return function () {
+            window.removeEventListener('resize', resizeEvent, true);
+        }
+    }, [])
+
+    const resizeEvent = () => {
+        if (window.innerWidth <= 1412) {
+            setVisible(true)
+        } else {
+            setVisible(false)
+        }
+    }
 
     const achiev: IAchiev[] = [
         {
@@ -36,8 +51,10 @@ const PersAchievements = ({ props }) => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <div className={styles.text}>
-                    {size <= 722 ?
+                <div className={styles.text} style={visible ?
+                    {alignItems: "center" } : {}
+                }>
+                    {visible ?
                         <TitleCenter props={text} />
                         :
                         <TitleLeft props={text} />

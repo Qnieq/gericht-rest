@@ -32,6 +32,7 @@
             background: #c0a02e;
         }
     }
+
     @media (hover: none) {
         &:active {
             background: #c0a02e;
@@ -127,6 +128,17 @@
     line-height: 175%;
     letter-spacing: 4%;
     text-align: $text-align;
+}
+
+@mixin title_medium($text-align) {
+    color: #DCCA87;
+    font-family: Cormorant Upright;
+    font-size: clamp(18px, 2vw, 32px);
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 4%;
+    text-align: $text-align;
+    text-transform: capitalize;
 }
 
 @mixin input($height) {

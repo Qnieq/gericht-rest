@@ -129,6 +129,7 @@
             @include flexible();
             justify-content: flex-end;
             display: none;
+            z-index: 99999;
 
             .menu_icon {
                 color: #FFF;

@@ -1,0 +1,29 @@
+@import "../../../assets/gl_styles/mixin_cont";
+
+
+.search_input_container {
+    @include flexible();
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: #aaaaaa28 2px solid;
+
+    .search_input {
+        width: 100%;
+        height: 28px;
+        background: transparent;
+        border: none;
+        @include desc(left, normal);
+
+        &::placeholder {
+            @include desc(left, normal);
+        }
+
+        &:focus-visible {
+            outline: auto 0px;
+        }
+    }
+    .search_icon {
+        color: #fff;
+    }
+
+}

@@ -65,7 +65,7 @@ const Customers = ({props}) => {
                 <div className={styles.customers}>
                     <div className={styles.section}>
                         {customers.slice(0, 2).map(customer =>
-                            <div className={styles.person}>
+                            <div key={customer.id} className={styles.person}>
                                 <div className={styles.img_box}>
                                     <div className={styles.img}>
                                         <img src={customer.image} alt="" />

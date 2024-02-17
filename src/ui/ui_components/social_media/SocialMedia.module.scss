@@ -1,0 +1,14 @@
+@import "../../../assets/gl_styles/mixin_cont";
+
+.social_media {
+    @include flexible();
+    width: 100%;
+    gap: 16px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        display: flex !important;
+    }
+}

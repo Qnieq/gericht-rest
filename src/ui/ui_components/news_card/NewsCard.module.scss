@@ -1,0 +1,61 @@
+@import "../../../assets/gl_styles/mixin_cont";
+
+.blog {
+    width: clamp(200px, 20vw, 310px) !important;
+    @include flexible();
+    flex-direction: column;
+    gap: 24px;
+
+    .blog_img {
+        width: 100%;
+        height: clamp(230px, 20vw, 310px);
+    }
+
+    .text {
+        @include flexible();
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+
+        .date_author {
+            @include flexible();
+            width: 100%;
+            justify-content: space-between;
+
+            .info {
+                color: #FAFAFA;
+                font-family: "Open Sans";
+                font-size: clamp(12px, 1vw, 16px);
+                font-weight: 500;
+                line-height: 175%;
+                letter-spacing: 0.64px;
+            }
+        }
+
+        .title {
+            @include title_medium(left);
+            width: 100%;
+            font-variant-numeric: lining-nums tabular-nums;
+            text-decoration-line: underline;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+
+        .description {
+            @include desc(left, normal)
+        }
+
+        .read_more_btn {
+            color: #DCCA87;
+            font-family: "Cormorant Upright";
+            font-size: clamp(14px, 1vw, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 175%;
+            letter-spacing: 0.64px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

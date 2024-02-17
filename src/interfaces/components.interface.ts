@@ -64,3 +64,8 @@ export interface ITitle {
     id: number
     title: string
 }
+
+export interface ICategory {
+    category: string
+    amount: number
+}
