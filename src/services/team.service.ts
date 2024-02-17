@@ -26,11 +26,11 @@ export const TeamService = {
     async fdf() {
         const options = {
             method: 'GET',
-            url: 'https://food-recipes-with-images.p.rapidapi.com/',
+            url: import.meta.env.VITE_RAPID_API_URL,
             params: {q: ''},
             headers: {
-              'X-RapidAPI-Key': 'a57569c88dmsh32b65a4137fd5c4p161081jsn384445f25026',
-              'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
+              'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
+              'X-RapidAPI-Host': import.meta.env.VITE_RAPID_API_HOST
             }
           };
           
