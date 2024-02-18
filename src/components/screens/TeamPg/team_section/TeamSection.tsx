@@ -1,33 +1,26 @@
 import { Link } from "react-router-dom";
 import styles from "./TeamSection.module.scss"
-
 import { useEffect, useState } from "react";
-import { TeamService } from "../../../../services/team.service";
 import { IChef } from "../../../../interfaces/components.interface";
 import SocialMedia from "../../../../ui/ui_components/social_media/SocialMedia";
+import { useAllTeam } from "../../../../hooks/team_hooks/useAllTeam";
+import { useActions } from "../../../../hooks/useActions";
 
 const TeamSection = () => {
 
-    const [chefsData, setChefsData] = useState<IChef[]>();
+    const {getAllTeam} = useActions()
+    const {team} = useAllTeam()
 
     useEffect(() => {
-        const fetchData = async () => {
-            const newData = await TeamService.getAllTeams();
-            const chefsList = Object.keys(newData).map(key => newData[key]);
-            setChefsData(chefsList);
-        };
-
-        fetchData();
+        getAllTeam()
     }, []);
-
-    console.log(chefsData);
 
     return (
         <div className={styles.container}>
             <div className={styles.content}>
                 {[[0, 3], [3, 6]].map((item, index) =>
                     <div key={index} className={styles.chefs}>
-                        {chefsData ? chefsData.slice(item[0], item[1]).map((chef, index) =>
+                        {team.fulfilled ? Object.keys(team.data).map(key => team.data[key]).slice(item[0], item[1]).map((chef, index) =>
                             <div key={index} className={styles.chef}>
                                 <div className={styles.image}>
                                     <img src={chef.image} alt="" className={styles.chef_image} />

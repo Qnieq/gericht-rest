@@ -1,32 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { INews } from "../../interfaces/store.interface";
-import { getNews } from "./blog.actions";
+import { ITags } from "../../interfaces/store.interface";
+import { getNewsTags } from "./blog.actions";
 
-const initialState: INews = {
-    news: {},
+const initialState: ITags = {
+    tags: {},
     isLoading: false,
     fulfilled: false,
     error: ""
 }
 
-export const blogSlice = createSlice({
-    name: "blog",
+export const blogTags = createSlice({
+    name: "blogTags",
     initialState,
     reducers:{},
     extraReducers: (builder) => {
         builder
-            .addCase(getNews.pending, (state) => {
+            .addCase(getNewsTags.pending, (state) => {
                 state.isLoading = true;
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNews.fulfilled, (state, {payload: news}) => {
+            .addCase(getNewsTags.fulfilled, (state, {payload: tags}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                state.news = news
+                state.tags = tags
             })
-            .addCase(getNews.rejected, (state) => {
+            .addCase(getNewsTags.rejected, (state) => {
                 state.error = "error";
                 state.isLoading = false;
                 state.fulfilled = false;
@@ -34,4 +34,4 @@ export const blogSlice = createSlice({
     }
 })
 
-export default blogSlice.reducer
+export default blogTags.reducer

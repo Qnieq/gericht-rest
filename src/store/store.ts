@@ -1,8 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import blogReducer from './blog/blogSlice.slice'
+import blogTagsReducer from './blog/blogTags.slice'
+import blogLastNewsReducer from './blog/blogLastNews.slice'
+import teamReducer from './team/teamSlice.slice'
+import chefByIdReducer from './team/teamById.slice'
 
 const reducers = combineReducers({
-    blog: blogReducer
+    blog: blogReducer,
+    blogTags: blogTagsReducer,
+    blogLastNews: blogLastNewsReducer,
+    team: teamReducer,
+    chefById: chefByIdReducer
 })
 
 export const store = configureStore({

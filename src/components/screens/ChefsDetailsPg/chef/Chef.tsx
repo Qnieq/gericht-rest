@@ -3,21 +3,21 @@ import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 
 const Chef = ({props}) => {
 
-    const text: string[] = [props ? props.role : "", props ? props.name : ""];
+    const text: string[] = [props.chef ? props.chef.role : "", props.chef ? props.chef.name : ""];
 
     return (
         <div className={styles.container}>
             {props ?
                 <div className={styles.content}>
-                    <img src={props.image} alt="" className={styles.chef_img} />
+                    <img src={props.chef.image} alt="" className={styles.chef_img} />
                     <div className={styles.text}>
                         <TitleLeft props={text} />
                         <div className={styles.desc_box}>
                             <p className={styles.description}>
-                                {props.description}
+                                {props.chef.description}
                             </p>
                             <div className={styles.points}>
-                                {props.points.map((point, index) =>
+                                {props.chef.points.map((point, index) =>
                                     <div key={index} className={styles.point}>
                                         <svg width="16.000000" height="1.000000" viewBox="0 0 16 1" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             <defs />
@@ -27,7 +27,7 @@ const Chef = ({props}) => {
                                     </div>
                                 )}
                             </div>
-                            <img src={props.sign} alt="" className={styles.sign} />
+                            <img src={props.chef.sign} alt="" className={styles.sign} />
                         </div>
                     </div>
                 </div>

@@ -1,32 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { INews } from "../../interfaces/store.interface";
-import { getNews } from "./blog.actions";
+import { getLastNews } from "./blog.actions";
+import { ILastNews } from "../../interfaces/store.interface";
 
-const initialState: INews = {
-    news: {},
+const initialState: ILastNews = {
+    lastNews: {},
     isLoading: false,
     fulfilled: false,
     error: ""
 }
 
-export const blogSlice = createSlice({
-    name: "blog",
+export const blogLastNews = createSlice({
+    name: "blogLastNews",
     initialState,
     reducers:{},
     extraReducers: (builder) => {
         builder
-            .addCase(getNews.pending, (state) => {
+            .addCase(getLastNews.pending, (state) => {
                 state.isLoading = true;
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNews.fulfilled, (state, {payload: news}) => {
+            .addCase(getLastNews.fulfilled, (state, {payload: lastNews}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                state.news = news
+                state.lastNews = lastNews
             })
-            .addCase(getNews.rejected, (state) => {
+            .addCase(getLastNews.rejected, (state) => {
                 state.error = "error";
                 state.isLoading = false;
                 state.fulfilled = false;
@@ -34,4 +34,4 @@ export const blogSlice = createSlice({
     }
 })
 
-export default blogSlice.reducer
+export default blogLastNews.reducer

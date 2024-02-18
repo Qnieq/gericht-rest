@@ -1,37 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { INews } from "../../interfaces/store.interface";
-import { getNews } from "./blog.actions";
+import { ITeamById } from "../../interfaces/store.interface";
+import { getChefsById } from "./team.actions";
 
-const initialState: INews = {
-    news: {},
+const initialState: ITeamById = {
+    chef: {},
     isLoading: false,
     fulfilled: false,
     error: ""
 }
 
-export const blogSlice = createSlice({
-    name: "blog",
+export const teamById = createSlice({
+    name: "teamById",
     initialState,
     reducers:{},
     extraReducers: (builder) => {
         builder
-            .addCase(getNews.pending, (state) => {
+            .addCase(getChefsById.pending, (state) => {
                 state.isLoading = true;
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNews.fulfilled, (state, {payload: news}) => {
+            .addCase(getChefsById.fulfilled, (state, {payload: chef}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                state.news = news
+                state.chef = chef
             })
-            .addCase(getNews.rejected, (state) => {
+            .addCase(getChefsById.rejected, (state) => {
                 state.error = "error";
                 state.isLoading = false;
                 state.fulfilled = false;
             })
     }
+    
 })
 
-export default blogSlice.reducer
+export default teamById.reducer

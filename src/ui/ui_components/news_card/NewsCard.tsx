@@ -1,25 +1,41 @@
 import styles from "./NewsCard.module.scss"
 
 const NewsCard = ({ props }) => {
+
+    const flattenArrayToObject = (arr: object[]) => {
+        return arr.reduce((acc, obj) => {
+            Object.assign(acc, obj);
+            return acc;
+        }, {});
+    };
+
+    let data = null
+
+    try {
+        data = flattenArrayToObject(props)
+    } catch (err) {
+        data = props
+    }
+
     return (
         <div className={styles.container_card}>
-            {props?
-                <div key={props.id} className={styles.blog}>
-                    <img src={props.image} alt="" className={styles.blog_img} />
+            {data ?
+                <div key={data.id} className={styles.blog}>
+                    <img src={data.Image} alt="" className={styles.blog_img} />
                     <div className={styles.text}>
                         <div className={styles.date_author}>
                             <h5 className={styles.info}>
-                                {props.date}
+                                {data.date}
                             </h5>
                             <h5 className={styles.info}>
-                                {props.author}
+                                {data.author}
                             </h5>
                         </div>
                         <h3 className={styles.title}>
-                            {props.title}
+                            {data.Title}
                         </h3>
                         <p className={styles.description}>
-                            {props.description}
+                            {data.description}
                         </p>
                         {/* url here */}
                         <button className={styles.read_more_btn}>Read More</button>

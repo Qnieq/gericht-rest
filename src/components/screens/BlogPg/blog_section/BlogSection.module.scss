@@ -9,6 +9,7 @@
 
     .content {
         @include cont();
+        align-items: flex-start;
         gap: 70px;
 
         .news {
@@ -23,6 +24,7 @@
 
                 .news_row {
                     @include flexible();
+                    align-items: flex-start;
                     flex-wrap: wrap;
                     gap: 32px;
                 }
@@ -56,5 +58,11 @@
             width: clamp(270px, 45vw, 310px);
             padding: 0 clamp(20px, 5vw, 32px);
         }
+    }
+}
+
+@media (max-width: 1000px) {
+    .content {
+        align-items: center !important;
     }
 }
