@@ -12,7 +12,7 @@ export interface ITeamById extends Omit<ITeamState, 'data'> {
 }
 
 export interface INews extends Omit<ITeamState, 'data'> {
-    news: IBlogs | object
+    news: IBlogs | object | object[] | null
 }
 
 export interface ITags extends Omit<ITeamState, 'data'> {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IBlogs } from "../../../../interfaces/components.interface";
+import { IBlogs, ICount } from "../../../../interfaces/components.interface";
 import BlogSideBar from "../../../../ui/blog_side_bar/BlogSideBar";
 import NewsCard from "../../../../ui/ui_components/news_card/NewsCard";
 import styles from "./BlogSection.module.scss"
@@ -11,6 +11,7 @@ const BlogSection = () => {
 
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
+    const [count, setCount] = useState<number>(1);
 
     const {getNews, getLastNews, getNewsTags} = useActions()
 
@@ -19,7 +20,12 @@ const BlogSection = () => {
     const {blogTags} = useTags()
 
     useEffect(() => {
-        getNews()
+        getNews(count)
+    }, [count])
+
+
+    useEffect(() => {
+        getNews(count)
         getLastNews()
         getNewsTags()
         if (window.innerWidth <= 1000) {
@@ -34,7 +40,6 @@ const BlogSection = () => {
             window.removeEventListener('resize', resizeEvent, true);
         }
     }, [])
-
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {
             setOpen(false)
@@ -45,19 +50,34 @@ const BlogSection = () => {
         }
     }
 
+    const flattenArrayToObject = (arr: object[]) => {
+        return arr.reduce((acc, obj) => {
+            Object.assign(acc, obj);
+            return acc;
+        }, {});
+    };
+
+    let data = null
+
+    try {
+        data = flattenArrayToObject(blog)
+    } catch (err) {
+        data = blog
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.content} style={visible ?
                 { flexDirection: "column-reverse" } : {}}>
                 <div className={styles.news}>
-                    {blog.fulfilled?  (
+                    {data.fulfilled?  (
                         <div className={styles.double_news_box}>
-                            {blog.news.reduce((acc: JSX.Element[], news: IBlogs, index: number) => {
+                            {data.news.reduce((acc: JSX.Element[], news: IBlogs, index: number) => {
                                 if (index % 2 === 0) {
                                     acc.push(
                                         <div key={news.id} className={styles.news_row}>
                                             <NewsCard props={news} />
-                                            {blog.news[index + 1] && <NewsCard props={blog.news[index + 1]} />}
+                                            {data.news[index + 1] && <NewsCard props={data.news[index + 1]} />}
                                         </div>
                                     );
                                 }
@@ -65,8 +85,8 @@ const BlogSection = () => {
                             }, [])}
                         </div>
                     ) : null}
-                    <div className={styles.btn_box}>
-                        <button className={styles.btn}>View More</button>
+                    <div onClick={(() => {setCount(count + 4)})} className={styles.btn_box}>
+                        <button  className={styles.btn}>View More</button>
                     </div>
                 </div>
 

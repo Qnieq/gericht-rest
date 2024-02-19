@@ -3,7 +3,7 @@ import { INews } from "../../interfaces/store.interface";
 import { getNews } from "./blog.actions";
 
 const initialState: INews = {
-    news: {},
+    news: [],
     isLoading: false,
     fulfilled: false,
     error: ""
@@ -24,6 +24,7 @@ export const blogSlice = createSlice({
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
+                // разобраться
                 state.news = news
             })
             .addCase(getNews.rejected, (state) => {

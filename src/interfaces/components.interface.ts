@@ -69,3 +69,8 @@ export interface ICategory {
     category: string
     amount: number
 }
+
+export interface ICount {
+    start: number
+    end: number
+}

@@ -97,10 +97,6 @@ const BlogSideBar = ({ props }) => {
                                                     <defs />
                                                     <line id="Line 2" x1="0.000000" y1="0.500000" x2="16.000000" y2="0.500000" stroke="#DCCA87" strokeOpacity="1.000000" strokeWidth="1.000000" />
                                                 </svg>
-                                                <svg width="16.000000" height="1.000000" viewBox="0 0 16 1" fill="none" >
-                                                    <defs />
-                                                    <line id="Line 2" x1="0.000000" y1="0.500000" x2="16.000000" y2="0.500000" stroke="#DCCA87" strokeOpacity="1.000000" strokeWidth="1.000000" />
-                                                </svg>
                                                 <h5 className={styles.desc}>{tags[index + 2]}</h5>
                                             </>}
                                     </div>
