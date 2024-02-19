@@ -12,6 +12,7 @@ const BlogSection = () => {
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
     const [count, setCount] = useState<number>(1);
+    const [blogData, setBlogData] = useState<object[]>()
 
     const {getNews, getLastNews, getNewsTags} = useActions()
 
@@ -20,7 +21,9 @@ const BlogSection = () => {
     const {blogTags} = useTags()
 
     useEffect(() => {
-        getNews(count)
+        if (count > 1) {
+            getNews(count)
+        }
     }, [count])
 
 
@@ -40,6 +43,11 @@ const BlogSection = () => {
             window.removeEventListener('resize', resizeEvent, true);
         }
     }, [])
+
+    useEffect(() => {
+        setBlogData(blog)
+    }, [blog])
+    
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {
             setOpen(false)
@@ -59,10 +67,13 @@ const BlogSection = () => {
 
     let data = null
 
-    try {
-        data = flattenArrayToObject(blog)
-    } catch (err) {
-        data = blog
+    if (blogData) {
+
+        try {
+            data = flattenArrayToObject(blogData)
+        } catch (err) {
+            data = blogData
+        }
     }
 
     return (
@@ -70,12 +81,12 @@ const BlogSection = () => {
             <div className={styles.content} style={visible ?
                 { flexDirection: "column-reverse" } : {}}>
                 <div className={styles.news}>
-                    {data.fulfilled?  (
+                    {data ?  (
                         <div className={styles.double_news_box}>
                             {data.news.reduce((acc: JSX.Element[], news: IBlogs, index: number) => {
                                 if (index % 2 === 0) {
                                     acc.push(
-                                        <div key={news.id} className={styles.news_row}>
+                                        <div key={index} className={styles.news_row}>
                                             <NewsCard props={news} />
                                             {data.news[index + 1] && <NewsCard props={data.news[index + 1]} />}
                                         </div>
@@ -85,8 +96,8 @@ const BlogSection = () => {
                             }, [])}
                         </div>
                     ) : null}
-                    <div onClick={(() => {setCount(count + 4)})} className={styles.btn_box}>
-                        <button  className={styles.btn}>View More</button>
+                    <div className={styles.btn_box}>
+                        <button onClick={() => setCount(count + 4)}  className={styles.btn}>View More</button>
                     </div>
                 </div>
 

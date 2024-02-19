@@ -12,7 +12,7 @@ const initialState: INews = {
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
-    reducers:{},
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getNews.pending, (state) => {
@@ -20,12 +20,19 @@ export const blogSlice = createSlice({
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNews.fulfilled, (state, {payload: news}) => {
+            .addCase(getNews.fulfilled, (state, { payload: news }) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                // разобраться
-                state.news = news
+                console.log(news)
+
+                if (Array.isArray(news)) {
+                    state.news = state.news.concat(news)
+                } else {
+                    state.news = state.news.concat(Object.values(news))
+                }
+
+
             })
             .addCase(getNews.rejected, (state) => {
                 state.error = "error";

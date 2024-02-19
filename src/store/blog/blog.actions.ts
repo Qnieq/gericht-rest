@@ -1,21 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { endAt, getDatabase, limitToLast, onValue, orderByChild, query, ref, startAt } from "firebase/database";
 import firebaseApp from "../../firebase";
-import { limit, orderBy } from "firebase/firestore";
-
 
 export const getNews = createAsyncThunk(
     'news/getNews',
-    async (num) => {
+    async (num: number) => {
 
-        return new Promise<object>((resolve) => {
+        return await new Promise<object[] | object>((resolve) => {
             const db = getDatabase(firebaseApp);
-            const dbRef = query(ref(db, "news_blog"), orderByChild("id"), startAt(num), endAt(num+3));
-            
+            const dbRef = query(ref(db, "news_blog"), orderByChild("id"), startAt(num), endAt(num + 3));
             onValue(dbRef, (snapshot) => {
-
                 const newData = snapshot.val();
-                console.log(newData)
                 resolve(newData);
             });
         });

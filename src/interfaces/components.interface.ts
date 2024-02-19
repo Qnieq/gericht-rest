@@ -10,13 +10,13 @@ export interface IAchiev {
 }
 
 export interface IBlogs {
-    id: number
-    image: string
-    date: string
-    author: string
-    title: string
-    description: string
-    url: string
+    id?: number
+    image?: string
+    date?: string
+    author?: string
+    title?: string
+    description?: string
+    url?: string
 }
 
 export interface IImg {
