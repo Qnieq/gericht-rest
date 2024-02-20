@@ -3,8 +3,10 @@ import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import * as teamActions from "../store/team/team.actions"
 import * as blogActions from "../store/blog/blog.actions"
+import {countPage as count} from "../store/blog/blogSlice.slice"
 
 const rootActions = {
+    count,
     ...teamActions,
     ...blogActions,
 };

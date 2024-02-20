@@ -27,3 +27,37 @@
     }
 
 }
+.result_box {
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+    @include flexible();
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+
+    .result {
+        @include flexible();
+        flex-direction: column;
+        gap: 10px;
+
+        .search_image {
+            width: 100%;
+        }
+
+        .title {
+            @include title_medium(center);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 5px;
+        background: transparent;
+
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #DCCA87;
+        width: 5px
+    }
+}

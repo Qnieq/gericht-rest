@@ -4,6 +4,7 @@ import { getNews } from "./blog.actions";
 
 const initialState: INews = {
     news: [],
+    count: 1,
     isLoading: false,
     fulfilled: false,
     error: ""
@@ -12,7 +13,11 @@ const initialState: INews = {
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
-    reducers: {},
+    reducers: {
+        countPage: (state) => {
+            state.count += 4
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getNews.pending, (state) => {
@@ -24,12 +29,18 @@ export const blogSlice = createSlice({
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                console.log(news)
-
+                
                 if (Array.isArray(news)) {
+                    if (state.news.some(obj1 => news.some(obj2 => obj1.id === obj2.id))) {
+                        return
+                    }
                     state.news = state.news.concat(news)
                 } else {
-                    state.news = state.news.concat(Object.values(news))
+                    const new_news = Object.values(news)
+                    if (state.news.some(obj1 => new_news.some(obj2 => obj1.id === obj2.id))) {
+                        return
+                    }
+                    state.news = state.news.concat(new_news)
                 }
 
 
@@ -41,5 +52,7 @@ export const blogSlice = createSlice({
             })
     }
 })
+
+export const {countPage} = blogSlice.actions
 
 export default blogSlice.reducer

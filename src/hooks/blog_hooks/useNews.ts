@@ -14,3 +14,8 @@ export const useTags = () => {
   const {blogTags} = useTypedSelector(state => state);
   return {blogTags};
 };
+
+export const useSearchNews = () => {
+  const {blogSearch} = useTypedSelector(state => state);
+  return {blogSearch};
+};

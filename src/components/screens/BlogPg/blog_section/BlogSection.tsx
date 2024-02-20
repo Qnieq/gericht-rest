@@ -11,24 +11,24 @@ const BlogSection = () => {
 
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
-    const [count, setCount] = useState<number>(1);
+    // const [count, setCount] = useState<number>(1);
     const [blogData, setBlogData] = useState<object[]>()
 
-    const {getNews, getLastNews, getNewsTags} = useActions()
+    const {getNews, getLastNews, getNewsTags, count} = useActions()
 
     const {blog} = useNews()
     const {blogLastNews} = useLastNews()
     const {blogTags} = useTags()
 
     useEffect(() => {
-        if (count > 1) {
-            getNews(count)
+        if (blog.count > 1) {
+            getNews(blog.count)
         }
-    }, [count])
+    }, [blog.count])
 
 
     useEffect(() => {
-        getNews(count)
+        getNews(blog.count)
         getLastNews()
         getNewsTags()
         if (window.innerWidth <= 1000) {
@@ -97,7 +97,7 @@ const BlogSection = () => {
                         </div>
                     ) : null}
                     <div className={styles.btn_box}>
-                        <button onClick={() => setCount(count + 4)}  className={styles.btn}>View More</button>
+                        <button onClick={() => count()}  className={styles.btn}>View More</button>
                     </div>
                 </div>
 

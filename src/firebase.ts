@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_DATABASE_API_KEY,
   authDomain: import.meta.env.VITE_DATABASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_DATABASE_URL,
+  databaseURL: "https://gericht-rest-default-rtdb.firebaseio.com/",
   projectId: import.meta.env.VITE_DATABASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_DATABASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_DATABASE_MESSAGERING_SENDER_ID,
