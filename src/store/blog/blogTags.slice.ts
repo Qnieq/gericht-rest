@@ -3,7 +3,8 @@ import { ITags } from "../../interfaces/store.interface";
 import { getNewsTags } from "./blog.actions";
 
 const initialState: ITags = {
-    tags: {},
+    tags: [],
+    activeTags: [],
     isLoading: false,
     fulfilled: false,
     error: ""
@@ -12,7 +13,11 @@ const initialState: ITags = {
 export const blogTags = createSlice({
     name: "blogTags",
     initialState,
-    reducers:{},
+    reducers: {
+        toggleTagsActive: (state, {payload: tags}) => {
+            state.activeTags = [...state.activeTags, ...tags]
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getNewsTags.pending, (state) => {
@@ -20,7 +25,7 @@ export const blogTags = createSlice({
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNewsTags.fulfilled, (state, {payload: tags}) => {
+            .addCase(getNewsTags.fulfilled, (state, { payload: tags }) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
@@ -33,5 +38,7 @@ export const blogTags = createSlice({
             })
     }
 })
+
+export const { toggleTagsActive } = blogTags.actions
 
 export default blogTags.reducer

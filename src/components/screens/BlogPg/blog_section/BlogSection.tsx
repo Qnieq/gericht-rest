@@ -47,6 +47,12 @@ const BlogSection = () => {
     useEffect(() => {
         setBlogData(blog)
     }, [blog])
+
+    const newsTagsFilter = blog.news.filter(item => {
+        return (item.tags.toLowerCase())
+    })
+
+    console.log(blogTags)
     
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {

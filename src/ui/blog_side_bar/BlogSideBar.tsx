@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react";
 import { ICategory } from "../../interfaces/components.interface";
 import NewsCard from "../ui_components/news_card/NewsCard";
 import SearchInput from "../ui_components/search_input/SearchInput";
 import SocialMedia from "../ui_components/social_media/SocialMedia";
 import styles from "./BlogSideBar.module.scss"
+import { useActions } from "../../hooks/useActions";
 
 const BlogSideBar = ({ props }) => {
+
+    const [tagActive, setTagActive] = useState<string[]>([])
+    const [elementToRemove, setElementToRemove] = useState<string>("");
+    const {tagsActive} = useActions()
+
+    useEffect(() => {
+        const index = tagActive.indexOf(elementToRemove)
+        if (index !== -1) {
+            const newTagActive = [...tagActive]
+            newTagActive.splice(index, 1)
+            setTagActive(newTagActive)
+        }
+    }, [elementToRemove])
+
+    useEffect(() => {
+        tagsActive(tagActive)
+    }, [tagActive])
 
     const categories: ICategory[] = [
         {
@@ -80,7 +99,16 @@ const BlogSideBar = ({ props }) => {
                             if (index % 3 === 0) {
                                 acc.push(
                                     <div className={styles.tag_row}>
-                                        <h5 className={styles.desc}>{tag}</h5>
+                                        <h5
+                                            className={tagActive.includes(tag) ? styles.tagActive : styles.desc}
+                                            onClick={() => {
+                                                tagActive.includes(tag) ?
+                                                setElementToRemove(tag)
+                                                :
+                                                setTagActive([...tagActive, tag])
+                                            }}>
+                                            {tag}
+                                        </h5>
 
                                         {tags[index + 1] &&
                                             <>
@@ -88,7 +116,16 @@ const BlogSideBar = ({ props }) => {
                                                     <defs />
                                                     <line id="Line 2" x1="0.000000" y1="0.500000" x2="16.000000" y2="0.500000" stroke="#DCCA87" strokeOpacity="1.000000" strokeWidth="1.000000" />
                                                 </svg>
-                                                <h5 className={styles.desc}>{tags[index + 1]}</h5>
+                                                <h5
+                                                    onClick={() => {
+                                                        tagActive.includes(tags[index + 1]) ?
+                                                        setElementToRemove(tags[index + 1])
+                                                        :
+                                                        setTagActive([...tagActive, tags[index + 1]])
+                                                    }}
+                                                    className={tagActive.includes(tags[index + 1]) ? styles.tagActive : styles.desc}>
+                                                    {tags[index + 1]}
+                                                </h5>
                                             </>}
 
                                         {tags[index + 2] &&
@@ -97,7 +134,16 @@ const BlogSideBar = ({ props }) => {
                                                     <defs />
                                                     <line id="Line 2" x1="0.000000" y1="0.500000" x2="16.000000" y2="0.500000" stroke="#DCCA87" strokeOpacity="1.000000" strokeWidth="1.000000" />
                                                 </svg>
-                                                <h5 className={styles.desc}>{tags[index + 2]}</h5>
+                                                <h5
+                                                    onClick={() => {
+                                                        tagActive.includes(tags[index + 2]) ?
+                                                        setElementToRemove(tags[index + 2])
+                                                        :
+                                                        setTagActive([...tagActive, tags[index + 2]])
+                                                    }}
+                                                    className={tagActive.includes(tags[index + 2]) ? styles.tagActive : styles.desc}>
+                                                    {tags[index + 2]}
+                                                </h5>
                                             </>}
                                     </div>
                                 );

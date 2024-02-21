@@ -25,8 +25,6 @@ const SearchInput = () => {
         return (search && item.Title.toLowerCase().includes(search.toLowerCase()))
     })
 
-    console.log(filteredSearch)
-
     const eventSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
     }

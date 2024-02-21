@@ -20,11 +20,11 @@ export const blogSearch = createSlice({
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getNewsBySearch.fulfilled, (state, {payload: tags}) => {
+            .addCase(getNewsBySearch.fulfilled, (state, {payload: search}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                state.search = tags
+                state.search = search
             })
             .addCase(getNewsBySearch.rejected, (state) => {
                 state.error = "error";

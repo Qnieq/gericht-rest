@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import * as teamActions from "../store/team/team.actions"
 import * as blogActions from "../store/blog/blog.actions"
 import {countPage as count} from "../store/blog/blogSlice.slice"
+import {toggleTagsActive as tagsActive} from "../store/blog/blogTags.slice"
 
 const rootActions = {
     count,
+    tagsActive,
     ...teamActions,
     ...blogActions,
 };

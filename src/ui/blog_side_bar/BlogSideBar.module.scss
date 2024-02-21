@@ -82,7 +82,13 @@
                 .tag_row {
                     @include flexible();
                     gap: 8px;
+                    .tagActive {
+                        @include desc(left, normal);
+                        color: #DCCA87;
+                        cursor: pointer;
+                    }
                 }
+
             }
         }
 

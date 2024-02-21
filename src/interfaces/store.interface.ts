@@ -29,7 +29,8 @@ export interface INews extends Omit<IBlog, 'data'> {
 }
 
 export interface ITags extends Omit<IBlog, 'data'> {
-    tags: IBlogData
+    tags: string[]
+    activeTags: string[]
 }
 
 export interface ILastNews extends Omit<IBlog, 'data'> {
