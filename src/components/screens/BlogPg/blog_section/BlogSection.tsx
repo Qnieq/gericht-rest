@@ -11,10 +11,9 @@ const BlogSection = () => {
 
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
-    // const [count, setCount] = useState<number>(1);
     const [blogData, setBlogData] = useState<object[]>()
 
-    const {getNews, getLastNews, getNewsTags, count} = useActions()
+    const {getNews, getLastNews, getNewsTags, count, tagsActive} = useActions()
 
     const {blog} = useNews()
     const {blogLastNews} = useLastNews()
@@ -31,6 +30,7 @@ const BlogSection = () => {
         getNews(blog.count)
         getLastNews()
         getNewsTags()
+        tagsActive([])
         if (window.innerWidth <= 1000) {
             setOpen(false)
             setVisible(true)
@@ -48,11 +48,11 @@ const BlogSection = () => {
         setBlogData(blog)
     }, [blog])
 
-    const newsTagsFilter = blog.news.filter(item => {
-        return (item.tags.toLowerCase())
-    })
-
-    console.log(blogTags)
+// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
     
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {

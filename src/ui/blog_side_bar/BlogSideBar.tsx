@@ -5,26 +5,23 @@ import SearchInput from "../ui_components/search_input/SearchInput";
 import SocialMedia from "../ui_components/social_media/SocialMedia";
 import styles from "./BlogSideBar.module.scss"
 import { useActions } from "../../hooks/useActions";
+import { useTags } from "../../hooks/blog_hooks/useNews";
 
 const BlogSideBar = ({ props }) => {
 
-    const [tagActive, setTagActive] = useState<string[]>([])
-    const [elementToRemove, setElementToRemove] = useState<string>("");
     const {tagsActive} = useActions()
+    const {blogTags} = useTags()
 
-    useEffect(() => {
-        const index = tagActive.indexOf(elementToRemove)
+
+    const elementToRemove = (element: string) => {
+        const index = blogTags.activeTags.indexOf(element)
         if (index !== -1) {
-            const newTagActive = [...tagActive]
+            const newTagActive = [...blogTags.activeTags]
             newTagActive.splice(index, 1)
-            setTagActive(newTagActive)
+            tagsActive(newTagActive)
         }
-    }, [elementToRemove])
-
-    useEffect(() => {
-        tagsActive(tagActive)
-    }, [tagActive])
-
+    }
+    
     const categories: ICategory[] = [
         {
             amount: 1,
@@ -39,9 +36,8 @@ const BlogSideBar = ({ props }) => {
             category: "Cooking Tips"
         },
     ]
-
+    
     const tags: string[] = props[0]
-
     return (
         <div className={styles.side_bar}>
             <div className={styles.block_box}>
@@ -100,12 +96,12 @@ const BlogSideBar = ({ props }) => {
                                 acc.push(
                                     <div className={styles.tag_row}>
                                         <h5
-                                            className={tagActive.includes(tag) ? styles.tagActive : styles.desc}
+                                            className={blogTags.activeTags.some(t => t === tag) ? styles.tagActive : styles.desc}
                                             onClick={() => {
-                                                tagActive.includes(tag) ?
-                                                setElementToRemove(tag)
+                                                blogTags.activeTags.some(t => t === tag) ?
+                                                elementToRemove(tag)
                                                 :
-                                                setTagActive([...tagActive, tag])
+                                                tagsActive([...blogTags.activeTags, tag])
                                             }}>
                                             {tag}
                                         </h5>
@@ -118,12 +114,12 @@ const BlogSideBar = ({ props }) => {
                                                 </svg>
                                                 <h5
                                                     onClick={() => {
-                                                        tagActive.includes(tags[index + 1]) ?
-                                                        setElementToRemove(tags[index + 1])
+                                                        blogTags.activeTags.some(t => t === tags[index + 1]) ?
+                                                        elementToRemove(tags[index + 1])
                                                         :
-                                                        setTagActive([...tagActive, tags[index + 1]])
+                                                        tagsActive([...blogTags.activeTags, tags[index + 1]])
                                                     }}
-                                                    className={tagActive.includes(tags[index + 1]) ? styles.tagActive : styles.desc}>
+                                                    className={blogTags.activeTags.some(t => t ===tags[index + 1]) ? styles.tagActive : styles.desc}>
                                                     {tags[index + 1]}
                                                 </h5>
                                             </>}
@@ -136,12 +132,12 @@ const BlogSideBar = ({ props }) => {
                                                 </svg>
                                                 <h5
                                                     onClick={() => {
-                                                        tagActive.includes(tags[index + 2]) ?
-                                                        setElementToRemove(tags[index + 2])
+                                                        blogTags.activeTags.some(t => t == tags[index + 2]) ?
+                                                        elementToRemove(tags[index + 2])
                                                         :
-                                                        setTagActive([...tagActive, tags[index + 2]])
+                                                        tagsActive([...blogTags.activeTags, tags[index + 2]])
                                                     }}
-                                                    className={tagActive.includes(tags[index + 2]) ? styles.tagActive : styles.desc}>
+                                                    className={blogTags.activeTags.some(t => t == tags[index + 2]) ? styles.tagActive : styles.desc}>
                                                     {tags[index + 2]}
                                                 </h5>
                                             </>}

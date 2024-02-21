@@ -15,7 +15,7 @@ export const blogTags = createSlice({
     initialState,
     reducers: {
         toggleTagsActive: (state, {payload: tags}) => {
-            state.activeTags = [...state.activeTags, ...tags]
+            state.activeTags = tags
         }
     },
     extraReducers: (builder) => {
