@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import styles from "./SearchInput.module.scss"
 import { useActions } from "../../../hooks/useActions";
-import { useSearchNews } from "../../../hooks/blog_hooks/useNews";
+import { useSearchNews, useTags } from "../../../hooks/blog_hooks/useNews";
 import { useEffect, useState } from "react";
 
 const SearchInput = () => {
@@ -11,6 +11,9 @@ const SearchInput = () => {
 
     const { getNewsBySearch } = useActions()
     const { blogSearch } = useSearchNews()
+    const { blogTags } = useTags()
+    // console.log(blogTags.activeTags)
+
 
     useEffect(() => {
         if (req == true) {
@@ -20,10 +23,14 @@ const SearchInput = () => {
         setReq(true)
     }, [search])
 
+    
+
 
     const filteredSearch = blogSearch.search.filter(item => {
-        return (search && item.Title.toLowerCase().includes(search.toLowerCase()))
+        return (blogTags.activeTags.some(tag => item.tags.includes(tag)) && item.Title.toLowerCase().includes(search.toLowerCase()))
     })
+
+    
 
     const eventSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)

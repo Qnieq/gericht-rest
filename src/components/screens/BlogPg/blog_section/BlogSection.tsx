@@ -6,18 +6,20 @@ import styles from "./BlogSection.module.scss"
 import { IoFilterSharp } from "react-icons/io5";
 import { useActions } from "../../../../hooks/useActions";
 import { useLastNews, useNews, useTags } from "../../../../hooks/blog_hooks/useNews";
+import { IBlogData } from "../../../../interfaces/store.interface";
 
 const BlogSection = () => {
 
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
-    const [blogData, setBlogData] = useState<object[]>()
 
-    const {getNews, getLastNews, getNewsTags, count, tagsActive} = useActions()
+    const [dataTagsFiltered, setDataTagsFiltered] = useState<IBlogData[]>()
 
-    const {blog} = useNews()
-    const {blogLastNews} = useLastNews()
-    const {blogTags} = useTags()
+    const { getNews, getLastNews, getNewsTags, count, tagsActive } = useActions()
+
+    const { blog } = useNews()
+    const { blogLastNews } = useLastNews()
+    const { blogTags } = useTags()
 
     useEffect(() => {
         if (blog.count > 1) {
@@ -44,16 +46,25 @@ const BlogSection = () => {
         }
     }, [])
 
-    useEffect(() => {
-        setBlogData(blog)
-    }, [blog])
 
-// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-// СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-    
+    // useEffect(() => {
+    //     if (blogTags.activeTags.length > 0) {
+    //         try {
+    //             const filtered = blog.news.filter(item => blogTags.activeTags.some(tag => item.tags.includes(tag)))
+    //             setDataTagsFiltered(filtered)
+    //         } catch (err) {
+    //             console.log(err)
+
+    //         }
+    //     }
+    // }, [blogTags.activeTags])
+
+    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
+
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {
             setOpen(false)
@@ -73,62 +84,64 @@ const BlogSection = () => {
 
     let data = null
 
-    if (blogData) {
+    if (blog) {
 
         try {
-            data = flattenArrayToObject(blogData)
+            data = flattenArrayToObject(blog)
         } catch (err) {
-            data = blogData
+            data = blog
         }
     }
 
-    return (
-        <div className={styles.container}>
-            <div className={styles.content} style={visible ?
-                { flexDirection: "column-reverse" } : {}}>
-                <div className={styles.news}>
-                    {data ?  (
-                        <div className={styles.double_news_box}>
-                            {data.news.reduce((acc: JSX.Element[], news: IBlogs, index: number) => {
-                                if (index % 2 === 0) {
-                                    acc.push(
-                                        <div key={index} className={styles.news_row}>
-                                            <NewsCard props={news} />
-                                            {data.news[index + 1] && <NewsCard props={data.news[index + 1]} />}
-                                        </div>
-                                    );
-                                }
-                                return acc;
-                            }, [])}
-                        </div>
-                    ) : null}
-                    <div className={styles.btn_box}>
-                        <button onClick={() => count()}  className={styles.btn}>View More</button>
-                    </div>
-                </div>
 
-                <div className={styles.mobile_side_bar_header} style={visible ?
-                    { display: "flex" } : {}}>
-                    <button onClick={() => setOpen(!open)} className={styles.filter}>
-                        <IoFilterSharp className={styles.filter_icon} />
-                    </button>
+return (
+    <div className={styles.container}>
+        <div className={styles.content} style={visible ?
+            { flexDirection: "column-reverse" } : {}}>
+            <div className={styles.news}>
+                {data ? (
+                    <div className={styles.double_news_box}>
+                        {data.news.reduce((acc: JSX.Element[], news: IBlogs, index: number) => {
+                            if (index % 2 === 0) {
+                                acc.push(
+                                    <div key={index} className={styles.news_row}>
+                                        <NewsCard props={news} />
+                                        {data.news[index + 1] && <NewsCard props={data.news[index + 1]} />}
+                                    </div>
+                                );
+                            }
+                            return acc;
+                        }, [])}
+                    </div>
+                ) : null}
+                <div className={styles.btn_box}>
+                    <button onClick={() => count()} className={styles.btn}>View More</button>
                 </div>
-                {open ?
-                    <div className={styles.side_bar} style={visible ?
-                        { position: "absolute", 
+            </div>
+
+            <div className={styles.mobile_side_bar_header} style={visible ?
+                { display: "flex" } : {}}>
+                <button onClick={() => setOpen(!open)} className={styles.filter}>
+                    <IoFilterSharp className={styles.filter_icon} />
+                </button>
+            </div>
+            {open ?
+                <div className={styles.side_bar} style={visible ?
+                    {
+                        position: "absolute",
                         right: "0",
                         top: "630px",
                         boxShadow: "rgba(12, 12, 12, 0.9) 0 0 0 1000px",
-                         background: "rgba(12, 12, 12, 0.9)"
-                         } : {}}>
-                        <BlogSideBar props={[blogTags.tags, blogLastNews]} />
-                    </div>
-                    :
-                    <></>
-                }
-            </div>
+                        background: "rgba(12, 12, 12, 0.9)"
+                    } : {}}>
+                    <BlogSideBar props={[blogTags.tags, blogLastNews]} />
+                </div>
+                :
+                <></>
+            }
         </div>
-    );
+    </div>
+);
 }
 
 export default BlogSection;

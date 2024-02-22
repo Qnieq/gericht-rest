@@ -10,12 +10,12 @@ export interface ITeamById extends Omit<ITeamState, 'data'> {
 }
 
 export interface IBlogData {
-    Image: string,
-    id: number,
-    description: string,
-    Title: string,
-    Instructions: string,
-    Ingredients: string[],
+    Image: string
+    id: number
+    description: string
+    Title: string
+    Instructions: string
+    Ingredients: string[]
     tags: string
 }
 
