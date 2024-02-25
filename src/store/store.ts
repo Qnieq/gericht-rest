@@ -5,6 +5,7 @@ import blogLastNewsReducer from './blog/blogLastNews.slice'
 import teamReducer from './team/teamSlice.slice'
 import chefByIdReducer from './team/teamById.slice'
 import blogSearchReducer from './blog/blogSearch.slice'
+import blogNewsByIdReducer from './blog/blogNewsById.slice'
 
 const reducers = combineReducers({
     blog: blogReducer,
@@ -13,6 +14,7 @@ const reducers = combineReducers({
     team: teamReducer,
     chefById: chefByIdReducer,
     blogSearch: blogSearchReducer,
+    blogNewsById: blogNewsByIdReducer,
 })
 
 export const store = configureStore({

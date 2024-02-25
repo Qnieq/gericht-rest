@@ -1,0 +1,159 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 150px 0;
+    background: #0C0C0C;
+    @include flexible();
+
+    .content {
+        @include cont();
+        width: clamp(280px, 90%, 1300px);
+        flex-direction: column;
+        gap: 40px;
+
+        .title_box {
+            width: 100%;
+            @include flexible();
+            flex-direction: column;
+            gap: 40px;
+
+            .title {
+                width: 100%;
+                @include flexible();
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 24px;
+
+                .author_box {
+                    width: 100%;
+                    @include flexible();
+                    justify-content: space-between
+                }
+
+                .title_text {
+                    color: #DCCA87;
+                    font-family: Cormorant Upright;
+                    font-size: clamp(32px, 4vw, 64px);
+                    font-weight: 600;
+                    line-height: 130%;
+                    letter-spacing: 3%;
+                    text-align: left;
+                    text-transform: capitalize;
+                }
+            }
+
+            .title_image {
+                width: clamp(290px, 90vw, 1300px);
+                height: clamp(130px, 30vw, 430px);
+            }
+        }
+
+        .text_content {
+            width: 100%;
+            @include flexible();
+            align-items: flex-start;
+            gap: 70px;
+
+            .about {
+                @include flexible();
+                flex-direction: column;
+                gap: 40px;
+                width: clamp(290px, 54vw, 856px);
+
+                .description {
+                    @include desc(left, normal)
+                }
+
+                .name {
+                    color: #DCCA87;
+                    font-family: Cormorant Upright;
+                    font-size: clamp(18px, 3vw, 23px);
+                    font-weight: 700;
+                    line-height: 130%;
+                    letter-spacing: 4%;
+                    text-align: left;
+                    text-transform: capitalize;
+                }
+
+                .ingredients {
+                    @include flexible();
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 40px;
+
+                    .ingredients_box {
+                        @include flexible();
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 24px;
+
+                        .ingredient_box {
+                            @include flexible();
+                            gap: 14px;
+                        }
+                    }
+                }
+                .instruction_box {
+                    @include flexible();
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 40px;
+                }
+
+                .bottom {
+                    @include flexible();
+                    width: 100%;
+                    justify-content: space-between;
+
+                    .tags_box {
+                        @include flexible();
+                        gap: 16px;
+
+                        .tags {
+                            @include desc(left, normal)
+                        }
+                    }
+
+                    .activity_box {
+                        @include flexible();
+                        gap: 32px;
+
+                        .activity {
+                            @include flexible();
+                            gap: 16px;
+
+                            svg {
+                                width: 25px;
+                                cursor: pointer;
+                            }
+
+                            .activity_name {
+                                color: #fff;
+                                font-family: Open Sans;
+                                font-size: clamp(14px, 1vw, 16px);
+                                font-weight: 400;
+                                line-height: 175%;
+                                letter-spacing: 4%;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .side_bar {
+        display: none !important;
+    }
+}
+@media (max-width: 768px) {
+    .activity_name {
+        display: none !important;
+    }
+}

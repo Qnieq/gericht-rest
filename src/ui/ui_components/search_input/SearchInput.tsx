@@ -3,6 +3,7 @@ import styles from "./SearchInput.module.scss"
 import { useActions } from "../../../hooks/useActions";
 import { useSearchNews, useTags } from "../../../hooks/blog_hooks/useNews";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchInput = () => {
 
@@ -12,7 +13,6 @@ const SearchInput = () => {
     const { getNewsBySearch } = useActions()
     const { blogSearch } = useSearchNews()
     const { blogTags } = useTags()
-    // console.log(blogTags.activeTags)
 
 
     useEffect(() => {
@@ -21,21 +21,39 @@ const SearchInput = () => {
             setReq(false)
         }
         setReq(true)
-    }, [search])
-
-    
+    }, [search, blogTags.activeTags])
 
 
+
+
+    const filteredSearchWithTags = blogSearch.search.filter(item => {
+        return (item.Title.toLowerCase().includes(search.toLowerCase())
+            &&
+            blogTags.activeTags.some(tag => item.tags.includes(tag)))
+            &&
+            search
+    })
+    const filteredSearchWithOnlyTags = blogSearch.search.filter(item => {
+        return (blogTags.activeTags.some(tag => item.tags.includes(tag)))
+    })
     const filteredSearch = blogSearch.search.filter(item => {
-        return (blogTags.activeTags.some(tag => item.tags.includes(tag)) && item.Title.toLowerCase().includes(search.toLowerCase()))
+        return (item.Title.toLowerCase().includes(search.toLowerCase()) && search)
     })
 
-    
+
+    let filetered = null
+    if (blogTags.activeTags.length > 0 && search.length > 0) {
+        filetered = filteredSearchWithTags
+    } else if (blogTags.activeTags.length >= 1 && search.length < 1) {
+        filetered = filteredSearchWithOnlyTags
+        console.log(filteredSearchWithOnlyTags)
+    } else {
+        filetered = filteredSearch
+    }
 
     const eventSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
     }
-
 
 
     return (
@@ -44,12 +62,14 @@ const SearchInput = () => {
                 <input type="text" placeholder="Search..." className={styles.search_input} onChange={eventSearch} />
                 <FaSearch className={styles.search_icon} />
             </div>
-            {filteredSearch.length > 0 ?
+            {filetered.length > 0 ?
                 <div className={styles.result_box}>
-                    {filteredSearch.map((item, index) =>
+                    {filetered.map((item, index) =>
                         <div key={index} className={styles.result}>
-                            <img src={item.Image} alt="" className={styles.search_image} />
-                            <h4 className={styles.title}>{item.Title}</h4>
+                            <Link to={`/Home/Our Blogs/${item.Title}`}>
+                                <img src={item.Image} alt="" className={styles.search_image} />
+                                <h4 className={styles.title}>{item.Title}</h4>
+                            </Link>
                         </div>
                     )}
                 </div>

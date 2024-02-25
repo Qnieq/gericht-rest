@@ -19,3 +19,8 @@ export const useSearchNews = () => {
   const {blogSearch} = useTypedSelector(state => state);
   return {blogSearch};
 };
+
+export const useNewsById = () => {
+  const {blogNewsById} = useTypedSelector(state => state);
+  return {blogNewsById};
+};

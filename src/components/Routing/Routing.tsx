@@ -7,6 +7,7 @@ import ContactUs from "../screens/ContactUsPg/ContactUs";
 import Team from "../screens/TeamPg/Team";
 import ChefsDetails from "../screens/ChefsDetailsPg/ChefsDetails";
 import Blog from "../screens/BlogPg/Blog";
+import BlogDetails from "../screens/BlogDetailsPg/BlogDetails";
 
 
 const Routing = () => {
@@ -22,6 +23,7 @@ const Routing = () => {
                 <Route path="/Home/Our Team/Chefs Details" element={<Team />} />
                 <Route path="/Home/Our Team/Chefs Details/:id" element={<ChefsDetails />} />
                 <Route path="/Home/Our Blogs" element={<Blog />} />
+                <Route path="/Home/Our Blogs/:title" element={<BlogDetails />} />
             </Routes>
         </BrowserRouter>
     );

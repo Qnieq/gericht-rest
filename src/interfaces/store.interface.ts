@@ -23,6 +23,11 @@ export interface IBlog extends Omit<ITeamState, 'data'>{
     data: IBlogData[]
 }
 
+export interface INewsState extends Omit<ITeamState, 'data'> {
+    news: IBlogData[],
+    count: number
+}
+
 export interface INews extends Omit<IBlog, 'data'> {
     news: IBlogData[],
     count: number
@@ -35,6 +40,10 @@ export interface ITags extends Omit<IBlog, 'data'> {
 
 export interface ILastNews extends Omit<IBlog, 'data'> {
     lastNews: IBlogData
+}
+
+export interface INewsById extends Omit<ITeamState, 'data'> {
+    newsById: IBlogData[]
 }
 
 export interface ISearchBlogs extends Omit<IBlog, 'data'> {

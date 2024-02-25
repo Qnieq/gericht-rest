@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
-import { IBlogs, ICount } from "../../../../interfaces/components.interface";
+import { IBlogs } from "../../../../interfaces/components.interface";
 import BlogSideBar from "../../../../ui/blog_side_bar/BlogSideBar";
 import NewsCard from "../../../../ui/ui_components/news_card/NewsCard";
 import styles from "./BlogSection.module.scss"
 import { IoFilterSharp } from "react-icons/io5";
 import { useActions } from "../../../../hooks/useActions";
-import { useLastNews, useNews, useTags } from "../../../../hooks/blog_hooks/useNews";
-import { IBlogData } from "../../../../interfaces/store.interface";
+import { useNews} from "../../../../hooks/blog_hooks/useNews";
+import {  INewsState } from "../../../../interfaces/store.interface";
 
 const BlogSection = () => {
 
     const [visible, setVisible] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
 
-    const [dataTagsFiltered, setDataTagsFiltered] = useState<IBlogData[]>()
-
-    const { getNews, getLastNews, getNewsTags, count, tagsActive } = useActions()
+    const { getNews, count, tagsActive } = useActions()
 
     const { blog } = useNews()
-    const { blogLastNews } = useLastNews()
-    const { blogTags } = useTags()
+
 
     useEffect(() => {
         if (blog.count > 1) {
@@ -30,8 +27,6 @@ const BlogSection = () => {
 
     useEffect(() => {
         getNews(blog.count)
-        getLastNews()
-        getNewsTags()
         tagsActive([])
         if (window.innerWidth <= 1000) {
             setOpen(false)
@@ -45,25 +40,6 @@ const BlogSection = () => {
             window.removeEventListener('resize', resizeEvent, true);
         }
     }, [])
-
-
-    // useEffect(() => {
-    //     if (blogTags.activeTags.length > 0) {
-    //         try {
-    //             const filtered = blog.news.filter(item => blogTags.activeTags.some(tag => item.tags.includes(tag)))
-    //             setDataTagsFiltered(filtered)
-    //         } catch (err) {
-    //             console.log(err)
-
-    //         }
-    //     }
-    // }, [blogTags.activeTags])
-
-    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
-    // СДЕЛАТЬ СОРТИРОВКУ ПО ТЕГАМ
 
     const resizeEvent = () => {
         if (window.innerWidth <= 1000) {
@@ -82,7 +58,7 @@ const BlogSection = () => {
         }, {});
     };
 
-    let data = null
+    let data: INewsState | null = null
 
     if (blog) {
 
@@ -134,7 +110,7 @@ return (
                         boxShadow: "rgba(12, 12, 12, 0.9) 0 0 0 1000px",
                         background: "rgba(12, 12, 12, 0.9)"
                     } : {}}>
-                    <BlogSideBar props={[blogTags.tags, blogLastNews]} />
+                    <BlogSideBar />
                 </div>
                 :
                 <></>

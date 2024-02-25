@@ -4,12 +4,19 @@ import SearchInput from "../ui_components/search_input/SearchInput";
 import SocialMedia from "../ui_components/social_media/SocialMedia";
 import styles from "./BlogSideBar.module.scss"
 import { useActions } from "../../hooks/useActions";
-import { useTags } from "../../hooks/blog_hooks/useNews";
+import { useLastNews, useTags } from "../../hooks/blog_hooks/useNews";
+import { useEffect } from "react";
 
-const BlogSideBar = ({ props }) => {
+const BlogSideBar = () => {
 
-    const {tagsActive} = useActions()
+    const {tagsActive, getLastNews, getNewsTags} = useActions()
     const {blogTags} = useTags()
+    const { blogLastNews } = useLastNews()
+
+    useEffect(() => {
+        getLastNews()
+        getNewsTags()
+    }, [])
 
 
     const elementToRemove = (element: string) => {
@@ -35,8 +42,10 @@ const BlogSideBar = ({ props }) => {
             category: "Cooking Tips"
         },
     ]
+
     
-    const tags: string[] = props[0]
+    const tags: string[] = blogTags.tags
+
     return (
         <div className={styles.side_bar}>
             <div className={styles.block_box}>
@@ -75,9 +84,9 @@ const BlogSideBar = ({ props }) => {
                     <h4 className={styles.title}>
                         Our Latest Posts
                     </h4>
-                    {props[1].fulfilled ?
+                    {blogLastNews.fulfilled ?
                         <div className={styles.news}>
-                            <NewsCard props={Object.values(props[1].lastNews)} />
+                            <NewsCard props={Object.values(blogLastNews.lastNews)} />
                         </div>
                         :
                         <></>
