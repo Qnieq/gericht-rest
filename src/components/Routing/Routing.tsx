@@ -8,11 +8,13 @@ import Team from "../screens/TeamPg/Team";
 import ChefsDetails from "../screens/ChefsDetailsPg/ChefsDetails";
 import Blog from "../screens/BlogPg/Blog";
 import BlogDetails from "../screens/BlogDetailsPg/BlogDetails";
+import ScrollToTop from "./ScrollToTop";
 
 
 const Routing = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/Bar" element={<Bar />} />

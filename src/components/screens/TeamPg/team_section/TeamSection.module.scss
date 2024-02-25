@@ -26,7 +26,7 @@
                 .image {
                     @include flexible();
                     position: relative;
-                    z-index: 9999;
+                    z-index: 1002;
 
 
                     .chef_image {

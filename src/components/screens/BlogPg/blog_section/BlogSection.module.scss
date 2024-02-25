@@ -35,7 +35,7 @@
             }
         }
         .mobile_side_bar_header {
-            z-index: 99999;
+            z-index: 1003;
             @include flexible();
             width: 100%;
             display: none;
@@ -54,7 +54,7 @@
         }
         .side_bar {
             @include flexible();
-            z-index: 9999;
+            z-index: 1002;
             width: clamp(270px, 45vw, 310px);
             padding: 0 clamp(20px, 5vw, 32px);
         }
