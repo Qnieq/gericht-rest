@@ -5,6 +5,8 @@
     @include flexible();
     flex-direction: column;
     gap: 24px;
+    position: relative;
+
 
     .blog_img {
         width: 100%;

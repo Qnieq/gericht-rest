@@ -3,7 +3,7 @@
 .container {
     width: 100%;
     height: 100%;
-    padding: 150px 0;
+    padding: 150px 0 0 0;
     background: #0C0C0C;
     @include flexible();
 
@@ -35,8 +35,9 @@
             }
         }
         .mobile_side_bar_header {
-            z-index: 1003;
+            z-index: 9999;
             @include flexible();
+            position: relative;
             width: 100%;
             display: none;
             justify-content: flex-end;

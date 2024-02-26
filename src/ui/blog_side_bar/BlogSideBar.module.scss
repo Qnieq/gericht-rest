@@ -5,6 +5,7 @@
     @include flexible();
     align-items: flex-start;
     flex-direction: column;
+
 }
 
 .side_bar {
@@ -12,6 +13,8 @@
     flex-direction: column;
     width: clamp(270px, 45vw, 310px);
     gap: 32px;
+    z-index: 9999;
+    position: relative;
 
     .block_box {
         width: 100%;

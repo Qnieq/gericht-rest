@@ -12,6 +12,8 @@
         width: clamp(280px, 90%, 1300px);
         flex-direction: column;
         gap: 40px;
+        position: relative;
+
 
         .title_box {
             width: 100%;

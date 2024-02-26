@@ -6,6 +6,7 @@ import { useNewsById } from "../../../hooks/blog_hooks/useNews";
 import HeroSection from "../../../ui/hero_section/HeroSection";
 import Footer from "../../../ui/footer/Footer";
 import BlogDetailsSection from "./blog_details_section/BlogDetailsSection";
+import BlogDetailBgElem from "./blog_detail_bg_elem/BlogDetailBgElem";
 
 const BlogDetails = () => {
     const { title } = useParams()
@@ -25,6 +26,7 @@ const BlogDetails = () => {
         <>
             <Header props={"#0C0C0C"} />
             <HeroSection props={"Our Blogs"} />
+            <BlogDetailBgElem />
             {   
                 blogNewsById.fulfilled ?
                     <BlogDetailsSection props={blogNewsById.newsById[last]} />
