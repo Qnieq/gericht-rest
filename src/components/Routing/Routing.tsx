@@ -9,6 +9,8 @@ import ChefsDetails from "../screens/ChefsDetailsPg/ChefsDetails";
 import Blog from "../screens/BlogPg/Blog";
 import BlogDetails from "../screens/BlogDetailsPg/BlogDetails";
 import ScrollToTop from "./ScrollToTop";
+import FAQ from "../screens/FaqPg/FAQ";
+import NotFound from "../screens/404Pg/NotFound";
 
 
 const Routing = () => {
@@ -26,6 +28,9 @@ const Routing = () => {
                 <Route path="/Home/Our Team/Chefs Details/:id" element={<ChefsDetails />} />
                 <Route path="/Home/Our Blogs" element={<Blog />} />
                 <Route path="/Home/Our Blogs/:title" element={<BlogDetails />} />
+                <Route path="/Home/FAQ" element={<FAQ />} />
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );

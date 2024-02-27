@@ -71,7 +71,7 @@ const Header = ({ props }) => {
                         })}>
                             Blog
                         </NavLink>
-                        <NavLink to="" className={styles.link} style={({ isActive }) => ({
+                        <NavLink to="/Home/FAQ" className={styles.link} style={({ isActive }) => ({
                             color: isActive ? '#DCCA87' : '#fff'
                         })}>
                             FAQ
@@ -131,7 +131,7 @@ const Header = ({ props }) => {
                                 </Link>
                             </div>
                             <div className={styles.section}>
-                                <Link to="/FAQ" className={styles.link}>
+                                <Link to="/Home/FAQ" className={styles.link}>
                                     FAQ
                                 </Link>
                             </div>

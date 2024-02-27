@@ -1,0 +1,59 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 150px 0 0 0;
+    background: #0C0C0C;
+    @include flexible();
+
+    .content {
+        @include cont();
+        gap: 32px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .faq_box {
+            @include flexible();
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+
+            .faqItem {
+                @include flexible();
+                flex-direction: column;
+                align-items: flex-start;
+                background: #242424;
+                cursor: pointer;
+                margin-bottom: 10px;
+                padding: clamp(18px, 5vw, 24px);
+                gap: 16px;
+
+                .question {
+                    color: #fff;
+                    font-family: Cormorant Upright;
+                    font-size: clamp(19px, 2vw, 23px);
+                    font-weight: 700;
+                    line-height: 130%;
+                    letter-spacing: 4%;
+                    text-align: left;
+                    text-transform: capitalize;
+                    width: clamp(260px, 25vw, 354px);
+                }
+
+                .answer {
+                    width: clamp(260px, 30vw, 586px);
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.4s;
+                    @include desc(left, normal)
+                }
+
+                .show {
+                    max-height: 100px;
+                    @include desc(left, normal)
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styles from "./HeroSection.module.scss"
 
 const HeroSection = ({ props }) => {
