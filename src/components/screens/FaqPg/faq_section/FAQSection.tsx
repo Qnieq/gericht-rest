@@ -47,7 +47,7 @@ const FAQSection = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <Border props={"/images/no_category/cocktail.png"} />
+                <Border image={"/images/no_category/cocktail.png"} />
                 <div className={styles.faq_box}>
                     {faqData.map((item, index) => (
                         <div key={index} className={styles.faqItem} onClick={() => handleQuestionClick(item.question)}>

@@ -8,7 +8,7 @@ const PoisonVar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <TitleCenter props={text} />
+                <TitleCenter title={text} />
                 <div className={styles.poison_box}>
                     <div className={styles.poison}>
                         <img src="/images/poison/beer.png" alt="" className={styles.poison_photo} />

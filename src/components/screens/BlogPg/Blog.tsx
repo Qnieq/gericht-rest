@@ -8,11 +8,11 @@ const Blog = () => {
 
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Our Blogs"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Our Blogs"} />
             <BlogBgElem />
             <BlogSection />
-            <Footer props={"#0C0C0C"}/>
+            <Footer color={"#0C0C0C"}/>
         </>
     );
 }

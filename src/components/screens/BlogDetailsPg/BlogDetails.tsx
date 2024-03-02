@@ -9,31 +9,28 @@ import BlogDetailsSection from "./blog_details_section/BlogDetailsSection";
 import BlogDetailBgElem from "./blog_detail_bg_elem/BlogDetailBgElem";
 
 const BlogDetails = () => {
-    const { title } = useParams()
+    const { title } = useParams<{title?: string}>()
     const { getNewsById } = useActions()
     const { blogNewsById } = useNewsById()
     useEffect(() => {
         getNewsById(title)
     }, [title])
 
-    let last = null;
-    if (blogNewsById.newsById) {
-        last = Object.keys(blogNewsById.newsById)[Object.keys(blogNewsById.newsById).length - 1];
-        console.log(blogNewsById.newsById[last]);
-    }
+
+    const last: number = parseInt(Object.keys(blogNewsById.newsById)[Object.keys(blogNewsById.newsById).length - 1])
 
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Our Blogs"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Our Blogs"} />
             <BlogDetailBgElem />
             {   
                 blogNewsById.fulfilled ?
-                    <BlogDetailsSection props={blogNewsById.newsById[last]} />
+                    <BlogDetailsSection details={blogNewsById.newsById[last]} />
                     :
                     null 
             }
-            <Footer props={"#0C0C0C"} />
+            <Footer color={"#0C0C0C"} />
         </>
     );
 }

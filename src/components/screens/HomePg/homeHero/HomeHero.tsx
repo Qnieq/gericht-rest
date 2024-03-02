@@ -77,7 +77,7 @@ const HomeHero = () => {
                             </button>
                         </div>
                     </div>
-                    <Slider props={[data, "yes"]} />
+                    <Slider data={data} type="yes" />
                 </div>
             </div>
             <div className={styles.scrolling}>

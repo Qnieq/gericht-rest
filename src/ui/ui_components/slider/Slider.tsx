@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.scss"
-import { ITitle } from "../../../interfaces/components.interface";
+import { IData, IImg, ITitle } from "../../../interfaces/components.interface";
 
-const Slider = ({ props }) => {
+const Slider: React.FC<{data: IData, type: string}> = (props) => {
 
     const blockRef = useRef<HTMLDivElement>(null);
     const [blockSize, setBlockSize] = useState<{ width: number; height: number }>({
@@ -22,13 +22,13 @@ const Slider = ({ props }) => {
 
         if (slideContainer) {
             slideContainer.style.transition = `transform 0.5s ease-in-out`;
-            if (props[0].current > 0) {
-                slideContainer.style.transform = `translateX(-${props[0].current * blockSize.width + props[0].current * 80}px)`;
+            if (props.data.current > 0) {
+                slideContainer.style.transform = `translateX(-${props.data.current * blockSize.width + props.data.current * 80}px)`;
             } else {
-                slideContainer.style.transform = `translateX(-${props[0].current * blockSize.width}px)`;
+                slideContainer.style.transform = `translateX(-${props.data.current * blockSize.width}px)`;
             }
         }
-    }, [props[0].current]);
+    }, [props.data.current]);
 
 
 
@@ -54,7 +54,7 @@ const Slider = ({ props }) => {
 
 
     return (
-        props[1] == "yes" ?
+        props.type == "yes" ?
 
             <div className={styles.border}>
                 <div className={styles.border_down}>
@@ -64,7 +64,7 @@ const Slider = ({ props }) => {
                     <div className={styles.square_2}></div>
                 </div>
                 <div className={styles.slider_cont} ref={slideRef}>
-                    {props[0].img.map((url) =>
+                    {props.data.img.map((url: IImg) =>
                         <div key={url.id} className={styles.pictures} ref={blockRef} >
                             <img src={url.url} className={styles.border_img} />
                         </div>
@@ -82,7 +82,7 @@ const Slider = ({ props }) => {
 
                         )}
                     </div>
-                    {props[0].img.map((url) =>
+                    {props.data.img.map((url: IImg) =>
                         <div key={url.id} className={styles.pic} ref={blockRef} >
                             <img src={url.url} className={styles.slider_img} />
                         </div>

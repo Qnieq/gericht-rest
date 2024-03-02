@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "../dots.scss"
 import { ICustomers } from "../../interfaces/components.interface";
 
-const Customers = ({props}) => {
+const Customers: React.FC<{color: string}> = (props) => {
 
     const settings: object = {
         dots: true,
@@ -18,8 +18,8 @@ const Customers = ({props}) => {
         autoplay: true,
         autoplaySpeed: 5000,
         pauseOnFocus: true,
-        appendDots: dots => <ul>{dots}</ul>,
-        customPaging: i => (
+        appendDots: (dots: string) => <ul>{dots}</ul>,
+        customPaging: () => (
           <div className={styles.dots}></div>
         )
     };
@@ -59,9 +59,9 @@ const Customers = ({props}) => {
     ]
 
     return (
-        <div className={styles.container} style={{background: props}}>
+        <div className={styles.container} style={{background: props.color}}>
             <div className={styles.content}>
-                <TitleCenter props={text} />
+                <TitleCenter title={text} />
                 <div className={styles.customers}>
                     <div className={styles.section}>
                         {customers.slice(0, 2).map(customer =>

@@ -43,7 +43,6 @@ const BlogSideBar = () => {
         },
     ]
 
-    
     const tags: string[] = blogTags.tags
 
     return (
@@ -86,7 +85,7 @@ const BlogSideBar = () => {
                     </h4>
                     {blogLastNews.fulfilled ?
                         <div className={styles.news}>
-                            <NewsCard props={Object.values(blogLastNews.lastNews)} />
+                            <NewsCard news={Object.values(blogLastNews.lastNews)[0]} />
                         </div>
                         :
                         <></>

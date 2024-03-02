@@ -1,6 +1,7 @@
 import styles from "./Border.module.scss"
 
-const Border = ({props}) => {
+const Border: React.FC<{image: string}> = (props) => {
+    // typeof(props) == "object" ? props.image.url : 
     return (
         <div className={styles.border}>
             <div className={styles.border_down}>
@@ -10,7 +11,7 @@ const Border = ({props}) => {
                 <div className={styles.square_2}></div>
             </div>
             <div className={styles.pictures}>
-                <img src={typeof(props) == "object" ? props.url : props} className={styles.border_img} />
+                <img src={props.image} className={styles.border_img} />
             </div>
         </div>
     );

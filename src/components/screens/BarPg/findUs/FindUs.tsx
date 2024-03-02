@@ -10,7 +10,7 @@ const FindUs = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.contact}>
-                    <TitleLeft props={text} />
+                    <TitleLeft title={text} />
                     <div className={styles.text}>
                         <p className={styles.description}>
                             Lane Ends Bungalow, Whatcroft Hall Lane, Rudheath, CW9 7SG
@@ -31,7 +31,7 @@ const FindUs = () => {
                         Visit Us
                     </button>
                 </div>
-                <Border props={"images/no_category/cocktail.png"}/>
+                <Border image={"images/no_category/cocktail.png"}/>
             </div>
         </div>
     );

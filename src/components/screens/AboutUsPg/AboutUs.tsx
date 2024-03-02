@@ -11,15 +11,15 @@ import OurHistory from "./ourHistory/OurHistory";
 const AboutUs = () => {
     return (
         <>
-            <Header props={"#0C0C0C"}/>
-            <HeroSection props={"Welcome to Gerícht"} />
+            <Header color={"#0C0C0C"}/>
+            <HeroSection type={"Welcome to Gerícht"} />
             <AboutBgElem />
             <OurHistory />
             <About />
             <Chef />
-            <Customers props={"#0C0C0C"} />
+            <Customers color="#0C0C0C" />
             <Instagram />
-            <Footer props={"#0C0C0C"}/>
+            <Footer color={"#0C0C0C"}/>
         </>
     );
 }

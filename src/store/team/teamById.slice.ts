@@ -3,7 +3,7 @@ import { ITeamById } from "../../interfaces/store.interface";
 import { getChefsById } from "./team.actions";
 
 const initialState: ITeamById = {
-    chef: {},
+    chef: [],
     isLoading: false,
     fulfilled: false,
     error: ""
@@ -24,7 +24,12 @@ export const teamById = createSlice({
                 state.isLoading = false;
                 state.fulfilled = true;
                 state.error = "";
-                state.chef = chef
+                if (state.chef.length === 1) {
+                    state.chef.pop()
+                    state.chef.push(chef)
+                } else {
+                    state.chef.push(chef)
+                }
             })
             .addCase(getChefsById.rejected, (state) => {
                 state.error = "error";

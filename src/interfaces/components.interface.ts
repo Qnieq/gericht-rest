@@ -10,13 +10,12 @@ export interface IAchiev {
 }
 
 export interface IBlogs {
-    id?: number
-    image?: string
-    date?: string
+    id: number
+    image: string
+    date: string
     author?: string
-    title?: string
-    description?: string
-    url?: string
+    title: string
+    description: string
 }
 
 export interface IImg {
@@ -26,7 +25,7 @@ export interface IImg {
 
 export interface IData {
     current: number,
-    img: object,
+    img: IImg[],
 }
 
 export interface IAward {
@@ -73,4 +72,8 @@ export interface ICategory {
 export interface ICount {
     start: number
     end: number
+}
+
+export interface ISlider {
+
 }

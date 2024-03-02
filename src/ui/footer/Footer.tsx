@@ -1,17 +1,17 @@
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 import styles from "./Footer.module.scss"
 
-const Footer = ({props}) => {
+const Footer: React.FC<{color: string}> = (props) => {
 
     const text: string[] = ["Newsletter", "Subscribe to Our Newsletter"]
 
     return (
-        <div className={styles.container} style={{background: props}}>
+        <div className={styles.container} style={{background: props.color}}>
             <div className={styles.top_section} >
                 <div className={styles.newsletter}>
                     <div className={styles.title}>
-                        <TitleCenter props={text} />
+                        <TitleCenter title={text} />
                         <p className={styles.description}>
                             And never miss latest Updates!
                         </p>

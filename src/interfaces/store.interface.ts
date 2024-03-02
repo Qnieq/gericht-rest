@@ -1,12 +1,22 @@
+export interface IChefs {
+    color: string;
+    image: string;
+    name: string;
+    role: string;
+    points: string[];
+    sign: string;
+    description: string;
+}
+
 export interface ITeamState {
-    data: object
+    data: IChefs[] | object
     isLoading: boolean
     fulfilled: boolean
     error: string
 }
 
 export interface ITeamById extends Omit<ITeamState, 'data'> {
-    chef: object
+    chef: IChefs[]
 }
 
 export interface IBlogData {
@@ -16,7 +26,9 @@ export interface IBlogData {
     Title: string
     Instructions: string
     Ingredients: string[]
-    tags: string
+    tags: string[]
+    author?: string
+    date?: string
 }
 
 export interface IBlog extends Omit<ITeamState, 'data'>{
@@ -39,10 +51,10 @@ export interface ITags extends Omit<IBlog, 'data'> {
 }
 
 export interface ILastNews extends Omit<IBlog, 'data'> {
-    lastNews: IBlogData
+    lastNews: object
 }
 
-export interface INewsById extends Omit<ITeamState, 'data'> {
+export interface INewsById extends Omit<IBlog, 'data'> {
     newsById: IBlogData[]
 }
 

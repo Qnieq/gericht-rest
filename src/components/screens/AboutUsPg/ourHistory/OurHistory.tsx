@@ -26,7 +26,7 @@ const OurHistory = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <TitleCenter props={text} />
+                <TitleCenter title={text} />
                 <div className={styles.history_box}>
                     <div className={styles.desc_box}>
                         <p className={styles.description}>
@@ -48,7 +48,7 @@ const OurHistory = () => {
                                         <h4 className={styles.how_many}>
                                             {statistic.num}
                                         </h4>
-                                        <svg width="40.000000" height="9.000000" viewBox="0 0 40 9" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <svg width="40.000000" height="9.000000" viewBox="0 0 40 9" fill="none" xmlns="http://www.w3.org/2000/svg" >
                                             <defs>
                                                 <clipPath id="clip559_898">
                                                     <rect id="spoon" width="40.000000" height="9.000000" fill="white" fill-opacity="0" />

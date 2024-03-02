@@ -12,7 +12,7 @@ const BarAbout = () => {
                 <div className={styles.about_box}>
                     <img src="images/about_bar/about2.png" alt="" className={styles.about_photo} />
                     <div className={styles.about}>
-                        <TitleLeft props={text}/>
+                        <TitleLeft title={text}/>
                         <div className={styles.text}>
                             <p className={styles.description}>
                                 Adipiscing tempus ullamcorper lobortis odio tellus arcu volutpat. 

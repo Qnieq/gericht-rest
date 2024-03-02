@@ -9,7 +9,7 @@ const ServingQuality = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.title}>
-                    <TitleCenter props={text} />
+                    <TitleCenter title={text} />
                 </div>
                 <p className={styles.description}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

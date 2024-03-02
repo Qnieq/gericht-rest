@@ -44,7 +44,7 @@ const BarHero = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Header props={""}/>
+                <Header color={""}/>
             </div>
             <div className={styles.content}>
                 <div className={styles.hashtag_box}>
@@ -57,7 +57,7 @@ const BarHero = () => {
                         </NavLink>
                     </div>
                 </div>
-                <Slider props={[data, "no"]} />
+                <Slider data={data} type="no" />
                 <div className={styles.count}>
                     <div className={styles.slider}>
                         {currentSlide == 0 ?

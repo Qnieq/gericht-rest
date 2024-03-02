@@ -1,0 +1,95 @@
+@import "../../../../assets/gl_styles/mixin_cont";
+
+.chef {
+    @include flexible();
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    .image {
+        @include flexible();
+        position: relative;
+        z-index: 1002;
+
+
+        .chef_image {
+            width: clamp(280px, 20vw, 411px);
+            overflow: hidden;
+            border: 1px solid #DCCA87;
+        }
+
+        .media {
+            display: none;
+            position: absolute;
+            height: clamp(355px, 25.5vw, 520px);
+            width: clamp(280px, 20vw, 411px);
+            background: #5e5d5d7a;
+            animation: fade .4s linear forwards;
+
+            .links {
+                @include flexible();
+                flex-direction: column;
+                gap: 8px;
+                padding-bottom: 50px;
+
+                .read_more {
+                    @include flexible();
+                    gap: 8px;
+
+                    .more {
+                        color: #DCCA87;
+                        font-family: Cormorant Upright;
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 175%;
+                        letter-spacing: 4%;
+                        text-align: left;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        &:hover .media {
+            @include flexible();
+            align-items: flex-end;
+        }
+    }
+
+    .title {
+        @include flexible();
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .name {
+            font-family: Cormorant Upright;
+            font-size: clamp(32px, 2vw, 45px);
+            font-weight: 600;
+            line-height: 130%;
+            letter-spacing: 4%;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .role {
+            color: #fff;
+            font-family: Open Sans;
+            font-size: clamp(14px, 1vw, 16px);
+            font-weight: 400;
+            line-height: 175%;
+            letter-spacing: 4%;
+            text-align: center;
+        }
+    }
+}

@@ -10,14 +10,14 @@ const About = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.title}>
-                    <TitleCenter props={text} />
+                    <TitleCenter title={text} />
                     <p className={styles.description}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                         Quis pharetra adipiscing ultrices vulputate posuere tristique. 
                         In sed odio nec aliquet eu proin mauris et.
                     </p>
                 </div>
-                <VideoSection />
+                <VideoSection color="" />
             </div>
         </div>
     );

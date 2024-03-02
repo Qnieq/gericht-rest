@@ -18,7 +18,8 @@ const reducers = combineReducers({
 })
 
 export const store = configureStore({
-  reducer: reducers
+  reducer: reducers,
+  // devTools: false,
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

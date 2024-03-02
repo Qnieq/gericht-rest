@@ -8,12 +8,12 @@ import SendEmailForm from "./send_email_form/SendEmailForm";
 const ContactUs = () => {
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Contact Us"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Contact Us"} />
             <CUBgElem />
             <MapSection />
             <SendEmailForm />
-            <Footer props={"#0C0C0C"} />
+            <Footer color={"#0C0C0C"} />
         </>
     );
 }

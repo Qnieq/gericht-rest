@@ -9,13 +9,13 @@ import TeamSection from "./team_section/TeamSection";
 const Team = () => {
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Our Chefs"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Our Chefs"} />
             <TeamBgElem />
             <TeamSection  />
-            <VideoSection props={"#0C0C0C"} />
+            <VideoSection color={"#0C0C0C"} />
             <TeamAwards />
-            <Footer props={"#0C0C0C"}/>
+            <Footer color={"#0C0C0C"}/>
         </>
     );
 }

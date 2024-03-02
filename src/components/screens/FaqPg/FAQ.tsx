@@ -7,11 +7,11 @@ import FAQSection from "./faq_section/FAQSection";
 const FAQ = () => {
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Frequently Asked Questions"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Frequently Asked Questions"} />
             <FAQBgElem />
             <FAQSection />
-            <Footer props={"#0C0C0C"} />
+            <Footer color={"#0C0C0C"} />
         </>
     );
 }

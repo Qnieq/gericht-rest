@@ -20,7 +20,7 @@ export const getNews = createAsyncThunk(
 export const getLastNews = createAsyncThunk(
     'news/getLastNews',
     async () => {
-        return new Promise<object>((resolve) => {
+        return new Promise<IBlogData>((resolve) => {
             const db = getDatabase(firebaseApp);
             const dbRef = query(ref(db, `news_blog/`), limitToLast(1));
             onValue(dbRef, (snapshot) => {
@@ -46,7 +46,7 @@ export const getNewsTags = createAsyncThunk(
 export const getNewsBySearch = createAsyncThunk(
     'news/getNewsBySearch',
     async () => {
-        return new Promise<object[]>((resolve) => {
+        return new Promise<IBlogData[]>((resolve) => {
             const db = getDatabase(firebaseApp);
             const dbRef = query(ref(db, "news_blog"));
             onValue(dbRef, (snapshot) => {
@@ -58,10 +58,15 @@ export const getNewsBySearch = createAsyncThunk(
 )
 export const getNewsById = createAsyncThunk(
     'news/getNewsById',
-    async (title: string) => {
+    async (title?: string) => {
         return new Promise<IBlogData[]>((resolve) => {
             const db = getDatabase(firebaseApp);
-            const dbRef = query(ref(db, "news_blog"), orderByChild("Title"), equalTo(title));
+            let dbRef;
+            if (title) {
+                dbRef = query(ref(db, "news_blog"), orderByChild("Title"), equalTo(title));
+            } else {
+                dbRef = query(ref(db, "news_blog"));
+            }
             onValue(dbRef, (snapshot) => {
                 const newData = snapshot.val();
                 resolve(newData);

@@ -8,7 +8,7 @@ const BookATable = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <TitleCenter props={text} />
+                <TitleCenter title={text} />
                 <div className={styles.dialog_box}>
                     <input type="text" className={styles.dialog} placeholder="How Many Persons?" />
                     <input type="date" className={styles.dialog} required pattern="\d{4}-\d{2}-\d{2}" />

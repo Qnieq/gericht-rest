@@ -3,8 +3,9 @@ import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 import styles from "./PersAchievements.module.scss"
 import { IAchiev } from "../../../../interfaces/components.interface";
+import { IChefs } from "../../../../interfaces/store.interface";
 
-const PersAchievements = ({ props }) => {
+const PersAchievements: React.FC<{chef: IChefs}> = (props) => {
 
     const [visible, setVisible] = useState<boolean>(false)
 
@@ -46,7 +47,7 @@ const PersAchievements = ({ props }) => {
         },
     ]
 
-    const text: string[] = [props ? props.role : "", "Personal Achievements"]
+    const text: string[] = [props.chef ? props.chef.role : "", "Personal Achievements"]
 
     return (
         <div className={styles.container}>
@@ -55,9 +56,9 @@ const PersAchievements = ({ props }) => {
                     {alignItems: "center" } : {}
                 }>
                     {visible ?
-                        <TitleCenter props={text} />
+                        <TitleCenter title={text} />
                         :
-                        <TitleLeft props={text} />
+                        <TitleLeft title={text} />
                     }
                     <div className={styles.achievements_box}>
                         {[[0, 2], [2, 4]].map((item, index) =>

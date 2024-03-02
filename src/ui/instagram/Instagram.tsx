@@ -34,7 +34,7 @@ const Instagram = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.title}>
-                    <TitleLeft props={text} />
+                    <TitleLeft title={text} />
                     <p className={styles.description}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Volutpat mattis ipsum turpis elit elit scelerisque egestas mu.

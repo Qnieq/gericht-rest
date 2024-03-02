@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Header from "../../../ui/header/Header";
 import HeroSection from "../../../ui/hero_section/HeroSection";
 import Chef from "./chef/Chef";
@@ -11,7 +11,7 @@ import { useChefById } from "../../../hooks/team_hooks/useChefById";
 
 const ChefsDetails = () => {
 
-    const { id } = useParams()
+    const { id } = useParams<{id?: string}>()
     const { chefById } = useChefById()
     const { getChefsById } = useActions()
 
@@ -19,19 +19,18 @@ const ChefsDetails = () => {
         getChefsById(id)
     }, []);
 
-
     return (
         <>
-            <Header props={"#0C0C0C"} />
-            <HeroSection props={"Our Chefs"} />
+            <Header color={"#0C0C0C"} />
+            <HeroSection type={"Our Chefs"} />
             <CDBgElem />
             {chefById.fulfilled ?
-                <Chef props={chefById} />
+                <Chef chef={chefById.chef[0]} />
                 :
                 <></>}
 
-            <PersAchievements props={chefById} />
-            <Footer props={"#0C0C0C"} />
+            <PersAchievements chef={chefById.chef[0]} />
+            <Footer color={"#0C0C0C"} />
         </>
     );
 }

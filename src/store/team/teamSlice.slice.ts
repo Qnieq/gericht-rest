@@ -3,7 +3,7 @@ import { getAllTeam } from "./team.actions";
 import { ITeamState } from "../../interfaces/store.interface";
 
 const initialState: ITeamState = {
-    data: {},
+    data: [],
     isLoading: false,
     fulfilled: false,
     error: ""

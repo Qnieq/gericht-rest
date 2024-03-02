@@ -1,7 +1,8 @@
+import { IBlogData } from "../../../../interfaces/store.interface";
 import BlogSideBar from "../../../../ui/blog_side_bar/BlogSideBar";
 import styles from "./BlogDetailsSection.module.scss"
 
-const BlogDetailsSection = ({ props }) => {
+const BlogDetailsSection: React.FC<{details: IBlogData}> = ( props ) => {
 
     return (
         <div className={styles.container}>
@@ -18,25 +19,25 @@ const BlogDetailsSection = ({ props }) => {
                                 </h5>
                             </div>
                             <h1 className={styles.title_text}>
-                                {props.Title}
+                                {props.details.Title}
                             </h1>
                         </div>
-                        <img src={props.Image} alt="" className={styles.title_image} />
+                        <img src={props.details.Image} alt="" className={styles.title_image} />
                     </div>
                     <div className={styles.text_content}>
                         <div className={styles.about}>
                             <p className={styles.description}>
-                                {props.description}
+                                {props.details.description}
                             </p>
                             <div className={styles.ingredients}>
                                 <h4 className={styles.name}>
                                     Ingredients
                                 </h4>
                                 <p className={styles.description}>
-                                    {props.description}
+                                    {props.details.description}
                                 </p>
                                 <div className={styles.ingredients_box}>
-                                    {props.Ingredients.map((recipe: string) =>
+                                    {props.details.Ingredients.map((recipe: string) =>
                                         <div className={styles.ingredient_box}>
                                             <svg width="16.000000" height="1.000000" viewBox="0 0 16 1" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <defs />
@@ -55,12 +56,12 @@ const BlogDetailsSection = ({ props }) => {
                                     Instruction
                                 </h4>
                                 <p className={styles.description}>
-                                    {props.Instructions}
+                                    {props.details.Instructions}
                                 </p>
                             </div>
                             <div className={styles.bottom}>
                                 <div className={styles.tags_box}>
-                                    {props.tags.map(tag =>
+                                    {props.details.tags.map(tag =>
                                         <h5 className={styles.tags}>
                                             #{tag}
                                         </h5>

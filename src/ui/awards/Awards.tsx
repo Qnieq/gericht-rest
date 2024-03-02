@@ -37,7 +37,7 @@ const Awards = () => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.awards_box}>
-                    <TitleLeft props={text} />
+                    <TitleLeft title={text} />
                     <div className={styles.awards}>
                         <div className={styles.awards_section}>
                             {awards.slice(0, 2).map((award) =>

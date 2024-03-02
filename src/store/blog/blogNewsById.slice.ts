@@ -3,7 +3,7 @@ import { getNewsById } from "./blog.actions";
 import { INewsById } from "../../interfaces/store.interface";
 
 const initialState: INewsById = {
-    newsById: {},
+    newsById: [],
     isLoading: false,
     fulfilled: false,
     error: ""

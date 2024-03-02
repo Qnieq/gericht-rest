@@ -75,7 +75,7 @@ const Special = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <TitleCenter props={text} />
+                <TitleCenter title={text} />
                 <div className={styles.bar_menu}>
                     <div className={styles.side}>
                         <h3 className={styles.drink_class}>

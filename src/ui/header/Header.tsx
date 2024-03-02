@@ -4,14 +4,14 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useState } from "react";
 
-const Header = ({ props }) => {
+const Header: React.FC<{color: string}> = (props) => {
 
     const currentPg = window.location.pathname
 
     const [visible, setVisible] = useState<boolean>(false)
 
     return (
-        <div className={styles.container} style={{ background: props }}>
+        <div className={styles.container} style={{ background: props.color }}>
             <div className={styles.content}>
                 <div className={styles.logo}>
                     <Link to="/" id="#top" className={styles.logo_name}>

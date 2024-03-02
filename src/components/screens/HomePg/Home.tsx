@@ -16,7 +16,7 @@ import HomeHero from "./homeHero/HomeHero";
 const Home = () => {
     return (
         <>
-            <Header props={""}/>
+            <Header color=""/>
             <HomeHero />
             <BackgroundElem />
             <About_History />
@@ -24,12 +24,12 @@ const Home = () => {
             <AllMenus />
             <Special />
             <Chef />
-            <Customers props={"#0C0B08"} />
-            <VideoSection props={""}/>
+            <Customers color="#0C0B08" />
+            <VideoSection color=""/>
             <Awards />
             <BlogsUpdate />
             <Instagram />
-            <Footer props={""}/>
+            <Footer color={""}/>
         </>
     );
 }
