@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 import styles from "./BarAbout.module.scss"
 
@@ -18,9 +19,9 @@ const BarAbout = () => {
                                 Adipiscing tempus ullamcorper lobortis odio tellus arcu volutpat. 
                                 Risus placerat morbi volutpat habitasse interdum mi aliquam In sed odio nec aliquet.
                             </p>
-                            <button className={styles.btn}>
+                            <Link to={"/Home/About Us"} className={styles.btn}>
                                 Know More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import TitleCenter from "../ui_components/title_center/TitleCenter";
 import styles from "./Special.module.scss"
 import { IDrinks } from "../../interfaces/components.interface";
+import { Link } from "react-router-dom";
 
 const Special = () => {
 
@@ -135,7 +136,7 @@ const Special = () => {
                         </div>
                     </div>
                 </div>
-                <button className={styles.btn}>Viev More</button>
+                <Link to={"/Bar"} className={styles.btn}>Viev More</Link>
             </div>
         </div>
     );

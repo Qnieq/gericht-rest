@@ -92,6 +92,7 @@
 
         .view_more_btn {
             @include btn();
+            text-decoration: none;
         }
         .slider_bx {
             @include flexible();

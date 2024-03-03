@@ -5,6 +5,7 @@ import NewsCard from "../../../../ui/ui_components/news_card/NewsCard";
 import TitleCenter from "../../../../ui/ui_components/title_center/TitleCenter";
 import styles from "./BlogsUpdate.module.scss"
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const BlogsUpdate = () => {
 
@@ -50,7 +51,7 @@ const BlogsUpdate = () => {
                         ) : null}
                     </Slider>
                 </div>
-                <button className={styles.view_more_btn}>View More</button>
+                <Link to={"/Home/Our Blogs"} className={styles.view_more_btn}>View More</Link>
             </div>
         </div>
     );

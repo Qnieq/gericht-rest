@@ -19,6 +19,7 @@ const Routing = () => {
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/Home" element={<Home />} />
                 <Route path="/Bar" element={<Bar />} />
                 <Route path="/Home/Our Services" element={<OurServices />} />
                 <Route path="/Home/About Us" element={<AboutUs />} />

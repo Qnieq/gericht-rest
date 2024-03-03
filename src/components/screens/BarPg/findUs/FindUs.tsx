@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Border from "../../../../ui/ui_components/border/Border";
 import TitleLeft from "../../../../ui/ui_components/title_left/TitleLeft";
 import styles from "./FindUs.module.scss"
@@ -27,9 +28,9 @@ const FindUs = () => {
                             </h5>
                         </div>
                     </div>
-                    <button className={styles.btn}>
+                    <Link to={"/Home/Contact Us"} className={styles.btn}>
                         Visit Us
-                    </button>
+                    </Link>
                 </div>
                 <Border image={"images/no_category/cocktail.png"}/>
             </div>

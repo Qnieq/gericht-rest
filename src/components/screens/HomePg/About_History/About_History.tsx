@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./About_History.module.scss"
 
 const About_History = () => {
@@ -20,9 +21,9 @@ const About_History = () => {
                         </p>
                     </div>
                     <div className={styles.btn_cont}>
-                        <button className={styles.btn}>
+                        <Link to={"/Home/About Us"} className={styles.btn}>
                             Know More
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.knife_cont}>
@@ -44,9 +45,9 @@ const About_History = () => {
                         </p>
                     </div>
                     <div className={styles.btn_cont_history}>
-                        <button className={styles.btn_history}>
+                        <Link to={"/Home/About Us"} className={styles.btn_history}>
                             Know More
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

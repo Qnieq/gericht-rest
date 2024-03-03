@@ -39,9 +39,9 @@ const Instagram = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Volutpat mattis ipsum turpis elit elit scelerisque egestas mu.
                     </p>
-                    <button className={styles.view_more_btn}>
+                    <a href="https://www.instagram.com/" className={styles.view_more_btn}>
                         View More
-                    </button>
+                    </a>
                 </div>
                 <div className={styles.photo_gallery}>
                     {gallery.map(photo =>
@@ -57,7 +57,7 @@ const Instagram = () => {
                         <p className={styles.sub}>
                             Subscribe to our Instagram, new photos are posted there every day
                         </p>
-                        <button className={styles.view_more_btn}>View More</button>
+                        <a href="https://www.instagram.com/"  className={styles.view_more_btn}>View More</a>
                     </div>
                     <div></div>
                     <div></div>
