@@ -12,7 +12,10 @@
 
     .modal_window_content {
         background: #0C0C0C;
-        width: clamp(290px, 50vw, 500px);
-        height: clamp(400px, 60vw, 600px);
+        padding: clamp(30px, 10vw, 50px) clamp(20px, 7vw, 80px);
+        // width: clamp(290px, 50vw, 550px);
+        // height: clamp(400px, 60vw, 600px);
+        border: 2px solid #DCCA87;
+        @include flexible;
     }
 }
