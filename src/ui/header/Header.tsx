@@ -2,8 +2,11 @@ import styles from "./Header.module.scss"
 import { Link, NavLink } from "react-router-dom";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalWindow from "../modal_window/ModalWindow";
+import { useGetUsersByLoginQuery } from "../../store/usersApi/UsersApi";
+import { useActions } from "../../hooks/useActions";
+import { useUserByLogin } from "../../hooks/users_hooks/UsersHooks";
 
 const Header: React.FC<{ color: string }> = (props) => {
 
@@ -14,6 +17,17 @@ const Header: React.FC<{ color: string }> = (props) => {
 
     const [variantLogin, setVariantLogin] = useState<string>("reg")
 
+    const {getUserByLogin} = useActions()
+    // console.log(getUserByLogin)
+
+    useEffect(() => {
+        getUserByLogin("1234")
+    }, [])
+
+
+    const {userByLogin} = useUserByLogin()
+    
+    console.log(userByLogin)
     return (
         <>
             <div className={styles.container} style={{ background: props.color }}>

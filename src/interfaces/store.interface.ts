@@ -15,10 +15,6 @@ export interface ITeamState {
     error: string
 }
 
-export interface ITeamById extends Omit<ITeamState, 'data'> {
-    chef: IChefs[]
-}
-
 export interface IBlogData {
     Image: string
     id: number
@@ -30,6 +26,22 @@ export interface IBlogData {
     author?: string
     date?: string
 }
+
+export interface IUserDataReg {
+    login: string
+    email: string
+    password: string
+}
+
+export interface IUserDataLogin {
+    login: string
+    password: string
+}
+
+export interface ITeamById extends Omit<ITeamState, 'data'> {
+    chef: IChefs[]
+}
+
 
 export interface IBlog extends Omit<ITeamState, 'data'>{
     data: IBlogData[]
