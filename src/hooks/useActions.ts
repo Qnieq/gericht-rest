@@ -6,10 +6,12 @@ import * as blogActions from "../store/blog/blog.actions"
 import * as usersActions from "../store/users/usersAction.action"
 import {countPage as count} from "../store/blog/blogSlice.slice"
 import {toggleTagsActive as tagsActive} from "../store/blog/blogTags.slice"
+import {addRegRequest as regRequest} from "../store/users/usersRegistration.slice"
 
 const rootActions = {
     count,
     tagsActive,
+    regRequest,
     ...teamActions,
     ...blogActions,
     ...usersActions,

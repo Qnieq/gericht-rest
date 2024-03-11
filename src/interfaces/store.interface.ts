@@ -29,6 +29,7 @@ export interface IBlogData {
 
 export interface IUserDataReg {
     login: string
+    name: string
     email: string
     password: string
 }
@@ -72,4 +73,9 @@ export interface INewsById extends Omit<IBlog, 'data'> {
 
 export interface ISearchBlogs extends Omit<IBlog, 'data'> {
     search: IBlogData[]
+}
+
+export interface IUserRegSlice extends Omit<ITeamState, 'data'> {
+    userReg: IUserDataReg[]
+    auth: boolean
 }

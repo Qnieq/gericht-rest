@@ -7,6 +7,7 @@ import chefByIdReducer from './team/teamById.slice'
 import blogSearchReducer from './blog/blogSearch.slice'
 import blogNewsByIdReducer from './blog/blogNewsById.slice'
 import userByLoginReducer from './users/usersByLogin.slice'
+import userRegistrationReducer from './users/usersRegistration.slice'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 const reducers = combineReducers({
@@ -17,7 +18,8 @@ const reducers = combineReducers({
   chefById: chefByIdReducer,
   blogSearch: blogSearchReducer,
   blogNewsById: blogNewsByIdReducer,
-  userByLogin: userByLoginReducer
+  userByLogin: userByLoginReducer,
+  userRegistration: userRegistrationReducer
 })
 
 export const store = configureStore({

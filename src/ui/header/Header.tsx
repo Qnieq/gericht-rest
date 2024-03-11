@@ -4,30 +4,47 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useEffect, useState } from "react";
 import ModalWindow from "../modal_window/ModalWindow";
-import { useGetUsersByLoginQuery } from "../../store/usersApi/UsersApi";
 import { useActions } from "../../hooks/useActions";
-import { useUserByLogin } from "../../hooks/users_hooks/UsersHooks";
+import { useUserByLogin, useUserReg } from "../../hooks/users_hooks/UsersHooks";
+import { IUserDataLogin, IUserDataReg } from "../../interfaces/store.interface";
 
 const Header: React.FC<{ color: string }> = (props) => {
 
     const currentPg = window.location.pathname
+
+    const { regRequest, getUserByLogin, postRegUser } = useActions()
+    const { userRegistration } = useUserReg()
 
     const [visible, setVisible] = useState<boolean>(false)
     const [activeReg, setActiveReg] = useState<boolean>(false)
 
     const [variantLogin, setVariantLogin] = useState<string>("reg")
 
-    const {getUserByLogin} = useActions()
-    // console.log(getUserByLogin)
+    const [registartionData, setRegistrationData] = useState<IUserDataReg>({
+        login: "",
+        email: "",
+        name: "",
+        password: "",
+    })
+
+    const [loginData, setLoginData] = useState<IUserDataLogin>({
+        login: "",
+        password: "",
+    })
+
+
+    const regisrtationRequest = () => {
+        regRequest(registartionData)
+        getUserByLogin(registartionData.login)
+    }
 
     useEffect(() => {
-        getUserByLogin("1234")
-    }, [])
+        if (userRegistration.auth) {
+            postRegUser(registartionData)
+        }
+    }, [userRegistration.auth])
 
 
-    const {userByLogin} = useUserByLogin()
-    
-    console.log(userByLogin)
     return (
         <>
             <div className={styles.container} style={{ background: props.color }}>
@@ -211,20 +228,67 @@ const Header: React.FC<{ color: string }> = (props) => {
                     </div>
                     {variantLogin === "reg" ?
                         <div className={styles.form}>
-                            <input type="text" placeholder="Login" className={styles.input_user_data} />
-                            <input type="text" placeholder="Name" className={styles.input_user_data} />
-                            <input type="text" placeholder="Email" className={styles.input_user_data} />
-                            <input type="password" placeholder="Password" className={styles.input_user_data} />
-                            <input type="password" placeholder="Repeat Password" className={styles.input_user_data} />
+                            <input
+                                type="text"
+                                placeholder="Login"
+                                className={styles.input_user_data}
+                                onChange={(e) => setRegistrationData({
+                                    ...registartionData,
+                                    login: e.target.value
+                                })} />
+                            <input
+                                type="text"
+                                placeholder="Name"
+                                className={styles.input_user_data}
+                                onChange={(e) => setRegistrationData({
+                                    ...registartionData,
+                                    name: e.target.value
+                                })} />
+                            <input
+                                type="text"
+                                placeholder="Email"
+                                className={styles.input_user_data}
+                                onChange={(e) => setRegistrationData({
+                                    ...registartionData,
+                                    email: e.target.value
+                                })} />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                className={styles.input_user_data}
+                                onChange={(e) => setRegistrationData({
+                                    ...registartionData,
+                                    password: e.target.value
+                                })} />
+                            <input
+                                type="password"
+                                placeholder="Repeat Password"
+                                className={styles.input_user_data} />
                         </div>
                         :
                         <div className={styles.form}>
-                            <input type="text" placeholder="Login" className={styles.input_user_data} />
-                            <input type="password" placeholder="Password" className={styles.input_user_data} />
+                            <input
+                                type="text"
+                                placeholder="Login"
+                                className={styles.input_user_data}
+                                onChange={(e) => setLoginData({
+                                    ...loginData,
+                                    login: e.target.value
+                                })} />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                className={styles.input_user_data}
+                                onChange={(e) => setLoginData({
+                                    ...loginData,
+                                    password: e.target.value
+                                })} />
                         </div>
                     }
                     <div className={styles.reg}>
-                        <button className={styles.registration_btn}>
+                        <button className={styles.registration_btn} onClick={() => {
+                            {variantLogin === "reg" ? regisrtationRequest() : {}}
+                        }}>
                             {variantLogin === "reg" ? "Registration" : "Log In"}
                         </button>
                         <div className={styles.line}></div>

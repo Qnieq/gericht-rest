@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import firebaseApp from "../../firebase";
-import { IUserDataLogin } from "../../interfaces/store.interface";
+import { IUserDataLogin, IUserDataReg } from "../../interfaces/store.interface";
 
 
 export const getUserByLogin = createAsyncThunk(
@@ -15,5 +15,16 @@ export const getUserByLogin = createAsyncThunk(
                 resolve(newData);
             });
         });
+    }
+)
+
+export const postRegUser = createAsyncThunk(
+    'team/postRegUser',
+    async (user: IUserDataReg) => {
+        console.log(user);
+        const db = getDatabase(firebaseApp);
+        await set(ref(db, `users/` + user.login), {
+            ...user
+        })
     }
 )
