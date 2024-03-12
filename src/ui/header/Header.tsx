@@ -5,7 +5,7 @@ import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useEffect, useState } from "react";
 import ModalWindow from "../modal_window/ModalWindow";
 import { useActions } from "../../hooks/useActions";
-import { useUserByLogin, useUserReg } from "../../hooks/users_hooks/UsersHooks";
+import { useUserReg } from "../../hooks/users_hooks/UsersHooks";
 import { IUserDataLogin, IUserDataReg } from "../../interfaces/store.interface";
 
 const Header: React.FC<{ color: string }> = (props) => {
@@ -27,20 +27,32 @@ const Header: React.FC<{ color: string }> = (props) => {
         password: "",
     })
 
+    const [repeatPassword, setRepeatPassword] = useState<string>("")
+
+    const [errorRegistr, setErrorRegistr] = useState<boolean>(false)
+
     const [loginData, setLoginData] = useState<IUserDataLogin>({
         login: "",
         password: "",
     })
 
 
-    const regisrtationRequest = () => {
-        regRequest(registartionData)
-        getUserByLogin(registartionData.login)
-    }
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
+    const validationReg = () => {
+        if (repeatPassword == registartionData.password && emailRegex.test(registartionData.email)) {
+            regRequest(registartionData)
+            getUserByLogin(registartionData.login)
+            setErrorRegistr(false)
+        } else {
+            setErrorRegistr(true)
+        }
+
+    }
     useEffect(() => {
         if (userRegistration.auth) {
             postRegUser(registartionData)
+            setActiveReg(false)
         }
     }, [userRegistration.auth])
 
@@ -245,7 +257,7 @@ const Header: React.FC<{ color: string }> = (props) => {
                                     name: e.target.value
                                 })} />
                             <input
-                                type="text"
+                                type="email"
                                 placeholder="Email"
                                 className={styles.input_user_data}
                                 onChange={(e) => setRegistrationData({
@@ -263,7 +275,10 @@ const Header: React.FC<{ color: string }> = (props) => {
                             <input
                                 type="password"
                                 placeholder="Repeat Password"
-                                className={styles.input_user_data} />
+                                className={styles.input_user_data}
+                                onChange={(e) => {
+                                    setRepeatPassword(e.target.value)
+                                }} />
                         </div>
                         :
                         <div className={styles.form}>
@@ -286,11 +301,27 @@ const Header: React.FC<{ color: string }> = (props) => {
                         </div>
                     }
                     <div className={styles.reg}>
-                        <button className={styles.registration_btn} onClick={() => {
-                            {variantLogin === "reg" ? regisrtationRequest() : {}}
-                        }}>
-                            {variantLogin === "reg" ? "Registration" : "Log In"}
-                        </button>
+                        <div className={styles.btn_cont}>
+                            <button className={styles.registration_btn} onClick={() => {
+                                { variantLogin === "reg" ? validationReg() : {} }
+                            }}>
+                                {variantLogin === "reg" ? "Registration" : "Log In"}
+                            </button>
+                            {errorRegistr ?
+                                <h6 className={styles.error} style={{color: "red"}}>
+                                    Invalid Email Or Password
+                                </h6>
+                                :
+                                null
+                            }
+                            {userRegistration.error == "already exist" ?
+                                <h6 className={styles.error} style={{color: "red"}}>
+                                    Login already Exist
+                                </h6>
+                                :
+                                null
+                            }
+                        </div>
                         <div className={styles.line}></div>
                         <button className={styles.google_btn}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
