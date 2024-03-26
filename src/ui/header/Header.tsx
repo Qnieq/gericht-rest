@@ -5,15 +5,16 @@ import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 import { useEffect, useState } from "react";
 import ModalWindow from "../modal_window/ModalWindow";
 import { useActions } from "../../hooks/useActions";
-import { useUserReg } from "../../hooks/users_hooks/UsersHooks";
+import { useUserLogin, useUserReg } from "../../hooks/users_hooks/UsersHooks";
 import { IUserDataLogin, IUserDataReg } from "../../interfaces/store.interface";
 
 const Header: React.FC<{ color: string }> = (props) => {
 
     const currentPg = window.location.pathname
 
-    const { regRequest, getUserByLogin, postRegUser } = useActions()
+    const { regRequest, getUserByLogin, postRegUser, loginRequest, getUserByLoginForLogin } = useActions()
     const { userRegistration } = useUserReg()
+    const { userByLogin } = useUserLogin()
 
     const [visible, setVisible] = useState<boolean>(false)
     const [activeReg, setActiveReg] = useState<boolean>(false)
@@ -53,8 +54,10 @@ const Header: React.FC<{ color: string }> = (props) => {
         if (userRegistration.auth) {
             postRegUser(registartionData)
             setActiveReg(false)
+        } else if (userByLogin.auth) {
+            setActiveReg(false)
         }
-    }, [userRegistration.auth])
+    }, [userRegistration.auth, userByLogin.auth])
 
 
     return (
@@ -303,7 +306,7 @@ const Header: React.FC<{ color: string }> = (props) => {
                     <div className={styles.reg}>
                         <div className={styles.btn_cont}>
                             <button className={styles.registration_btn} onClick={() => {
-                                { variantLogin === "reg" ? validationReg() : {} }
+                                { variantLogin === "reg" ? validationReg() : loginRequest(loginData), getUserByLoginForLogin(loginData.login) }
                             }}>
                                 {variantLogin === "reg" ? "Registration" : "Log In"}
                             </button>
@@ -317,6 +320,13 @@ const Header: React.FC<{ color: string }> = (props) => {
                             {userRegistration.error == "already exist" ?
                                 <h6 className={styles.error} style={{color: "red"}}>
                                     Login already Exist
+                                </h6>
+                                :
+                                null
+                            }
+                            {userByLogin.error == "doesn't exist" ?
+                                <h6 className={styles.error} style={{color: "red"}}>
+                                    User Doesn't Exist
                                 </h6>
                                 :
                                 null

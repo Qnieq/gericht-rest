@@ -18,6 +18,21 @@ export const getUserByLogin = createAsyncThunk(
     }
 )
 
+export const getUserByLoginForLogin = createAsyncThunk(
+    'team/getUserByLoginForLogin',
+    async (login: string) => {
+        return new Promise<IUserDataReg>((resolve) => {
+            const db = getDatabase(firebaseApp);
+            const dbRef = ref(db, `users/${login}`);
+            onValue(dbRef, (snapshot) => {
+                const newData = snapshot.val();
+                resolve(newData);
+                console.log(newData);
+            });
+        });
+    }
+)
+
 export const postRegUser = createAsyncThunk(
     'team/postRegUser',
     async (user: IUserDataReg) => {

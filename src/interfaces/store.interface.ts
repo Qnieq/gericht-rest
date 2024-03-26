@@ -79,3 +79,9 @@ export interface IUserRegSlice extends Omit<ITeamState, 'data'> {
     userReg: IUserDataReg[]
     auth: boolean
 }
+
+export interface IUserLoginSlice extends Omit<ITeamState, 'data'> {
+    userLogin: IUserDataReg[]
+    userData: IUserDataReg[]
+    auth: boolean
+}

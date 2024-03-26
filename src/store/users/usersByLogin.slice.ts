@@ -1,36 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserByLogin } from "./usersAction.action";
+import { getUserByLoginForLogin } from "./usersAction.action";
+import { IUserLoginSlice } from "../../interfaces/store.interface";
 
-const initialState = {
-    chef: [],
+const initialState: IUserLoginSlice = {
+    userLogin: [],
+    userData: [],
     isLoading: false,
     fulfilled: false,
+    auth: false,
     error: ""
 }
 
 export const usersByLogin = createSlice({
     name: "usersByLogin",
     initialState,
-    reducers:{},
+    reducers:{
+        addLoginRequest: (state, {payload: reg}) => {
+            state.userLogin.pop()
+            state.userLogin.push(reg);
+        }
+    },
     extraReducers: (builder) => {
         builder
-            .addCase(getUserByLogin.pending, (state) => {
+            .addCase(getUserByLoginForLogin.pending, (state) => {
                 state.isLoading = true;
                 state.fulfilled = false;
                 state.error = "";
             })
-            .addCase(getUserByLogin.fulfilled, (state, {payload: userAuth}) => {
+            .addCase(getUserByLoginForLogin.fulfilled, (state, {payload: userAuth}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
-                state.error = "";
-                if (state.chef.length === 1) {
-                    state.chef.pop()
-                    state.chef.push(userAuth)
-                } else {
-                    state.chef.push(userAuth)
+                console.log(state.userLogin[0].login)
+                if (userAuth === null) {
+                    state.auth = false;
+                    state.error = "doesn't exist"
+                } else if (userAuth.login === state.userLogin[0].login && userAuth.password === state.userLogin[0].password) {
+                    state.auth = true;
+                    state.userData.pop()
+                    state.userData.push(userAuth)
                 }
             })
-            .addCase(getUserByLogin.rejected, (state) => {
+            .addCase(getUserByLoginForLogin.rejected, (state) => {
                 state.error = "error";
                 state.isLoading = false;
                 state.fulfilled = false;
@@ -38,5 +48,7 @@ export const usersByLogin = createSlice({
     }
     
 })
+
+export const {addLoginRequest} = usersByLogin.actions
 
 export default usersByLogin.reducer
