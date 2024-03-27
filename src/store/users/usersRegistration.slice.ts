@@ -17,6 +17,13 @@ export const usersRegistrationSlice = createSlice({
         addRegRequest: (state, {payload: reg}) => {
             state.userReg.pop()
             state.userReg.push(reg);
+        },
+        logoutReg: (state) => {
+            state.userReg = []
+            state.auth = false
+            state.isLoading = false;
+            state.fulfilled = false;
+            state.error = "";
         }
     },
     extraReducers: (builder) => {
@@ -45,6 +52,6 @@ export const usersRegistrationSlice = createSlice({
     
 })
 
-export const {addRegRequest} = usersRegistrationSlice.actions
+export const {addRegRequest, logoutReg} = usersRegistrationSlice.actions
 
 export default usersRegistrationSlice.reducer

@@ -1,0 +1,69 @@
+@import "../../assets/gl_styles/mixin_cont";
+
+.reg_log_cont {
+    @include flexible();
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+
+    .variants {
+        @include flexible();
+        gap: 24px;
+
+        .variant_login {
+            color: #fff;
+            text-align: center;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-family: Cormorant Upright;
+            font-size: clamp(16px, 2vw, 32px);
+            font-weight: 600;
+            line-height: 130%;
+            letter-spacing: 1.92px;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+    }
+
+    .form {
+        @include flexible();
+        flex-direction: column;
+        gap: 16px;
+
+        .input_user_data {
+            @include input(50px);
+            width: clamp(230px, 35vw, 500px);
+
+        }
+    }
+
+    .reg {
+        @include flexible();
+        width: 100%;
+        gap: 16px;
+        flex-direction: column;
+
+        .registration_btn {
+            @include btn();
+            width: 100%;
+        }
+
+        .google_btn {
+            @include btn();
+            width: 100%;
+            flex-direction: row;
+            gap: 12px;
+            background: transparent;
+            border: #DCCA87 1px solid;
+            color: #FFF;
+            font-size: clamp(14px, 2vw, 17px);
+        }
+    }
+    .line {
+        display: flex;
+        height: 1px;
+        width: 100%;
+        background: #DCCA87;
+        
+    }
+}

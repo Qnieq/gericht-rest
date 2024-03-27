@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IStat {
     num: string
     stat: string
@@ -74,6 +76,7 @@ export interface ICount {
     end: number
 }
 
-export interface ISlider {
-
+export interface IAuthContext {
+    auth: boolean
+    setAuth: Dispatch<SetStateAction<boolean>>
 }

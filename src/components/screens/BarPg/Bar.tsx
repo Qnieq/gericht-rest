@@ -1,3 +1,4 @@
+import { withAuth } from "../../../HOC/withAuth";
 import BookATable from "../../../ui/book_a_table/BookATable";
 import Footer from "../../../ui/footer/Footer";
 import HappyHours from "../../../ui/happy_hours/HappyHours";
@@ -24,4 +25,4 @@ const Bar = () => {
     );
 }
 
-export default Bar;
+export default withAuth(Bar);

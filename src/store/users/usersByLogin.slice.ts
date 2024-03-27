@@ -18,6 +18,14 @@ export const usersByLogin = createSlice({
         addLoginRequest: (state, {payload: reg}) => {
             state.userLogin.pop()
             state.userLogin.push(reg);
+        },
+        logoutLogin: (state) => {
+            state.userLogin = []
+            state.userData = []
+            state.auth = false
+            state.isLoading = false;
+            state.fulfilled = false;
+            state.error = "";
         }
     },
     extraReducers: (builder) => {
@@ -49,6 +57,6 @@ export const usersByLogin = createSlice({
     
 })
 
-export const {addLoginRequest} = usersByLogin.actions
+export const {addLoginRequest, logoutLogin} = usersByLogin.actions
 
 export default usersByLogin.reducer
