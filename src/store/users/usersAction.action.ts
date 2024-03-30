@@ -36,7 +36,6 @@ export const getUserByLoginForLogin = createAsyncThunk(
 export const postRegUser = createAsyncThunk(
     'team/postRegUser',
     async (user: IUserDataReg) => {
-        console.log(user);
         const db = getDatabase(firebaseApp);
         await set(ref(db, `users/` + user.login), {
             ...user

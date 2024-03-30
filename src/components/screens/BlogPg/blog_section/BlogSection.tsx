@@ -34,24 +34,12 @@ const BlogSection = () => {
             setVisible(false)
             setOpen(true)
         }
-        // window.addEventListener('resize', resizeEvent, true);
-        // return function () {
-        //     window.removeEventListener('resize', resizeEvent, true);
-        // }
+
     }, [])
 
-    // const resizeEvent = () => {
-    //     if (window.innerWidth <= 1000) {
-    //         setOpen(false)
-    //         setVisible(true)
-    //     } else {
-    //         setVisible(false)
-    //         setOpen(true)
-    //     }
-    // }
 
 return (
-    <div className={styles.container} style={open ? {pointerEvents: "none"} : {}}>
+    <div className={styles.container} >
         <div className={styles.content} style={visible ?
             { flexDirection: "column-reverse" } : {}}>
             <div className={styles.news}>
@@ -76,16 +64,15 @@ return (
             </div>
 
             <div className={styles.mobile_side_bar_header} style={visible ?
-                { display: "flex", pointerEvents: "all" } : {}}>
+                { display: "flex" } : {}}>
                 <button onClick={() => setOpen(!open)} className={styles.filter}>
                     <IoFilterSharp className={styles.filter_icon} />
                 </button>
             </div>
             {open ?
-                <div className={styles.side_bar} onClick={() => setOpen(!open)} style={visible ?
+                <div className={styles.side_bar} style={visible ?
                     {
                         position: "absolute",
-                        pointerEvents: "all",
                         right: "0",
                         top: "630px",
                         boxShadow: "rgba(12, 12, 12, 0.9) 0 0 0 10000px",

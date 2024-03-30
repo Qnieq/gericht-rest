@@ -19,6 +19,7 @@ const BlogDetails = () => {
 
     const last: number = parseInt(Object.keys(blogNewsById.newsById)[Object.keys(blogNewsById.newsById).length - 1])
 
+
     return (
         <>
             <Header color={"#0C0C0C"} />

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { IUserDataReg } from "./store.interface";
 
 export interface IStat {
     num: string
@@ -79,4 +80,25 @@ export interface ICount {
 export interface IAuthContext {
     auth: boolean
     setAuth: Dispatch<SetStateAction<boolean>>
+    userInfo: IUserDataReg
+}
+
+export interface IBlogComment {
+    id: number
+    user: string
+    username: {
+        user: string
+        comment: string
+    }
+}
+
+export interface IComment {
+    user: string
+    comment: string
+}
+
+export interface IBlogLikes {
+    id: number
+    likes_who: string[]
+    count: number
 }

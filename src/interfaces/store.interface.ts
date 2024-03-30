@@ -1,3 +1,9 @@
+export interface ISlice {
+    isLoading: boolean
+    fulfilled: boolean
+    error: string
+}
+
 export interface IChefs {
     color: string;
     image: string;
@@ -25,6 +31,16 @@ export interface IBlogData {
     tags: string[]
     author?: string
     date?: string
+    comments: {
+        username: {
+            user: string
+            comment: string
+        }
+    }
+    likes: {
+        likes_who: string[]
+        count: number
+    }
 }
 
 export interface IUserDataReg {
@@ -85,3 +101,7 @@ export interface IUserLoginSlice extends Omit<ITeamState, 'data'> {
     userData: IUserDataReg[]
     auth: boolean
 }
+
+// export interface IBlogActivity extends Omit<ITeamState, 'data'> {
+//     activityInfo: IBlogData[]
+// }

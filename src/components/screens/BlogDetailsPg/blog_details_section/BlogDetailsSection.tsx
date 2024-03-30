@@ -1,8 +1,24 @@
+import { useContext, useState } from "react";
 import { IBlogData } from "../../../../interfaces/store.interface";
 import BlogSideBar from "../../../../ui/blog_side_bar/BlogSideBar";
 import styles from "./BlogDetailsSection.module.scss"
+import { useActions } from "../../../../hooks/useActions";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import { IComment } from "../../../../interfaces/components.interface";
+import { CiHeart } from "react-icons/ci";
 
-const BlogDetailsSection: React.FC<{details: IBlogData}> = ( props ) => {
+const BlogDetailsSection: React.FC<{ details: IBlogData }> = (props) => {
+
+    const [comment, setComment] = useState<string>("")
+
+    const [commentContainer, setCommentContainer] = useState<IComment[]>([...Object.values(props.details.comments)])
+    const [likesStatistic, setLikesStatistic] = useState<number>(props.details.likes.count)
+    const [likesWho, setLikesWho] = useState<string[]>(props.details.likes.likes_who)
+
+    const { postComment, postLikes } = useActions()
+
+    const { userInfo, auth } = useContext(AuthContext)
+
 
     return (
         <div className={styles.container}>
@@ -83,17 +99,93 @@ const BlogDetailsSection: React.FC<{details: IBlogData}> = ( props ) => {
                                             Comment
                                         </h5>
                                     </div>
-                                    <div className={styles.activity}>
-                                        <svg width="20.833252" height="19.114563" viewBox="0 0 20.8333 19.1146" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <defs />
-                                            <path id="Vector" d="M15.1042 0C13.2917 0 11.552 0.84375 10.4167 2.17706C9.28125 0.84375 7.54175 0 5.72925 0C2.52075 0 0 2.52081 0 5.72919C0 9.66669 3.54175 12.875 8.90625 17.75L10.4167 19.1146L11.927 17.7396C17.2917 12.875 20.8333 9.66669 20.8333 5.72919C20.8333 2.52081 18.3125 0 15.1042 0ZM10.5208 16.1979L10.4167 16.3021L10.3125 16.1979C5.35425 11.7083 2.08325 8.73956 2.08325 5.72919C2.08325 3.64581 3.64575 2.08331 5.72925 2.08331C7.33325 2.08331 8.89575 3.11456 9.448 4.54169L11.3958 4.54169C11.9375 3.11456 13.5 2.08331 15.1042 2.08331C17.1875 2.08331 18.75 3.64581 18.75 5.72919C18.75 8.73956 15.4792 11.7083 10.5208 16.1979Z" fill="#DCCA87" fill-opacity="1.000000" fill-rule="nonzero" />
-                                        </svg>
+                                    <div className={styles.activity} onClick={() => {
+                                        {
+                                            likesWho.some(i => i === userInfo.name)
+                                                ?
+                                                (
+                                                    setLikesStatistic(likesStatistic - 1),
+                                                    setLikesWho([...likesWho.filter(i => i !== userInfo.name)]),
+                                                    postLikes({
+                                                        "id": props.details.id,
+                                                        "likes_who": [...likesWho.filter(i => i !== userInfo.name)],
+                                                        "count": likesStatistic - 1
+                                                    })
+                                                )
+                                                :
+                                                (
+                                                    setLikesStatistic(likesStatistic + 1),
+                                                    setLikesWho([...likesWho, userInfo.name]),
+                                                    postLikes({
+                                                        "id": props.details.id,
+                                                        "likes_who": [...likesWho, userInfo.name],
+                                                        "count": likesStatistic + 1
+                                                    })
+                                                )
+
+                                        }
+                                    }}>
+                                        {auth ?
+                                            likesWho.some(i => i === userInfo.name)
+                                                ?
+                                                <CiHeart style={{ color: "red", width: "28.833252px", height: "25.114563px" }} />
+                                                :
+                                                <svg width="20.833252" height="19.114563" viewBox="0 0 20.8333 19.1146" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs />
+                                                    <path id="Vector" d="M15.1042 0C13.2917 0 11.552 0.84375 10.4167 2.17706C9.28125 0.84375 7.54175 0 5.72925 0C2.52075 0 0 2.52081 0 5.72919C0 9.66669 3.54175 12.875 8.90625 17.75L10.4167 19.1146L11.927 17.7396C17.2917 12.875 20.8333 9.66669 20.8333 5.72919C20.8333 2.52081 18.3125 0 15.1042 0ZM10.5208 16.1979L10.4167 16.3021L10.3125 16.1979C5.35425 11.7083 2.08325 8.73956 2.08325 5.72919C2.08325 3.64581 3.64575 2.08331 5.72925 2.08331C7.33325 2.08331 8.89575 3.11456 9.448 4.54169L11.3958 4.54169C11.9375 3.11456 13.5 2.08331 15.1042 2.08331C17.1875 2.08331 18.75 3.64581 18.75 5.72919C18.75 8.73956 15.4792 11.7083 10.5208 16.1979Z" fill="#DCCA87" fill-opacity="1.000000" fill-rule="nonzero" />
+                                                </svg>
+                                            :
+                                            <svg width="20.833252" height="19.114563" viewBox="0 0 20.8333 19.1146" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <defs />
+                                                <path id="Vector" d="M15.1042 0C13.2917 0 11.552 0.84375 10.4167 2.17706C9.28125 0.84375 7.54175 0 5.72925 0C2.52075 0 0 2.52081 0 5.72919C0 9.66669 3.54175 12.875 8.90625 17.75L10.4167 19.1146L11.927 17.7396C17.2917 12.875 20.8333 9.66669 20.8333 5.72919C20.8333 2.52081 18.3125 0 15.1042 0ZM10.5208 16.1979L10.4167 16.3021L10.3125 16.1979C5.35425 11.7083 2.08325 8.73956 2.08325 5.72919C2.08325 3.64581 3.64575 2.08331 5.72925 2.08331C7.33325 2.08331 8.89575 3.11456 9.448 4.54169L11.3958 4.54169C11.9375 3.11456 13.5 2.08331 15.1042 2.08331C17.1875 2.08331 18.75 3.64581 18.75 5.72919C18.75 8.73956 15.4792 11.7083 10.5208 16.1979Z" fill="#DCCA87" fill-opacity="1.000000" fill-rule="nonzero" />
+                                            </svg>
+                                        }
                                         <h5 className={styles.activity_name}>
-                                            Like
+                                            {likesStatistic} Like
                                         </h5>
                                     </div>
                                 </div>
                             </div>
+                            {auth ?
+                                <div className={styles.comments}>
+                                    <div className={styles.comment_write}>
+                                        <input type="text" placeholder="Commenting..." value={comment} className={styles.input_comment} onChange={(e) => { setComment(e.target.value) }} />
+                                        <button className={styles.btn_submit} onClick={() => {
+                                            postComment({
+                                                "id": props.details.id,
+                                                "user": userInfo.name + new Date(),
+                                                "username": {
+                                                    "comment": comment,
+                                                    "user": userInfo.name
+                                                }
+                                            })
+                                            setCommentContainer([...commentContainer, {
+                                                "comment": comment,
+                                                "user": userInfo.name
+                                            }])
+                                            setComment("")
+                                        }}>
+                                            Submit
+                                        </button>
+                                    </div>
+                                    <div className={styles.comments_box}>
+                                        {commentContainer.map((com, index) =>
+                                            <div key={index} className={styles.comment}>
+                                                <h5 className={styles.author}>
+                                                    {com.user}
+                                                </h5>
+                                                <p className={styles.text}>
+                                                    {com.comment}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                :
+                                <h4 className={styles.auth_comment}>
+                                    Authorize for commenting
+                                </h4>
+                            }
                         </div>
                         <div className={styles.side_bar}>
                             <BlogSideBar />
@@ -104,7 +196,7 @@ const BlogDetailsSection: React.FC<{details: IBlogData}> = ( props ) => {
                 :
                 null
             }
-        </div>
+        </div >
     );
 }
 

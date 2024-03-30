@@ -7,12 +7,12 @@ const NewsCard: React.FC<{ news: IBlogData }> = (props) => {
 
     const [news, setNews] = useState<IBlogData | null>(null);
 
-    useEffect(() => {   
+    useEffect(() => {
         setNews(props.news);
     }, [props.news])
 
     return (
-        <div className={styles.container_card}>
+        <>
             {news ?
                 <div key={news.id} className={styles.blog}>
                     <Link to={`/Home/Our Blogs/${news.Title}`}>
@@ -39,7 +39,7 @@ const NewsCard: React.FC<{ news: IBlogData }> = (props) => {
                 :
                 <></>
             }
-        </div>
+        </>
 
     );
 }

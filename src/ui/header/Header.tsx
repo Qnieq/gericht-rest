@@ -150,26 +150,25 @@ const Header: React.FC<{ color: string }> = (props) => {
                                         FAQ
                                     </Link>
                                 </div>
-                                {auth ? 
-                                
-                                <div className={styles.section} onClick={() => {
-                                    setActiveReg(!activeReg)
-                                    setVisible(!visible)
-                                }}>
-                                    <h3 className={styles.link}>
-                                        Log in / registration
-                                    </h3>
-                                </div>
-                                :
-                                <div className={styles.section} onClick={() => {
-                                    logoutReg()
-                                    logoutLogin()
-                                }}>
-                                    <h3 className={styles.link}>
-                                        Logout
-                                    </h3>
-                                </div>
-                            }
+                                {auth ?
+                                    <div className={styles.section} onClick={() => {
+                                        logoutReg()
+                                        logoutLogin()
+                                    }}>
+                                        <h3 className={styles.link}>
+                                            Logout
+                                        </h3>
+                                    </div>
+                                    :
+                                    <div className={styles.section} onClick={() => {
+                                        setActiveReg(!activeReg)
+                                        setVisible(!visible)
+                                    }}>
+                                        <h3 className={styles.link}>
+                                            Log in / registration
+                                        </h3>
+                                    </div>
+                                }
                                 <div className={styles.section}>
                                     <Link to="/" className={styles.link}>
                                         Book Table
