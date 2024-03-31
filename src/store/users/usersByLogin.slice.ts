@@ -38,7 +38,6 @@ export const usersByLogin = createSlice({
             .addCase(getUserByLoginForLogin.fulfilled, (state, {payload: userAuth}) => {
                 state.isLoading = false;
                 state.fulfilled = true;
-                console.log(state.userLogin[0].login)
                 if (userAuth === null) {
                     state.auth = false;
                     state.error = "doesn't exist"
