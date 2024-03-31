@@ -26,8 +26,6 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
         }
     }, [userByLogin.auth, userRegistration.auth])
 
-    console.log(userInfo)
-
     return (
         <AuthContext.Provider value={{auth, setAuth, userInfo}}>
             {children}
