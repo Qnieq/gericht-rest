@@ -1,7 +1,6 @@
 import styles from "./TitleCenter.module.scss"
 
 const TitleCenter: React.FC<{ title: string[] }> = (props) => {
-    console.log(props.title)
     return (
 
         <div className={styles.title}>

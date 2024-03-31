@@ -146,8 +146,10 @@ const BlogDetailsSection: React.FC<{ details: IBlogData }> = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            {auth ?
-                                <div className={styles.comments}>
+
+                            <div className={styles.comments}>
+                                {auth ?
+
                                     <div className={styles.comment_write}>
                                         <input type="text" placeholder="Commenting..." value={comment} className={styles.input_comment} onChange={(e) => { setComment(e.target.value) }} />
                                         <button className={styles.btn_submit} onClick={() => {
@@ -168,24 +170,25 @@ const BlogDetailsSection: React.FC<{ details: IBlogData }> = (props) => {
                                             Submit
                                         </button>
                                     </div>
-                                    <div className={styles.comments_box}>
-                                        {commentContainer.map((com, index) =>
-                                            <div key={index} className={styles.comment}>
-                                                <h5 className={styles.author}>
-                                                    {com.user}
-                                                </h5>
-                                                <p className={styles.text}>
-                                                    {com.comment}
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
+                                    :
+                                    <h4 className={styles.auth_comment}>
+                                        Authorize for commenting
+                                    </h4>
+                                }
+                                <div className={styles.comments_box}>
+                                    {commentContainer.map((com, index) =>
+                                        <div key={index} className={styles.comment}>
+                                            <h5 className={styles.author}>
+                                                {com.user}
+                                            </h5>
+                                            <p className={styles.text}>
+                                                {com.comment}
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
-                                :
-                                <h4 className={styles.auth_comment}>
-                                    Authorize for commenting
-                                </h4>
-                            }
+                            </div>
+
                         </div>
                         <div className={styles.side_bar}>
                             <BlogSideBar />

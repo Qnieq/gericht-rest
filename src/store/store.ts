@@ -9,6 +9,8 @@ import blogNewsByIdReducer from './blog/blogNewsById.slice'
 import userByLoginReducer from './users/usersByLogin.slice'
 import userRegistrationReducer from './users/usersRegistration.slice'
 import { setupListeners } from '@reduxjs/toolkit/query'
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
 
 const reducers = combineReducers({
   blog: blogReducer,
@@ -22,11 +24,21 @@ const reducers = combineReducers({
   userRegistration: userRegistrationReducer
 })
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
 export const store = configureStore({
-  reducer: reducers,
-  // devTools: false,
+  reducer: persistedReducer,
+  devTools: false,
 })
 
+
+export const persistor = persistStore(store)
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 
