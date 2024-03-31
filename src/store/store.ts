@@ -27,7 +27,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["userByLogin", "userRegistration"] // <-- name root state to allow, e.g. state.user
+  whitelist: ["userByLogin", "userRegistration", "chefById", "blogNewsById"] // <-- name root state to allow, e.g. state.user
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
