@@ -1,11 +1,15 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { useUserLogin, useUserReg } from "../../hooks/users_hooks/UsersHooks"
 import { IUserDataLogin, IUserDataReg } from "../../interfaces/store.interface"
 import { useActions } from "../../hooks/useActions"
 import ModalWindow from "../modal_window/ModalWindow"
 import styles from "./AuthInterface.module.scss"
+import { AuthContext } from "../../Provider/AuthProvider"
 
 const AuthInterface: React.FC<{activeReg: boolean, setActive: Dispatch<SetStateAction<boolean>>}> = (props) => {
+
+    const { auth } = useContext(AuthContext)
+
 
     const { regRequest, getUserByLogin, postRegUser, loginRequest, getUserByLoginForLogin } = useActions()
     const { userRegistration } = useUserReg()
@@ -44,10 +48,15 @@ const AuthInterface: React.FC<{activeReg: boolean, setActive: Dispatch<SetStateA
 
     }
     useEffect(() => {
-        if (userRegistration.auth) {
-            postRegUser(registartionData)
+        if (auth) {
+            if (userRegistration.userReg.length > 0) {
+                postRegUser(userRegistration.userReg[0])
+            } else if (userByLogin.userData.length == 0) {
+                postRegUser(registartionData)
+            }
         }
-    }, [userRegistration.auth])
+    }, [auth])
+
     
     return (
         <ModalWindow active={props.activeReg} setActive={props.setActive}>

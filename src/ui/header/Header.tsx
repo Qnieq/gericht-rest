@@ -203,6 +203,7 @@ const Header: React.FC<{ color: string }> = (props) => {
                     </div>
                 </div>
             </div>
+            
             <AuthInterface activeReg={activeReg} setActive={setActiveReg} />
         </>
     );
