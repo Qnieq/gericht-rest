@@ -12,6 +12,11 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
 const reducers = combineReducers({
   blog: blogReducer,
   blogTags: blogTagsReducer,
@@ -20,20 +25,15 @@ const reducers = combineReducers({
   chefById: chefByIdReducer,
   blogSearch: blogSearchReducer,
   blogNewsById: blogNewsByIdReducer,
-  userByLogin: userByLoginReducer,
-  userRegistration: userRegistrationReducer
+  userByLogin: persistReducer(persistConfig, userByLoginReducer),
+  userRegistration: persistReducer(persistConfig, userRegistrationReducer),
 })
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
 
 
-const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: reducers,
   devTools: false,
 })
 
