@@ -158,6 +158,7 @@
                     .comment_write {
                         @include flexible();
                         gap: 20px;
+                        flex-wrap: wrap;
 
                         .input_comment {
                             @include input(45px)
