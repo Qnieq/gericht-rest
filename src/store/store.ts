@@ -34,7 +34,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  // devTools: false,
+  devTools: false,
 })
 
 export const persistor = persistStore(store)
