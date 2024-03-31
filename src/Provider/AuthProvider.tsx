@@ -12,7 +12,7 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     const {userRegistration} = useUserReg()
 
     const [auth, setAuth] = useState<boolean>(false);
-    const [userInfo, setUserInfo] = useState<IUserDataReg>(userByLogin.userData[0]);
+    const [userInfo, setUserInfo] = useState<IUserDataReg>(userByLogin.auth ? userByLogin.userData[0] : userRegistration.userReg[0]);
 
 
     useEffect(() => {
@@ -25,6 +25,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
             setUserInfo(userByLogin.userData[0])
         }
     }, [userByLogin.auth, userRegistration.auth])
+
+    console.log(userInfo)
 
     return (
         <AuthContext.Provider value={{auth, setAuth, userInfo}}>

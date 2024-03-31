@@ -12,11 +12,6 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
-
 const reducers = combineReducers({
   blog: blogReducer,
   blogTags: blogTagsReducer,
@@ -25,18 +20,22 @@ const reducers = combineReducers({
   chefById: chefByIdReducer,
   blogSearch: blogSearchReducer,
   blogNewsById: blogNewsByIdReducer,
-  userByLogin: persistReducer(persistConfig, userByLoginReducer),
-  userRegistration: persistReducer(persistConfig, userRegistrationReducer),
+  userByLogin: userByLoginReducer,
+  userRegistration: userRegistrationReducer
 })
 
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["userByLogin", "userRegistration"] // <-- name root state to allow, e.g. state.user
+};
 
-
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: reducers,
+  reducer: persistedReducer,
   devTools: false,
 })
-
 
 export const persistor = persistStore(store)
 // Infer the `RootState` and `AppDispatch` types from the store itself
