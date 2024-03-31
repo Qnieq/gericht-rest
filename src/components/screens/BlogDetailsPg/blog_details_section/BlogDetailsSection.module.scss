@@ -142,6 +142,16 @@
                                 text-align: center;
                                 cursor: pointer;
                             }
+                            .activity_name_likes {
+                                color: #fff;
+                                font-family: Open Sans;
+                                font-size: clamp(14px, 1vw, 16px);
+                                font-weight: 400;
+                                line-height: 175%;
+                                letter-spacing: 4%;
+                                text-align: center;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
@@ -227,7 +237,7 @@
 }
 
 @media (max-width: 768px) {
-    .activity_name {
+    .activity_name:first-child {
         display: none !important;
     }
 }
